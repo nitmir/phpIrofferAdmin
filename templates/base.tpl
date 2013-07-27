@@ -11,12 +11,15 @@
     
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootbox.min.js"></script>
   </head>
 
   <body>
+  {block name="assign"}{assign var="subpage" value=""}{/block}
   {block name="navbar"}{/block}
 
     <div class="container">
+	{include file='message.tpl'}
 	{block name="container"}{/block}
     </div> 
     <div id="bottom"></div>

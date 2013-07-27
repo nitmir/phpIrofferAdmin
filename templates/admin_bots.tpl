@@ -25,7 +25,7 @@
 		</td>
 	      <td><input type="text" name="host" value="{$bot['host']}" style="width:100px;"/></td>
 	      <td><input type="text" name="port" value="{$bot['port']}" style="width:40px;"/></td>
-	      <td><input type="password" name="password" value="{$bot['password']}" style="width:100px;"/></td>
+	      <td><input type="password" name="password" value="" style="width:100px;"/></td>
 	      <td>{$bot['created']}</td>
 	      <td style="text-align:right;"><input type="submit" name="submit" value="edit" class="btn btn-primary"> <a href="admin_bots.php#bot_{$key - 1}" class="btn btn-primary">undo</a></td>
 	</form>

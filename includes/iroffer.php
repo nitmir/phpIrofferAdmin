@@ -50,32 +50,41 @@ class IROFFER {
 		return preg_replace('/[\x00-\x1F]/', '', $output);
 	}
 	
-	function xdl(){ return $this->_xdl('XDL');}
+	function xdl($group_only=false){ return $this->_xdl('XDL', $group_only);}
 	function xdlfull(){ return $this->_xdl('XDLFULL')[0];}
-	function xdlgroup($group){ return $this->_xdl('XDLGROUP '.$group)[0];}
+	function xdlgroup($group){ return $this->_xdl('XDLGROUP "'.$group.'"')[0];}
 	function xdlock(){ return $this->_xdl('XDLOCK')[0];}
 	function xdtrigger(){ return $this->_xdl('XDTRIGGER')[0];}
-	private function _xdl($cmd) {
+
+	private function _xdl($cmd, $group_only=false) {
 		$array=array_slice($this->command($cmd),7,-4);
 		$groups=array();
 		for($i=0; isset($array[$i]); $i++){
 			if(!preg_match('/^group:/', $array[$i])){
-				$array[$i]=preg_split('/ +/', preg_replace(array('/\[ */'), array('['), $array[$i]), 4);
-				$array[$i]['pack']=substr(trim($array[$i][0]), 1);
-				$array[$i]['downloaded']=substr(trim($array[$i][1]), 0, -1);
-				$array[$i]['size']=substr(trim($array[$i][2]), 1, -1);
-				$array[$i]['file']=trim($array[$i][3]);
-				for($j=0; isset($array[$i][$j]); $j++){ unset($array[$i][$j]);}
+				if(!$group_only){
+					$array[$i]=preg_split('/ +/', preg_replace(array('/\[ */'), array('['), $array[$i]), 4);
+					$array[$i]['pack']=substr(trim($array[$i][0]), 1);
+					$array[$i]['downloaded']=substr(trim($array[$i][1]), 0, -1);
+					$array[$i]['size']=substr(trim($array[$i][2]), 1, -1);
+					$array[$i]['file']=trim($array[$i][3]);
+					for($j=0; isset($array[$i][$j]); $j++){ unset($array[$i][$j]);}
+				} else {
+					unset($array[$i]);
+				}
 			} else {
-				$group=preg_split('/ +/', preg_replace(array('/\[ */'), array('['), $array[$i]), 4);
+				$group=preg_split('/ +- +/', preg_replace(array('/\[ */'), array('['), $array[$i]), 2);
 				$groups[]=array(
-					'name' => trim($group[1]),
-					'description' => trim($group[3]),
+					'name' => trim(preg_replace('/^.*group: +/', '', $group[0])),
+					'description' => trim($group[1]),
 				);
 				unset($array[$i]);
 			}
 		}
-		return array($array, $groups);
+		if($group_only){
+			return $groups;
+		} else {
+			return array($array, $groups);
+		}
 	}
 	function listul($path=''){
 		$array=array_slice($this->command('LISTUL "'.$path.'"'), 2, -4);
@@ -92,6 +101,24 @@ class IROFFER {
 	}
 	function remove($n, $m=false){
 		return $this->command('REMOVE '.$n.($m!==false?' '.$m:''))[1];
+	}
+	function removegroup($group){
+		return $this->command('REMOVEGROUP "'.$group.'"')[1];
+	}
+	function group($n, $group){
+		return $this->command('GROUP '.$n.' "'.$group.'"')[1];
+	}
+	function regroup($src, $dst){
+		return $this->command('REGROUP "'.$src.'" "'.$dst.'"')[1];
+	}
+	function groupdesc($group, $desc){
+		return $this->command('GROUPDESC "'.$group.'" "'.$desc.'"')[1];
+	}
+	function add($path){
+		return $this->command('ADD "'.$path.'"')[1];
+	}
+	function adddir($path){
+		return $this->command('ADDDIR "'.$path.'"')[1];
 	}
 	function info($n){
 		$array=array_slice($this->command('INFO '.$n), 2, -3);

@@ -13,4 +13,4 @@ if($_SESSION['right']=='ADMIN'){
 		$tpl->assign('user_list', $user_list);
 	}
 }
-$tpl->display("templates/admin_users.tpl");
+display("templates/admin_users.tpl");

@@ -53,6 +53,10 @@ function login(){
 				$_SESSION['created']=$data['created'];
 				$_SESSION['last_login']=$data['last_login'];
 				$_SESSION['id']=$data['id'];
+				$_SESSION['message_error'] = array();
+				$_SESSION['message_warning'] = array();
+				$_SESSION['message_success'] = array();
+				$_SESSION['message_info'] = array();
 				header("Location: ".$_SERVER['REQUEST_URI']);
 				die();
 			}

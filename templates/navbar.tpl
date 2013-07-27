@@ -7,8 +7,9 @@
               <li{nav_active name='admin' page="$page" class='dropdown'}>
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<i class="caret"></i></a>
 		<ul class="dropdown-menu" role="menu">
-			<li><a href="admin_users.php">Manage Users</a></li>
+			<li><a href="admin_users.php">User information</a></li>
 			<li><a href="admin_bots.php">Manage Bots</a></li>
+			{if $user['right'] == 'ADMIN' }<li><a href="admin_bots_users.php">Assign bots to users</a></li>{/if}
 		</ul>
 		</li>
 		<li{nav_active name='bots' page="$page" class='dropdown'}>
@@ -26,7 +27,7 @@
 		{/foreach}
 		</ul>
 		</li>
-		<li><a href="?logout=1" >Logout</a></li>
+		<li style="text-align:right;"><a href="?logout=1" class="logout_link" ><i class="icon-off icon-white"></i> Logout</a></li>
             </ul>
 	    
           </div><!--/.nav-collapse -->

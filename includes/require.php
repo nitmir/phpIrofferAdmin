@@ -9,6 +9,7 @@ session_start();
 logout();
 login_require();
 
+
 $bot_list=array();
 $query=db()->query("SELECT * FROM bots, bot_user WHERE bots.id=bot_user.bot_id AND bot_user.user_id='".$_SESSION['id']."' ORDER BY name")or die(dberror());
 while($data=$query->fetch()){
@@ -18,3 +19,17 @@ while($data=$query->fetch()){
 $tpl->assign('bot_list', $bot_list);
 $tpl->assign('bot', array('id' => 0));
 $tpl->assign('subpage', '');
+
+
+function display($page){
+	global $tpl;
+	$tpl->assign('message_error', $_SESSION['message_error']);
+	$tpl->assign('message_info', $_SESSION['message_info']);
+	$tpl->assign('message_warning', $_SESSION['message_warning']);
+	$tpl->assign('message_success', $_SESSION['message_success']);
+	$_SESSION['message_error']=array();
+	$_SESSION['message_info']=array();
+	$_SESSION['message_warning']=array();
+	$_SESSION['message_success']=array();
+	$tpl->display($page);
+}

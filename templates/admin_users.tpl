@@ -5,7 +5,7 @@
 {include file='navbar.tpl' page='admin'}
 {/block}
 {block name="container"}
-	<h1>Iroffer Users</h1>
+	<h1>Iroffer User</h1>
 	<h2>My infos</h2>
       <table class="table table-striped table-hover">
       <tr><th>Name</th><td>{$user['name']}</td></tr>

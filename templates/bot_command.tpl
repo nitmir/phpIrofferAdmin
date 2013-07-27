@@ -1,11 +1,8 @@
-{extends file="base.tpl"} 
-{block name="title"}{$bot['name']} - Admnistration shell{/block}
-{block name="description"}{/block}
-{block name="navbar"}
-{include file='navbar.tpl' page='bots' subpage='command'}
-{/block}
-{block name="container"}
-	<h1>{$bot['name']}</h1>
+{extends file="bot.tpl"}
+{block name="assign"}{assign var="subpage" value="command"}{/block}
+{block name="bot_title"}Admnistration shell{/block}
+{block name="bot_description"}{/block}
+{block name="bot_container"}
 	<h2>Admnistration shell</h2>
 	<script language="javascript">
 var hist_cmd = new Array()
@@ -75,14 +72,14 @@ function stroke(code){
 	}
 }
 		
-/*
-↑ 38
-↓ 40
-*/
 </script>
 
 <div class="terminal">
-<pre class="terminal"><div id="terminal" ></div></pre>
+<pre class="terminal"><div id="terminal" >Welcome to {$bot['name']}
+
+Entering DCC Chat Admin Interface
+For Help type "help"
+</div></pre>
 <table width="100%" class="terminal">
 <tr>
 <!---->
