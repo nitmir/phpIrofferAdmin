@@ -39,17 +39,11 @@ if(isset($_GET['id'])&&(int)$_GET['id']>0&&isset($bot_list[(int)$_GET['id']])){
 			header('Location: '.$_SERVER['REQUEST_URI'].'#group_-1');
 			die();
 		}
-		if(isset($_POST['group_pack_id'])&&isset($_POST['group_pack_select'])&&isset($_POST['group_pack_text'])){
-		//
-			if($_POST['group_pack_text']!=''){
-				$mess=$conn->group($_POST['group_pack_id'], $_POST['group_pack_text']);
-				$group=$_POST['group_pack_text'];
-			}else{
-				$mess=$conn->group($_POST['group_pack_id'], $_POST['group_pack_select']);
-				$group=$_POST['group_pack_select'];
-			}
-			if($mess=='GROUP: [Pack '.$_POST['group_pack_id'].'] New: '.$group){
-				$_SESSION['message_success'] []='Pack #'.$_POST['group_pack_id'].' set to group '.$group;
+		if(isset($_POST['group_pack_id'])&&isset($_POST['group_pack_select'])&&$_POST['group_pack_select']!=''){
+			$mess=$conn->group($_POST['group_pack_id'], $_POST['group_pack_select']);
+
+			if($mess=='GROUP: [Pack '.$_POST['group_pack_id'].'] New: '.$_POST['group_pack_select']){
+				$_SESSION['message_success'] []='Pack #'.$_POST['group_pack_id'].' set to group '.$_POST['group_pack_select'];
 			}else{
 				$_SESSION['message_error'] []=$mess;
 			}

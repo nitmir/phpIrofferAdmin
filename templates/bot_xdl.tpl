@@ -4,6 +4,17 @@
 {block name="bot_description"}{/block}
 {block name="bot_container"}
 <script language="javascript">
+function newgroup(fld,len,idx) {
+        if ((idx+1)==len) {
+            var other='';
+            other=prompt("Please indicate a new group name:");
+            fld.options[idx].value=other;
+            fld.options[idx].style.textAlign = 'left'
+            fld.options[idx].text=other;
+            fld.options[idx+1] = new Option('** New group **', '');
+            fld.options[idx+1].style.textAlign = 'center'
+        }
+    }
 function group(pack, file){
 var div= '<div id="add_to_group">'+
     '<form class="form-horizontal" method="POST" action="bot_xdl.php?id={$bot["id"]}&amp;group={$group}" id="add_to_group_form">'+
@@ -11,18 +22,14 @@ var div= '<div id="add_to_group">'+
         '<input name="group_pack_id" type="hidden" value="'+pack+'"/>'+
         '<input name="bot_id" type="hidden" value="{$bot['id']}"/>'+
         '<div class="control-group">'+
-        '<label class="control-label" >Existing groups : </label>'+
-        '<div class="controls"><select name="group_pack_select">'+
+        '<label class="control-label" >Groups : </label>'+
+        '<div class="controls"><select name="group_pack_select" onchange="newgroup(this,this.options.length,this.options.selectedIndex)">'+
         '<option{if '' == $group} selected{/if} value="MAIN">None</option>'+
     {foreach $groups as $g}
     '<option{if $g["name"] == $group} selected{/if}>{$g["name"]}</option>'+
     {/foreach}
+    '<option  value="" style="text-align: center;">** New group **</option>'+
     '</select></div></div>'+
-    '<div class="control-group">'+
-    '<label class="control-label">New group : </label>'+
-    '<div class="controls">' +
-    '<input type="text" name="group_pack_text" placeholder="leave empty for choose an existing group"/>'+
-    '</div></div>'+
     '</fieldset>'+
     '</form>'+
     '</div>'

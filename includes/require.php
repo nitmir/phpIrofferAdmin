@@ -16,6 +16,7 @@ while($data=$query->fetch()){
 	$bot_list[$data['id']]=$data;
 }
 
+$tpl->assign('user', $_SESSION);
 $tpl->assign('bot_list', $bot_list);
 $tpl->assign('bot', array('id' => 0));
 $tpl->assign('subpage', '');
