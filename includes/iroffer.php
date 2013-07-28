@@ -120,11 +120,14 @@ class IROFFER {
 	function adddir($path){
 		return $this->command('ADDDIR "'.$path.'"')[1];
 	}
+	function chdesc($pack, $desc){
+		return $this->command('CHDESC '.$pack.' "'.$desc.'"')[1];
+	}
 	function info($n){
 		$array=array_slice($this->command('INFO '.$n), 2, -3);
 		for($i=0; isset($array[$i]); $i++){
 			$array[$i]=preg_split('/  +/', trim($array[$i]), 2);
-			$array[trim($array[$i][0])]=trim($array[$i][1]);
+			$array[strtolower(trim($array[$i][0]))]=trim($array[$i][1]);
 			unset($array[$i]);
 		}
 		return $array;

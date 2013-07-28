@@ -21,7 +21,7 @@ if(isset($_POST['name'])&&isset($_POST['host'])&&isset($_POST['port'])&&isset($_
 			if($data=$query->fetch()){
 				db()->query("INSERT INTO `bot_user` (`bot_id`, `user_id`) VALUES (".db()->quote($data['id']).", ".db()->quote($_SESSION['id']).")")or die(dberror());
 			}else{
-				die('couple (host, port) already used and wrong password');
+				die(_('couple (host, port) already used and wrong password'));
 			}
 		}
 		header('Location: '.$_SERVER['REQUEST_URI']);

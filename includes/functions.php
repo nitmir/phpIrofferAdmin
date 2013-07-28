@@ -12,9 +12,9 @@ function db(){
             case 2002:
                 $pdo=false;
                 if ($_SERVER['REQUEST_METHOD'] == "GET")
-                    die(header('HTTP/1.1 503 Service Unavailable')."<html><head><meta http-equiv=refresh content=\"5 $_SERVER[REQUEST_URI]\"></head><body><table border=0 width=100% height=100%><tr><td><h3 align=center>The server load is very high at the moment. Retrying, please wait...</h3></td></tr></table></body></html>");
+                    die(header('HTTP/1.1 503 Service Unavailable')."<html><head><meta http-equiv=refresh content=\"5 $_SERVER[REQUEST_URI]\"></head><body><table border=0 width=100% height=100%><tr><td><h3 align=center>"._('The server load is very high at the moment. Retrying, please wait...')."</h3></td></tr></table></body></html>");
                 else
-                    die(header('HTTP/1.1 503 Service Unavailable')."Too many users. Please press the Refresh button in your browser to retry.");
+                    die(header('HTTP/1.1 503 Service Unavailable')._("Too many users. Please press the Refresh button in your browser to retry."));
         default:
             $pdo=false;
             die(header('HTTP/1.1 503 Service Unavailable')."[" . $err. "] dbconn: mysql_connect: " . $info);

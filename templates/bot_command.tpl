@@ -5,8 +5,8 @@
 {block name="bot_container"}
 	<h2>Admnistration shell</h2>
 	<script language="javascript">
-var hist_cmd = new Array()
-var hist_ptr = -1
+var hist_cmd = new Array(['HELP'])
+var hist_ptr = 0
 var hist_last = ""
 function scrollToBottom(elm_id){
 	var elm=document.getElementById(elm_id);
@@ -35,10 +35,15 @@ function run(cmd) {
 	} else {
 		hist_ptr = hist_cmd.length - 1;
 	}
-	$.get("/xdcc/run_command.php", { id: "{$bot['id']}", command: cmd })
-	.done(function(data) {
-	terminal.innerHTML = terminal.innerHTML + "\n" + data;
-	});
+	$.ajax({
+        url: "run_command.php",
+        type: 'get',
+        async: false,
+        data: { id: "{$bot['id']}", command: cmd },
+        success: function(data) {
+           terminal.innerHTML = terminal.innerHTML + "\n" + data;
+        } 
+     });
 	scrollToBottom('terminal');
 }
 

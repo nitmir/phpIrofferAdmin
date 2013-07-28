@@ -2,8 +2,8 @@
 require("includes/require.php");
 require('includes/iroffer.php');
 
-if(isset($_GET['id'])&&(int)$_GET['id']>0&&isset($bot_list[(int)$_GET['id']])){
-	$bot=$bot_list[(int)$_GET['id']];
+if($_PARAMS['bot_id']>0){
+	$bot=$bot_list[$_PARAMS['bot_id']];
 	$conn = new IROFFER($bot['host'], $bot['port'], $bot['password']);
 	$tpl->assign('bot', $bot);
 	if(!isset($_GET['path'])){ $path=''; }
@@ -12,9 +12,9 @@ if(isset($_GET['id'])&&(int)$_GET['id']>0&&isset($bot_list[(int)$_GET['id']])){
 		//~ $_SESSION['message_info'] []=$conn->adddir($_GET['adddir']);
 		$message=$conn->adddir($_GET['adddir']);
 		if(substr($message,0, 6) == 'Adding'){
-			$_SESSION['message_success'] []=$message;
+			$_SESSION['message_success'] []=_($message);
 		} else {
-			$_SESSION['message_error'] []=$message;
+			$_SESSION['message_error'] []=_($message);
 		}
 		header("Location: ".$_SERVER['PHP_SELF']."?id=".$bot['id'].'&path='.$path);
 		die();
@@ -22,9 +22,9 @@ if(isset($_GET['id'])&&(int)$_GET['id']>0&&isset($bot_list[(int)$_GET['id']])){
 	if(isset($_GET['add'])){
 		$message=$conn->add($_GET['add']);
 		if(substr($message,0, 6) == 'Added:'){
-			$_SESSION['message_success'] []=$message;
+			$_SESSION['message_success'] []=_($message);
 		} else {
-			$_SESSION['message_error'] []=$message;
+			$_SESSION['message_error'] []=_($message);
 		}
 		header("Location: ".$_SERVER['PHP_SELF']."?id=".$bot['id'].'&path='.$path);
 		die();

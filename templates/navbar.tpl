@@ -1,9 +1,9 @@
 {extends file="navbar_base.tpl"} 
-{block name="navbar_link"}main.php{/block}
+{block name="navbar_link"}{view page='main' params=$params}{/block}
 {block name="navbar_buttons"}
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li{nav_active name='home' page="$page"}><a href="main.php">Home </a></li>
+              <li{nav_active name='home' page="$page"}><a href="{view page='main' params=$params}">Home </a></li>
               <li{nav_active name='admin' page="$page" class='dropdown'}>
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<i class="caret"></i></a>
 		<ul class="dropdown-menu" role="menu">
@@ -19,9 +19,9 @@
 		    <li{nav_active name="{$b['id']}" page="{$bot['id']}" class="dropdown-submenu"}>
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">{$b['name']}</a>
 			<ul class="dropdown-menu" role="menu">
-				<li{nav_active name="{$b['id']}xdl" page="{$bot['id']}$subpage"}><a href="bot_xdl.php?id={$b['id']}">Packs listing</a></li>
-				<li{nav_active name="{$b['id']}listul" page="{$bot['id']}$subpage"}><a href="bot_listul.php?id={$b['id']}">Add files</a></li>
-				<li{nav_active name="{$b['id']}command" page="{$bot['id']}$subpage"}><a href="bot_command.php?id={$b['id']}">Run a command</a></li>
+				<li{nav_active name="{$b['id']}xdl" page="{$bot['id']}$subpage"}><a href="{view page='bot_listing' params=$params group=''}">Packs listing</a></li>
+				<li{nav_active name="{$b['id']}listul" page="{$bot['id']}$subpage"}><a href="{view page='files_listing' params=$params path=''}">Add files</a></li>
+				<li{nav_active name="{$b['id']}command" page="{$bot['id']}$subpage"}><a href="{view page='bot_console' params=$params}">Console</a></li>
 			</ul>
 		    </li>
 		{/foreach}

@@ -1,0 +1,221 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: rofferPhpAdmin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-27 19:45+0200\n"
+"PO-Revision-Date: 2013-07-27 19:56+0100\n"
+"Last-Translator: Nit <nit@genua.fr>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: standard input:36
+msgid "couple (host, port) already used and wrong password"
+msgstr ""
+"L'adresse host:port est déjà utilisé et le mot de passe fourni ne concorde "
+"pas"
+
+#: standard input:107
+msgid "The server load is very high at the moment. Retrying, please wait..."
+msgstr ""
+"La charge du serveur est actuellement très élevée. Nouvelle tentative en "
+"cours, merci de patienter..."
+
+#: standard input:109
+msgid ""
+"Too many users. Please press the Refresh button in your browser to retry."
+msgstr ""
+"Trop d'utilisateurs connectés. Utilisez le boutons d'actualisation de votre "
+"navigateur pour réessayer."
+
+#: standard input:500
+#, php-format
+msgid "Pack #%s moved to #%s"
+msgstr "Paquet #%s déplacer en position #%s"
+
+#: standard input:512
+#, php-format
+msgid "Description of group %s changed to %s"
+msgstr "Description du groupe %s modifié en %s"
+
+#: standard input:520
+#, php-format
+msgid "Group %s renamed to %s"
+msgstr "Groupe %s renommé en %s"
+
+#: standard input:532
+#, php-format
+msgid "Pack #%s set to group %s"
+msgstr "Paquet #%s assigné au groupe %s"
+
+#: standard input:543
+#, php-format
+msgid "Group %s deleted"
+msgstr "Groupe %s supprimé"
+
+#: standard input:563
+#, php-format
+msgid "Delete all pack from group %s"
+msgstr "Suppression de tous les paquets du groupe %s"
+
+#: standard input:565
+#, php-format
+msgid "Error deleting all pack from group %s"
+msgstr "Erreur durant la suppression de tous les paquets du groupe %s"
+
+#: standard input:590 input:591
+msgid "File listing"
+msgstr "Liste des fichiers"
+
+#: standard input:592 input:622 input:624
+msgid "name"
+msgstr "nom"
+
+#: standard input:593 input:610
+msgid "size"
+msgstr "taille"
+
+#: standard input:594
+#, php-format
+msgid "Remove every pack found in %s"
+msgstr "Supprime tous les paquets correspondant aux fichiers de %s"
+
+#: standard input:595
+#, php-format
+msgid "Remove every pack found in %s?"
+msgstr "Supprimer tous les paquets correspondant aux fichiers de %s ?"
+
+#: standard input:596
+#, php-format
+msgid "Add every file in %s"
+msgstr "Ajoute tous les fichiers contenu dans %s"
+
+#: standard input:597
+#, php-format
+msgid "Add every file in %s?"
+msgstr "Ajouter tous les fichiers contenu dans %s ?"
+
+#: standard input:598
+msgid "Pack listing"
+msgstr ""
+
+#: standard input:599
+msgid "Add files"
+msgstr "Ajout de fichiers"
+
+#: standard input:600
+msgid "Run command"
+msgstr ""
+
+#: standard input:601
+msgid "Please indicate a new group name:"
+msgstr "Merci de donner un nom pour le nouveau groupe"
+
+#: standard input:602
+msgid "New group"
+msgstr "Nouveau groupe"
+
+#: standard input:603
+msgid "Groups:"
+msgstr "Groupes :"
+
+#: standard input:604
+msgid "N\n"
+msgstr ""
+
+#: standard input:605
+msgid "Cancel"
+msgstr "Annuler"
+
+#: standard input:606
+#, php-format
+msgid "Packs listing of group %s"
+msgstr "Liste des paquets du groupe %s"
+
+#: standard input:607
+msgid "Packs listing"
+msgstr "Liste des paquets"
+
+#: standard input:608
+msgid "hit"
+msgstr ""
+
+#: standard input:609
+msgid "file"
+msgstr "fichier"
+
+#: standard input:611
+msgid "back"
+msgstr "retour"
+
+#: standard input:612 input:627
+msgid "undo"
+msgstr "annuler"
+
+#: standard input:613
+msgid "detail"
+msgstr "détail"
+
+#: standard input:614
+msgid "Change the pack number"
+msgstr "Changer le numéro du paquet"
+
+#: standard input:615 input:626 input:629
+msgid "edit"
+msgstr "éditer"
+
+#: standard input:616
+msgid "Change the pack group"
+msgstr "Modifier le goupe du paquet"
+
+#: standard input:617
+msgid "group"
+msgstr "groupe"
+
+#: standard input:618
+msgid "Remove pack from the bot"
+msgstr "Supprime le paquets du robot"
+
+#: standard input:619
+#, php-format
+msgid "Removing pack #%s - %s [%s] ?"
+msgstr "Supprimer le paquet #%s -%s [%s] ?"
+
+#: standard input:620
+msgid "Delete group and all contening packs"
+msgstr "Supprimer le groupe et tous ses paquets"
+
+#: standard input:621
+#, php-format
+msgid "Removing all packs of group %s?"
+msgstr "Supprimer tous les paquets du groupe %s ?"
+
+#: standard input:623 input:625
+msgid "description"
+msgstr "description"
+
+#: standard input:628
+msgid "Change group name or description"
+msgstr "Changer le nom du groupe ou sa description"
+
+#: standard input:630
+msgid "Move packs to no group"
+msgstr "N'assigne le paquet à aucun groupe"
+
+#: standard input:631
+#, php-format
+msgid "Deleting %s ?\\nThis will put all packs in no group"
+msgstr "Supprimer %s\\nTous les paquets ne seront plus assigné à aucun groupe"
+
+#: standard input:632
+msgid "del"
+msgstr ""

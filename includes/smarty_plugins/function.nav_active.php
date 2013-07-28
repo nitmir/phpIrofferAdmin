@@ -11,8 +11,6 @@
  
  function smarty_function_nav_active($params, &$smarty)
 {
-    $name = $params['name'];
-    $page = $params['page'];
     if(isset($params['name'])&&isset($params['page'])&&$params['name']==$params['page']){
 	return ' class="active'.(isset($params['class'])?' '.$params['class']:'').'"';
     } else {

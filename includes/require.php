@@ -3,11 +3,21 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require('config.php');
 require('functions.php');
+require('view.php');
+require('actions.php');
 require('template.php');
 
 session_start();
 logout();
 login_require();
+
+$lang='fr_FR.utf8';
+$filename = 'default';
+putenv("LC_ALL=$lang");
+setlocale(LC_ALL, $lang);
+bindtextdomain($filename, './lang/');
+bind_textdomain_codeset($filename, "UTF-8");
+textdomain($filename);
 
 
 $bot_list=array();
@@ -16,14 +26,22 @@ while($data=$query->fetch()){
 	$bot_list[$data['id']]=$data;
 }
 
+$tpl->assign('action', $_ACTION);
 $tpl->assign('user', $_SESSION);
 $tpl->assign('bot_list', $bot_list);
 $tpl->assign('bot', array('id' => 0));
 $tpl->assign('subpage', '');
 
+$_PARAMS = array();
+$_PARAMS['bot_id']=isset($_GET['bot_id'])&&isset($bot_list[(int)$_GET['bot_id']])?(int)$_GET['bot_id']:0;
+$_PARAMS['group']=isset($_GET['group'])?$_GET['group']:'';
+$_PARAMS['path']=isset($_GET['path'])?$_GET['path']:'';
+$_PARAMS['action']=isset($_GET['action'])?$_GET['action']:'';
+$_PARAMS['param']=isset($_GET['param'])?$_GET['param']:'';
 
 function display($page){
-	global $tpl;
+	global $tpl, $_PARAMS;
+	$tpl->assign('params', $_PARAMS);
 	$tpl->assign('message_error', $_SESSION['message_error']);
 	$tpl->assign('message_info', $_SESSION['message_info']);
 	$tpl->assign('message_warning', $_SESSION['message_warning']);
