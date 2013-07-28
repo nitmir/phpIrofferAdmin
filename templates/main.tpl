@@ -5,14 +5,14 @@
 {include file='navbar.tpl' page='home'}
 {/block}
 {block name="container"}
-      <h1>Iroffer Admin</h1>
+      <h1>{'Iroffer Admin'|gettext}</h1>
       <table class="table table-striped table-hover">
       {foreach $bot_list as $b}
       <tr>
       <th>{$b['name']}</th>
-      <td><a href="{view page='bot_listing' params=['bot_id' => $b['id'], 'group' => '']}">Pack listing</a></td>
-      <td><a href="{view page='files_listing' params=['bot_id' => $b['id'], 'path' => '']}">Add files</a></td>
-      <td><a href="{view page='bot_console' params=['bot_id' => $b['id']]}">Run command</a></td>
+      <td><a href="{view page='bot_listing' params=['bot_id' => $b['id'], 'group' => '']}">{'Packs listing'|gettext}</a></td>
+      <td><a href="{view page='files_listing' params=['bot_id' => $b['id'], 'path' => '']}">{'Add files'|gettext}</a></td>
+      <td><a href="{view page='bot_console' params=['bot_id' => $b['id']]}">{'Console'|gettext}</a></td>
       </tr>
       {/foreach}
       </table>

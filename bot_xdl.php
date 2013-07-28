@@ -21,6 +21,9 @@ if($_PARAMS['bot_id']>0){
 			if($_POST['group']!=$_POST['old_group']){
 				$mess=$conn->group($_POST['pack_id'], $_POST['group']);
 				if(preg_match('/GROUP: \[Pack '.$_POST['pack_id'].'\]/', $mess)){
+					if($_POST['group']=='MAIN'){
+						$conn->regroup('MAIN', 'MAIN');
+					}
 					$_SESSION['message_success'] []=sprintf(_('Pack #%s set to group %s'), $_POST['pack_id'], $_POST['group']);
 				}else{
 					$_SESSION['message_error'] []=_($mess);

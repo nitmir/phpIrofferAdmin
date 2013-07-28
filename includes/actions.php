@@ -15,9 +15,6 @@ function action_url($action, $type, $params){
 	if($type=='get'){
 		switch($action){
 			case $_ACTION['delete_pack']:
-				needed_params(array('pack'), $params);
-				return action_delete_pack(view('bot_listing', $params, true), $params['pack']);
-				break;
 			case $_ACTION['edit_group']:
 			case $_ACTION['delete_group']:
 			case $_ACTION['delete_all_pack_from_group']:

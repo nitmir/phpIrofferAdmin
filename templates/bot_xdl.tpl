@@ -34,8 +34,8 @@ function group(pack, file){
     if(info){
         var div= ''+
         '<div id="add_to_group">'+
-            '<form class="form-horizontal" method="POST" action="{action action='edit_pack' type='post' params=$params}" id="edit_form">'+
-                '<input name="action" type="hidden" value="edit_pack"/>'+
+            '<form class="form-horizontal" method="POST" action="{action action=$action.edit_pack type='post' params=$params}" id="edit_form">'+
+                '<input name="action" type="hidden" value="{$action.edit_pack}"/>'+
                 '<input name="pack_id" type="hidden" value="'+pack+'"/>'+
                 '<input name="bot_id" type="hidden" value="{$bot['id']}"/>'+
                 '<input name="old_group" type="hidden" value="{if ($group) != ''}{$group}{else}MAIN{/if}"/>'+
@@ -43,7 +43,7 @@ function group(pack, file){
                 '<table class="table table-striped table-hover">'+
                     '<tr><th colspan="2"><span id="sendname">'+info['sendname']+'</span></th></tr>'+
                     '<tr>'+
-                        '<th>{'pack n°:'|gettext}</th>'+
+                        '<th>{'pack:'|gettext}</th>'+
                         '<td><input name="pack" type="text" value="'+ pack + '" style="width:95%"/></td>'+
                     '</tr>'+
                     '<tr>'+
@@ -62,19 +62,19 @@ function group(pack, file){
                             '</select>'+
                         '</td>'+
                     '</tr>'+
-                    '<tr>'+
+                    '<tr class="hide-little-height">'+
                         '<th>{'CRC 32:'|gettext}</th>'+
                         '<td>'+info['crc32']+'</td>'+
                     '</tr>'+
-                    '<tr>'+
+                    '<tr class="hide-little-height">'+
                         '<th>{'md5 sum:'|gettext}</th>'+
                         '<td>'+info['md5sum']+'</td>'+
                     '</tr>'+
-                    '<tr>'+
+                    '<tr class="hide-little-height">'+
                         '<th>{'Last Modified:'|gettext}</th>'+
                         '<td>'+info['last modified']+'</td>'+
                     '</tr>'+
-                    '<tr>'+
+                    '<tr class="hide-little-height">'+
                         '<th id="file_path_th">{'Path:'|gettext}</th>'+
                         '<td><div style="overflow-x:auto;white-space:nowrap;height:40px" id="file_path">'+info['filename']+'</div></td>'+
                     '</tr>'+
@@ -108,7 +108,7 @@ function group(pack, file){
                 <th>{'hit'|gettext}</th>
                 <th>{'description'|gettext}</th>
                 <th>{'size'|gettext}</th>
-                <th style="text-align:right;">{if ($group) != ''}<a href="{view page='bot_listing' params=['bot_id' => $params.bot_id, 'group' => '']}" class="btn btn-primary">{'back'|gettext}</a></br>{/if}</th>
+                <th style="text-align:right;">{if ($group) != ''}<a href="{view page='bot_listing' params=$params group=''}" class="btn btn-primary">{'back'|gettext}</a></br>{/if}</th>
             </tr>
             {foreach $packs as $key => $pack}
                 <tr id="pack_{$key}">
@@ -118,7 +118,7 @@ function group(pack, file){
                     <td>{$pack['size']}</td>
                     <td style="text-align:right;white-space:nowrap;">
                         <a class="btn btn-primary" onclick="group({$pack['pack']}, '{$pack['file']}')" >{'edit'|gettext}</a>
-                        <a href="{action action=$action.delete_pack type='get' params=$params pack=$pack.pack}" class="btn btn-primary" title="{'Remove pack from the bot'|gettext}" onclick="return confirm('{'Removing pack #%s - %s [%s] ?'|gettext|sprintf:{$pack['pack']}:{$pack['file']}:{$pack['size']}}')">del</a>
+                        <a href="{action action=$action.delete_pack type='get' params=$params param=$pack.pack}" class="btn btn-primary" title="{'Remove pack from the bot'|gettext}" onclick="return confirm('{'Removing pack #%s - %s [%s] ?'|gettext|sprintf:{$pack['pack']}:{$pack['file']}:{$pack['size']}}')">del</a>
                     </td>
                 </tr>
             {/foreach}
@@ -154,7 +154,7 @@ function group(pack, file){
                 </tr>
             {else}
                 <tr id="group_{$key}">
-                    <td><a href="{view page='bot_listing' params=['bot_id' => $params.bot_id, 'group' => $group.name]}">{$group['name']}</a></td>
+                    <td><a href="{view page='bot_listing' params=$params group=$group.name}">{$group['name']}</a></td>
                     <td>{$group['description']}</td>
                     <td style="text-align:right;">
                         <a href="{action action=$action.edit_group type='get' params=$params param=$group.name}#group_{$key - 1}" class="btn btn-primary" title="{'Change group name or description'|gettext}">{'edit'|gettext}</a>

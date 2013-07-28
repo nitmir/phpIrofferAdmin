@@ -16,6 +16,7 @@
 
   <body>
   {block name="assign"}{assign var="subpage" value=""}{/block}
+  <div class="container main-container">
   {block name="navbar"}{/block}
 
     <div class="container">
@@ -23,5 +24,6 @@
 	{block name="container"}{/block}
     </div> 
     <div id="bottom"></div>
+    </div>
   </body>
 </html>

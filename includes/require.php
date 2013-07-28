@@ -11,14 +11,6 @@ session_start();
 logout();
 login_require();
 
-$lang='fr_FR.utf8';
-$filename = 'default';
-putenv("LC_ALL=$lang");
-setlocale(LC_ALL, $lang);
-bindtextdomain($filename, './lang/');
-bind_textdomain_codeset($filename, "UTF-8");
-textdomain($filename);
-
 
 $bot_list=array();
 $query=db()->query("SELECT * FROM bots, bot_user WHERE bots.id=bot_user.bot_id AND bot_user.user_id='".$_SESSION['id']."' ORDER BY name")or die(dberror());
