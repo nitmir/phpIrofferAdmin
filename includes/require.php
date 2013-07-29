@@ -31,6 +31,15 @@ $_PARAMS['path']=isset($_GET['path'])?$_GET['path']:'';
 $_PARAMS['action']=isset($_GET['action'])?$_GET['action']:'';
 $_PARAMS['param']=isset($_GET['param'])?$_GET['param']:'';
 
+if($_PARAMS['bot_id']>0){
+	$_PARAMS['bot']=$bot_list[$_PARAMS['bot_id']];
+	require('includes/iroffer.php');
+} else {
+	$_PARAMS['bot']=false;
+}
+
+action_get();
+
 function display($page){
 	global $tpl, $_PARAMS;
 	$tpl->assign('params', $_PARAMS);

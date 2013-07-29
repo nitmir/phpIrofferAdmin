@@ -1,6 +1,6 @@
 <?php
 require("includes/require.php");
-require('includes/iroffer.php');
+
 
 if($_PARAMS['bot_id']>0){
 	$bot=$bot_list[$_PARAMS['bot_id']];

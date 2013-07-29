@@ -19,7 +19,7 @@
   <div class="container main-container">
   {block name="navbar"}{/block}
 
-    <div class="container">
+    <div class="container top">
 	{include file='message.tpl'}
 	{block name="container"}{/block}
     </div> 

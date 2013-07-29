@@ -22,7 +22,7 @@ body {
 	padding-right: 20px;
 }
 @media screen and (min-width: 980px) {
-	h1 { margin-top: 45px; }
+	.top { margin-top: 45px; }
 	body {
 		background-image: url("../img/background.jpg");
 		background-color: #222;
@@ -30,7 +30,7 @@ body {
 
 }
 @media screen and (max-width: 980px) {
-	h1 { margin-top: 0px; }
+	.top { margin-top: 0px; }
 	.hide-mobile {
 		display: none;
 	}

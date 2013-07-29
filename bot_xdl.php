@@ -1,6 +1,6 @@
 <?php
 require("includes/require.php");
-require('includes/iroffer.php');
+
 
 if($_PARAMS['bot_id']>0){
 	$bot=$bot_list[$_PARAMS['bot_id']];
@@ -61,26 +61,6 @@ if($_PARAMS['bot_id']>0){
 			die();
 		}
 		header('Location: '.$_SERVER['REQUEST_URI']);
-		die();
-	}
-	if(isset($_GET['delgroup'])){
-		$mess=$conn->regroup($_GET['delgroup'], 'MAIN');
-		if($mess=='REGROUP: Old: '.$_GET['delgroup'].' New: MAIN'){
-			$_SESSION['message_success'] []=sprintf(_('Group %s deleted'), $_GET['delgroup']);
-		} else {
-			$_SESSION['message_error'] []=_($mess);
-		}
-		header("Location: ".$_SERVER['PHP_SELF']."?id=".$bot['id'].'#group_-1');
-		die();
-	}
-	if(isset($_GET['delpack'])){
-		$mess=$conn->remove($_GET['delpack']);
-		if(substr($mess,0, 12)=='Removed Pack'){
-			$_SESSION['message_success'] []=_($mess);
-		} else {
-			$_SESSION['message_error'] []=_($mess);
-		}
-		header("Location: ".$_SERVER['PHP_SELF']."?id=".$bot['id']."&group=".(isset($_GET['group'])?$_GET['group']:''));
 		die();
 	}
 	if(isset($_GET['delall'])){

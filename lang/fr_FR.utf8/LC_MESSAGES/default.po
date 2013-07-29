@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rofferPhpAdmin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-28 21:48+0200\n"
-"PO-Revision-Date: 2013-07-28 21:49+0100\n"
+"POT-Creation-Date: 2013-07-29 02:32+0200\n"
+"PO-Revision-Date: 2013-07-29 02:38+0100\n"
 "Last-Translator: Nit <nit@genua.fr>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,308 +18,372 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: standard input:53
+#: ../admin_bots.php:24
 msgid "couple (host, port) already used and wrong password"
 msgstr ""
 "L'adresse host:port est déjà utilisé et le mot de passe fourni ne concorde "
 "pas"
 
-#: standard input:124
+#: ../includes/functions.php:15
 msgid "The server load is very high at the moment. Retrying, please wait..."
 msgstr ""
 "La charge du serveur est actuellement très élevée. Nouvelle tentative en "
 "cours, merci de patienter..."
 
-#: standard input:126
+#: ../includes/functions.php:17
 msgid ""
 "Too many users. Please press the Refresh button in your browser to retry."
 msgstr ""
 "Trop d'utilisateurs connectés. Utilisez le boutons d'actualisation de votre "
 "navigateur pour réessayer."
 
-#: standard input:689
+#: ../includes/actions.php:55
 #, php-format
-msgid "Pack #%s moved to #%s"
-msgstr "Paquet #%s déplacer en position #%s"
+msgid "Pack %s (%s) removed"
+msgstr "Le paquet %s (%s) a été supprimé"
 
-#: standard input:702
+#: ../includes/actions.php:57
 #, php-format
-msgid "Pack #%s set to group %s"
-msgstr "Paquet #%s assigné au groupe %s"
+msgid "Invalid pack number %s, unable to remove it"
+msgstr "Numéro de pack %s invalide, impossible de le supprimer"
 
-#: standard input:712
-#, php-format
-msgid "Description of pack #%s changed"
-msgstr "Description du groupe %s modifié"
-
-#: standard input:722
-#, php-format
-msgid "Description of group %s changed to %s"
-msgstr "Description du groupe %s modifié en %s"
-
-#: standard input:730
-#, php-format
-msgid "Group %s renamed to %s"
-msgstr "Groupe %s renommé en %s"
-
-#: standard input:744
+#: ../includes/actions.php:70
 #, php-format
 msgid "Group %s deleted"
 msgstr "Groupe %s supprimé"
 
-#: standard input:764
+#: ../includes/actions.php:83
 #, php-format
-msgid "Delete all pack from group %s"
-msgstr "Suppression de tous les paquets du groupe %s"
+msgid "File %s added at pack #%s"
+msgstr "Le fichier %s a été ajouté en paquet #%s"
 
-#: standard input:766
+#: ../includes/actions.php:85
 #, php-format
-msgid "Error deleting all pack from group %s"
-msgstr "Erreur durant la suppression de tous les paquets du groupe %s"
+msgid "File %s is already added."
+msgstr "Le fichier %s a déjà été ajouté."
 
-#: standard input:803
-msgid "Manage bots"
-msgstr "Gestion des robots"
-
-#: standard input:804 input:813 input:820 input:855 input:857
-msgid "name"
-msgstr "nom"
-
-#: standard input:805
-msgid "host"
-msgstr "hôte"
-
-#: standard input:806 input:815
-msgid "port"
-msgstr "port"
-
-#: standard input:807 input:816
-msgid "password"
-msgstr "mot de passe"
-
-#: standard input:808
-msgid "created"
-msgstr "créé le"
-
-#: standard input:809 input:811 input:848 input:859 input:862
-msgid "edit"
-msgstr "édit"
-
-#: standard input:810 input:860
-msgid "undo"
-msgstr "annuler"
-
-#: standard input:812 input:865
-msgid "del"
-msgstr ""
-
-#: standard input:814
-msgid "hostname"
-msgstr "nom d'hôte"
-
-#: standard input:817
-msgid "add"
-msgstr "ajouter"
-
-#: standard input:818 input:819
-msgid "File listing"
-msgstr "Liste des fichiers"
-
-#: standard input:821 input:845
-msgid "size"
-msgstr "taille"
-
-#: standard input:822
-#, php-format
-msgid "Remove every pack found in %s"
-msgstr "Supprime tous les paquets correspondant aux fichiers de %s"
-
-#: standard input:823
-#, php-format
-msgid "Remove every pack found in %s?"
-msgstr "Supprimer tous les paquets correspondant aux fichiers de %s ?"
-
-#: standard input:824
-#, php-format
-msgid "Add every file in %s"
-msgstr "Ajoute tous les fichiers contenu dans %s"
-
-#: standard input:825
-#, php-format
-msgid "Add every file in %s?"
-msgstr "Ajouter tous les fichiers contenu dans %s ?"
-
-#: standard input:826 input:842 input:872 input:881
-msgid "Packs listing"
-msgstr "Liste des paquets"
-
-#: standard input:827 input:873 input:882
-msgid "Add files"
-msgstr "Ajout de fichiers"
-
-#: standard input:828 input:874 input:883
-msgid "Console"
-msgstr "Console"
-
-#: standard input:829
+#: ../utils/template_introspection/bot_xdl.tpl.php:24
 msgid "Please indicate a new group name:"
 msgstr "Merci de donner un nom pour le nouveau groupe"
 
-#: standard input:830
+#: ../utils/template_introspection/bot_xdl.tpl.php:28
+#: ../utils/template_introspection/bot_xdl.tpl.php:61
 msgid "New group"
 msgstr "Nouveau groupe"
 
-#: standard input:831
+#: ../utils/template_introspection/bot_xdl.tpl.php:46
 msgid "pack:"
 msgstr "paquet :"
 
-#: standard input:832
+#: ../utils/template_introspection/bot_xdl.tpl.php:50
 msgid "Description:"
 msgstr "Description :"
 
-#: standard input:833
+#: ../utils/template_introspection/bot_xdl.tpl.php:54
 msgid "Groups:"
 msgstr "Groupes :"
 
-#: standard input:834
-msgid "N\n"
-msgstr ""
+#: ../utils/template_introspection/bot_xdl.tpl.php:57
+msgid "None"
+msgstr "Aucun"
 
-#: standard input:835
+#: ../utils/template_introspection/bot_xdl.tpl.php:66
+msgid "CRC 32:"
+msgstr "CRC 32 :"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:70
 msgid "md5 sum:"
 msgstr "Σ md5"
 
-#: standard input:836
+#: ../utils/template_introspection/bot_xdl.tpl.php:74
 msgid "Last Modified:"
 msgstr "Dernière modif :"
 
-#: standard input:837
+#: ../utils/template_introspection/bot_xdl.tpl.php:78
 msgid "Path:"
 msgstr "Chemin :"
 
-#: standard input:838
+#: ../utils/template_introspection/bot_xdl.tpl.php:85
 msgid "error getting pack informations"
 msgstr "Erreur la récupération des informations du paquet"
 
-#: standard input:839
+#: ../utils/template_introspection/bot_xdl.tpl.php:90
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: standard input:840
+#: ../utils/template_introspection/bot_xdl.tpl.php:97
 msgid "Cancel"
 msgstr "Annuler"
 
-#: standard input:841
+#: ../utils/template_introspection/bot_xdl.tpl.php:104
 #, php-format
 msgid "Packs listing of group %s"
 msgstr "Liste des paquets du groupe %s"
 
-#: standard input:843
+#: ../utils/template_introspection/bot_xdl.tpl.php:104
+#: ../utils/template_introspection/bot_nav.tpl.php:2
+#: ../utils/template_introspection/navbar.tpl.php:22
+#: ../utils/template_introspection/main.tpl.php:13
+msgid "Packs listing"
+msgstr "Liste des paquets"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:108
 msgid "hit"
 msgstr ""
 
-#: standard input:844 input:856 input:858
+#: ../utils/template_introspection/bot_xdl.tpl.php:109
+#: ../utils/template_introspection/bot_xdl.tpl.php:136
+#: ../utils/template_introspection/bot_xdl.tpl.php:150
 msgid "description"
 msgstr "description"
 
-#: standard input:846
+#: ../utils/template_introspection/bot_xdl.tpl.php:110
+#: ../utils/template_introspection/bot_listul.tpl.php:12
+msgid "size"
+msgstr "taille"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:111
 msgid "back"
 msgstr "retour"
 
-#: standard input:847
+#: ../utils/template_introspection/bot_xdl.tpl.php:115
 msgid "detail"
 msgstr "détail"
 
-#: standard input:849
+#: ../utils/template_introspection/bot_xdl.tpl.php:120
+#: ../utils/template_introspection/bot_xdl.tpl.php:152
+#: ../utils/template_introspection/bot_xdl.tpl.php:160
+#: ../utils/template_introspection/admin_bots.tpl.php:30
+#: ../utils/template_introspection/admin_bots.tpl.php:40
+msgid "edit"
+msgstr "édit"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:121
 msgid "Remove pack from the bot"
 msgstr "Supprime le paquets du robot"
 
-#: standard input:850
+#: ../utils/template_introspection/bot_xdl.tpl.php:121
 #, php-format
 msgid "Removing pack #%s - %s [%s] ?"
-msgstr "Supprimer le paquet #%s -%s [%s] ?"
+msgstr "Supprimer le paquet #%s - %s [%s] ?"
 
-#: standard input:851
+#: ../utils/template_introspection/bot_xdl.tpl.php:127
 msgid "Delete group and all contening packs"
 msgstr "Supprimer le groupe et tous ses paquets"
 
-#: standard input:852
+#: ../utils/template_introspection/bot_xdl.tpl.php:127
 #, php-format
 msgid "Removing all packs of group %s?"
 msgstr "Supprimer tous les paquets du groupe %s ?"
 
-#: standard input:853
+#: ../utils/template_introspection/bot_xdl.tpl.php:127
 msgid "delete all packs"
 msgstr "Suppression de tous les paquets du groupe"
 
-#: standard input:854
+#: ../utils/template_introspection/bot_xdl.tpl.php:132
 msgid "Groups listing"
 msgstr "Liste des groupes"
 
-#: standard input:861
+#: ../utils/template_introspection/bot_xdl.tpl.php:135
+#: ../utils/template_introspection/bot_xdl.tpl.php:146
+#: ../utils/template_introspection/admin_bots.tpl.php:11
+#: ../utils/template_introspection/admin_bots.tpl.php:46
+#: ../utils/template_introspection/bot_listul.tpl.php:11
+msgid "name"
+msgstr "nom"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:152
+#: ../utils/template_introspection/admin_bots.tpl.php:30
+msgid "undo"
+msgstr "annuler"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:160
 msgid "Change group name or description"
 msgstr "Changer le nom du groupe ou sa description"
 
-#: standard input:863
+#: ../utils/template_introspection/bot_xdl.tpl.php:161
 msgid "Move packs to no group"
 msgstr "N'assigne le paquet à aucun groupe"
 
-#: standard input:864
+#: ../utils/template_introspection/bot_xdl.tpl.php:161
 #, php-format
 msgid "Deleting %s ?\\nThis will put all packs in no group"
 msgstr "Supprimer %s\\nTous les paquets ne seront plus assigné à aucun groupe"
 
-#: standard input:866
+#: ../utils/template_introspection/bot_xdl.tpl.php:161
+#: ../utils/template_introspection/admin_bots.tpl.php:40
+msgid "del"
+msgstr ""
+
+#: ../utils/template_introspection/bot_nav.tpl.php:3
+#: ../utils/template_introspection/navbar.tpl.php:23
+#: ../utils/template_introspection/main.tpl.php:14
+msgid "Add files"
+msgstr "Ajout de fichiers"
+
+#: ../utils/template_introspection/bot_nav.tpl.php:4
+#: ../utils/template_introspection/navbar.tpl.php:24
+#: ../utils/template_introspection/main.tpl.php:15
+msgid "Console"
+msgstr "Console"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:8
+msgid "Manage bots"
+msgstr "Gestion des robots"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:12
+msgid "host"
+msgstr "hôte"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:13
+#: ../utils/template_introspection/admin_bots.tpl.php:48
+msgid "port"
+msgstr "port"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:14
+#: ../utils/template_introspection/admin_bots.tpl.php:49
+msgid "password"
+msgstr "mot de passe"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:15
+msgid "created"
+msgstr "créé le"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:47
+msgid "hostname"
+msgstr "nom d'hôte"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:51
+msgid "add"
+msgstr "ajouter"
+
+#: ../utils/template_introspection/message.tpl.php:3
+msgid "Warning:"
+msgstr "Attention :"
+
+#: ../utils/template_introspection/message.tpl.php:6
+msgid "Error:"
+msgstr "Erreur : "
+
+#: ../utils/template_introspection/message.tpl.php:9
+msgid "Success:"
+msgstr "Réussite :"
+
+#: ../utils/template_introspection/message.tpl.php:12
+msgid "Info:"
+msgstr "Info :"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:3
+#: ../utils/template_introspection/bot_listul.tpl.php:7
+msgid "File listing"
+msgstr "Liste des fichiers"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:22
+#, php-format
+msgid "Remove every pack found in %s"
+msgstr "Supprime tous les paquets correspondant aux fichiers de %s"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:22
+#, php-format
+msgid "Remove every pack found in %s?"
+msgstr "Supprimer tous les paquets correspondant aux fichiers de %s ?"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:23
+#, php-format
+msgid "Add every file in %s"
+msgstr "Ajoute tous les fichiers contenu dans %s"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:23
+#, php-format
+msgid "Add every file in %s?"
+msgstr "Ajouter tous les fichiers contenu dans %s ?"
+
+#: ../utils/template_introspection/login.tpl.php:2
 msgid "login"
 msgstr "identifiant"
 
-#: standard input:867
+#: ../utils/template_introspection/login.tpl.php:9
 msgid "Please sign in"
 msgstr "Connexion : "
 
-#: standard input:868
+#: ../utils/template_introspection/login.tpl.php:10
 msgid "Login"
 msgstr "Identifiant"
 
-#: standard input:869
+#: ../utils/template_introspection/login.tpl.php:11
 msgid "Password"
 msgstr "Mot de passe"
 
-#: standard input:870
+#: ../utils/template_introspection/login.tpl.php:12
 msgid "Sign in"
 msgstr "Se connecter"
 
-#: standard input:871
-msgid "Iroffer Admin"
-msgstr ""
-
-#: standard input:875
+#: ../utils/template_introspection/navbar.tpl.php:6
 msgid "Home"
 msgstr "Accueil"
 
-#: standard input:876
+#: ../utils/template_introspection/navbar.tpl.php:8
 msgid "Parameters"
 msgstr "Paramètres"
 
-#: standard input:877
+#: ../utils/template_introspection/navbar.tpl.php:10
 msgid "User information"
 msgstr "Informations utilisateur"
 
-#: standard input:878
+#: ../utils/template_introspection/navbar.tpl.php:11
 msgid "Manage Bots"
 msgstr "Gérer les robots"
 
-#: standard input:879
+#: ../utils/template_introspection/navbar.tpl.php:12
 msgid "Assign bots to users"
 msgstr "Associer robots et utisateurs"
 
-#: standard input:880
+#: ../utils/template_introspection/navbar.tpl.php:16
 msgid "Bots"
 msgstr "Robots"
 
-#: standard input:884
+#: ../utils/template_introspection/navbar.tpl.php:30
 msgid "Logout"
 msgstr "Déconnexion"
+
+#: ../utils/template_introspection/main.tpl.php:8
+msgid "Iroffer Admin"
+msgstr ""
+
+#: ../bot_xdl.php:14
+#, php-format
+msgid "Pack #%s moved to #%s"
+msgstr "Paquet #%s déplacer en position #%s"
+
+#: ../bot_xdl.php:27
+#, php-format
+msgid "Pack #%s set to group %s"
+msgstr "Paquet #%s assigné au groupe %s"
+
+#: ../bot_xdl.php:37
+#, php-format
+msgid "Description of pack #%s changed"
+msgstr "Description du groupe %s modifié"
+
+#: ../bot_xdl.php:47
+#, php-format
+msgid "Description of group %s changed to %s"
+msgstr "Description du groupe %s modifié en %s"
+
+#: ../bot_xdl.php:55
+#, php-format
+msgid "Group %s renamed to %s"
+msgstr "Groupe %s renommé en %s"
+
+#: ../bot_xdl.php:69
+#, php-format
+msgid "Delete all pack from group %s"
+msgstr "Suppression de tous les paquets du groupe %s"
+
+#: ../bot_xdl.php:71
+#, php-format
+msgid "Error deleting all pack from group %s"
+msgstr "Erreur durant la suppression de tous les paquets du groupe %s"
 
 #~ msgid "Pack listing"
 #~ msgstr "Liste des paquets"
