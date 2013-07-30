@@ -1,4 +1,6 @@
 <?php
+require("includes/config.php");
+require("includes/functions.php");
 require("includes/template.php");
-$tpl->display("templates/login.tpl");
+display("templates/login.tpl");
 ?>

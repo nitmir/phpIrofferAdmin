@@ -15,3 +15,6 @@ RewriteRule ^bots/(?:action/([^/]*)/([^/]*))?$ admin_bots.php?action=$1&values[0
 
 # main
 RewriteRule ^$ main.php [QSA,L]
+
+# login
+RewriteRule ^login/$ login.php [QSA,L]

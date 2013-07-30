@@ -38,14 +38,14 @@ function login(){
 }
 function login_require(){
 	if(!login()){
-		header("Location: login.php");
+		header("Location: ".view('login'));
 		die();
 	}
 }
 
 function level_require($lvl){
 	if($_SESSION['level']<$lvl){
-		header("Location: main.php");
+		header("Location: ".view('main'));
 		die();
 	}
 }

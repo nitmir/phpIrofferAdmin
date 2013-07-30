@@ -24,6 +24,11 @@ $_VIEW=array(
 		'php_file' => 'main.php',
 		'url_rewrite' => function () { return '';},
 		'params' => array()
+	),
+	'login' => array(
+		'php_file' => 'login.php',
+		'url_rewrite' => function () { return 'login/';},
+		'params' => array()
 	)
 );
 
