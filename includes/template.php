@@ -17,7 +17,7 @@ if(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == 'fr'){
 }
 
 function display($page){
-	global $tpl, $_PARAMS;
+	global $tpl, $_PARAMS, $_ACTION;
 	$tpl->assign('action', $_ACTION);
 	$tpl->assign('ROOT', ROOT);
 	$tpl->assign('subpage', '');

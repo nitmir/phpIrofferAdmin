@@ -137,8 +137,7 @@ function action_post_edit_pack($params){
 }
 
 function action_post_edit_bot($params){
-    global $bot_list;
-    if(isset($bot_list[$params['values']['id']])){
+    if(isset(botlist()[$params['values']['id']])){
         if($params['values']['password']!=''){
             db()->query("UPDATE bots SET "
                 ."name=".db()->quote($params['values']['name']).", "
