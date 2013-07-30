@@ -1,21 +1,21 @@
 {extends file="bot.tpl"}
 {block name="assign"}{assign var="subpage" value="xdl"}{/block}
-{block name="bot_title"}listing{if ($group) != ''} of group {$group}{/if}{/block}
+{block name="bot_title"}listing{if ($params.group) != ''} of group {$params.group}{/if}{/block}
 {block name="bot_description"}{/block}
 {block name="bot_container"}
 <script language="javascript">
 function get_info(pack) {
-	var json = null;
+    var json = null;
     $.ajax({
-        url: "get_info.php",
+        url: "{$ROOT}get_info.php",
         type: 'get',
         async: false,
-        data: { id: "{$bot['id']}", pack: pack },
+        data: { bot_id: "{$params.bot.id}", pack: pack },
         success: function(data) {
             json = $.parseJSON(data);
         } 
      });
-	return json;
+    return json;
 }
 
 function newgroup(fld,len,idx) {
@@ -36,27 +36,28 @@ function group(pack, file){
         '<div id="add_to_group">'+
             '<form class="form-horizontal" method="POST" action="{action action=$action.edit_pack type='post' params=$params}" id="edit_form">'+
                 '<input name="action" type="hidden" value="{$action.edit_pack}"/>'+
-                '<input name="pack_id" type="hidden" value="'+pack+'"/>'+
-                '<input name="bot_id" type="hidden" value="{$bot['id']}"/>'+
-                '<input name="old_group" type="hidden" value="{if ($group) != ''}{$group}{else}MAIN{/if}"/>'+
-                '<input name="old_pack_description" type="hidden" value="'+ file + '"/>'+
+                {foreach ['bot_id', 'group'] as $key}
+                '<input name="values_old[{$key}]" type="hidden" value="{$params[$key]}"/>'+
+                {/foreach}
+                '<input name="values_old[pack]" type="hidden" value="'+pack+'"/>'+
+                '<input name="values_old[description]" type="hidden" value="'+ file + '"/>'+
                 '<table class="table table-striped table-hover">'+
                     '<tr><th colspan="2"><span id="sendname">'+info['sendname']+'</span></th></tr>'+
                     '<tr>'+
                         '<th>{'pack:'|gettext}</th>'+
-                        '<td><input name="pack" type="text" value="'+ pack + '" style="width:95%"/></td>'+
+                        '<td><input name="values[pack]" type="text" value="'+ pack + '" style="width:95%"/></td>'+
                     '</tr>'+
                     '<tr>'+
                         '<th>{'Description:'|gettext}</th>'+
-                        '<td><input name="pack_description" type="text" value="'+ file + '" style="width:95%"/></td>'+
+                        '<td><input name="values[description]" type="text" value="'+ file + '" style="width:95%"/></td>'+
                     '</tr>'+
                     '<tr>'+
                         '<th>{'Groups:'|gettext}</th>'+
                         '<td>'+
-                            '<select name="group" onchange="newgroup(this,this.options.length,this.options.selectedIndex)" style="width:95%">'+
-                                '<option{if '' == $group} selected{/if} value="MAIN">{"None"|gettext}</option>'+
+                            '<select name="values[group]" onchange="newgroup(this,this.options.length,this.options.selectedIndex)" style="width:95%">'+
+                                '<option{if '' == $params.group} selected{/if} value="MAIN">{"None"|gettext}</option>'+
                                 {foreach $groups as $g}
-                                '<option{if $g["name"] == $group} selected{/if}>{$g["name"]}</option>'+
+                                '<option{if $g["name"] == $params.group} selected{/if}>{$g["name"]}</option>'+
                                 {/foreach}
                                 '<option  value="" style="text-align: center;">** {"New group"|gettext} **</option>'+
                             '</select>'+
@@ -101,14 +102,15 @@ function group(pack, file){
     $('#file_path').css("width", $("#sendname").width() - $("#file_path_th").width() + "px");
 }
 </script>
-    <h2>{if ($group) != ''}{'Packs listing of group %s'|gettext|sprintf:{$group}}{else}{'Packs listing'|gettext}{/if}</h2>
+    {if {$packs|@count} > 0 }
+    <h2>{if ($params.group) != ''}{'Packs listing of group %s'|gettext|sprintf:{$params.group}}{else}{'Packs listing'|gettext}{/if}</h2>
         <table class="table table-striped table-hover">
             <tr id="pack_-1">
                 <th>n°</th>
                 <th>{'hit'|gettext}</th>
                 <th>{'description'|gettext}</th>
                 <th>{'size'|gettext}</th>
-                <th style="text-align:right;">{if ($group) != ''}<a href="{view page='bot_listing' params=$params group=''}" class="btn btn-primary">{'back'|gettext}</a></br>{/if}</th>
+                <th style="text-align:right;">{if ($params.group) != ''}<a href="{view page='bot_listing' params=$params group=''}" class="btn btn-primary">{'back'|gettext}</a></br>{/if}</th>
             </tr>
             {foreach $packs as $key => $pack}
                 <tr id="pack_{$key}">
@@ -117,18 +119,19 @@ function group(pack, file){
                     <td>{$pack['file']}</td>
                     <td>{$pack['size']}</td>
                     <td style="text-align:right;white-space:nowrap;">
-                        <a class="btn btn-primary" onclick="group({$pack['pack']}, '{$pack['file']}')" >{'edit'|gettext}</a>
-                        <a href="{action action=$action.delete_pack type='get' params=$params param=$pack.pack}" class="btn btn-primary" title="{'Remove pack from the bot'|gettext}" onclick="return confirm('{'Removing pack #%s - %s [%s] ?'|gettext|sprintf:{$pack['pack']}:{$pack['file']}:{$pack['size']}}')">del</a>
+                        <a class="btn btn-primary" onclick="group({$pack['pack']}, '{$pack.file|escape:javascript}')" >{'edit'|gettext}</a>
+                        <a href="{action action=$action.delete_pack type='get' params=$params values=[$pack.pack]}" class="btn btn-primary" title="{'Remove pack from the bot'|gettext}" onclick="return confirm('{'Removing pack #%s - %s [%s] ?'|gettext|sprintf:{$pack['pack']}:{$pack['file']}:{$pack['size']}}')">del</a>
                     </td>
                 </tr>
             {/foreach}
-            {if ($group) != ''}
+            {if ($params.group) != ''}
             <tr>
-            <td style="text-align:right;" colspan="5"><a href="?id={$bot['id']}&amp;delall={$group}" class="btn btn-danger" title="{'Delete group and all contening packs'|gettext}" onclick="return confirm('{'Removing all packs of group %s?'|gettext|sprintf:{$group}}')">{'delete all packs'|gettext}</a></td>
+            <td style="text-align:right;" colspan="5"><a href="{action action=$action.delete_all_pack_from_group type='get' params=$params values=[$params.group]}" class="btn btn-danger" title="{'Delete group and all contening packs'|gettext}" onclick="return confirm('{'Removing all packs of group %s?'|gettext|sprintf:{$params.group}}')">{'delete all packs'|gettext}</a></td>
             </tr>
             {/if}
         </table>
-    {if $group == '' && {$groups|@count} > 0}
+        {/if}
+    {if $params.group == '' && {$groups|@count} > 0}
         <h2>{'Groups listing'|gettext}</h2>
         <table class="table table-striped table-hover">
         <tr id="group_-1" >
@@ -137,19 +140,20 @@ function group(pack, file){
             <th></th>
         </tr>
         {foreach $groups as $key => $group}
-            {if $params.action == $action.edit_group && $params.param == $group.name }
+            {if $params.action == $action.edit_group && $params.values.0 == $group.name }
                 <tr id="group_{$key}">
             <form method="POST" action="{action action=$action.edit_group type='post' params=$params}">
+                {foreach ['name' => $group.name, 'description' => $group.description] as $k => $value}
                 <td>
-                    <input type="hidden" name="bot_id" value="{$bot['id']}"/>
-                    <input type="hidden" name="group_old_name" value="{$group['name']}"/>
-                    <input class="input-medium" type="text" name="group_name" value="{$group['name']}" style="width:150px;heigth:200px" placeholder="{'name'|gettext}"/>
+                    <input type="hidden" name="values_old[{$k}]" value="{$value}"/>
+                    <input class="input-medium" type="text" name="values[{$k}]" value="{$value}" style="width:100%;heigth:200px" placeholder="{$k|gettext}"/>
                 </td>
-                <td>
-                    <input type="hidden" name="group_old_description" value="{$group['description']}"/>
-                    <input class="input-medium" type="text" name="group_description" value="{$group['description']}" style="width:100%;" placeholder="{'description'|gettext}"/>
+                {/foreach}
+                <td style="text-align:right;">
+                    <input type="hidden" name="action" value="{$action.edit_group}"/>
+                    <input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary">
+                    <a href="{view page='bot_listing' params=$params}#group_{$key - 1}" class="btn btn-primary">{'undo'|gettext}</a>
                 </td>
-                <td style="text-align:right;"><input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary"> <a href="{view page='bot_listing' params=$params}#group_{$key - 1}" class="btn btn-primary">{'undo'|gettext}</a></td>
             </form>
                 </tr>
             {else}
@@ -157,8 +161,8 @@ function group(pack, file){
                     <td><a href="{view page='bot_listing' params=$params group=$group.name}">{$group['name']}</a></td>
                     <td>{$group['description']}</td>
                     <td style="text-align:right;">
-                        <a href="{action action=$action.edit_group type='get' params=$params param=$group.name}#group_{$key - 1}" class="btn btn-primary" title="{'Change group name or description'|gettext}">{'edit'|gettext}</a>
-                        <a href="{action action=$action.delete_group type='get' params=$params param=$group.name}#group_{$key - 1}" class="btn btn-primary" title="{'Move packs to no group'|gettext}" onclick="return confirm('{'Deleting %s ?\nThis will put all packs in no group'|gettext|sprintf:{$group['name']}}')">{'del'|gettext}</a>
+                        <a href="{action action=$action.edit_group type='get' params=$params values=[$group.name]}#group_{$key - 1}" class="btn btn-primary" title="{'Change group name or description'|gettext}">{'edit'|gettext}</a>
+                        <a href="{action action=$action.delete_group type='get' params=$params values=[$group.name]}#group_{$key - 1}" class="btn btn-primary" title="{'Move packs to no group'|gettext}" onclick="return confirm('{'Deleting %s ?\nThis will put all packs in no group'|gettext|sprintf:{$group['name']}}')">{'del'|gettext}</a>
                     </td>
                 </tr>
             {/if}

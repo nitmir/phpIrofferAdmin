@@ -9,9 +9,9 @@
 
     {include file='styles.tpl'}
     
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootbox.min.js"></script>
+    <script src="{$ROOT}js/jquery.min.js"></script>
+    <script src="{$ROOT}js/bootstrap.min.js"></script>
+    <script src="{$ROOT}js/bootbox.min.js"></script>
   </head>
 
   <body>

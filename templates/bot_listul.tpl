@@ -16,18 +16,18 @@
       {foreach $files as $key => $file}
       <tr id="pack_{$key}">
       {if $file['size'] == '=DIR=' }
-      <td><a href="{view page='files_listing' params=$params path="{$params.path}/{$file.name}"}">{$file['name']}</a></td>
+      <td><a href="{view page='files_listing' params=$params path="{$params.path}/{$file.name}/"}">{$file['name']}</a></td>
       <td> - </td>
       <td style="text-align:right;">
-	<a href="{action action=$action.delete_dir type='get' params=$params param="{$params.path}/{$file.name}"}" class="btn btn-primary" title="{'Remove every pack found in %s'|gettext|sprintf:{$file['name']}}" onclick="return confirm('{'Remove every pack found in %s?'|gettext|sprintf:{$file['name']}}')">del</a>
-	<a href="{action action=$action.add_dir type='get' params=$params param="{$params.path}/{$file.name}"}" class="btn btn-primary" title="{'Add every file in %s'|gettext|sprintf:{$file['name']}}" onclick="return confirm('{'Add every file in %s?'|gettext|sprintf:{$file['name']}}')">add</a>
+	<a href="{action action=$action.delete_dir type='get' params=$params values=["{$params.path}/{$file.name}"]}" class="btn btn-primary" title="{'Remove every pack found in %s'|gettext|sprintf:{$file['name']}}" onclick="return confirm('{'Remove every pack found in %s?'|gettext|sprintf:{$file['name']}}')">del</a>
+	<a href="{action action=$action.add_dir type='get' params=$params values=["{$params.path}/{$file.name}"]}" class="btn btn-primary" title="{'Add every file in %s'|gettext|sprintf:{$file['name']}}" onclick="return confirm('{'Add every file in %s?'|gettext|sprintf:{$file['name']}}')">add</a>
      </td>
       {else}
       <td>{$file.name}</td>
       <td>{$file.size}</td>
-      <td style="text-align:right;"><a href="{action action=$action.add_file type='get' params=$params param="{$params.path}/{$file.name}"}" class="btn btn-primary">add</a></td>
+      <td style="text-align:right;"><a href="{action action=$action.add_file type='get' params=$params values=["{$params.path}/{$file.name}"]}" class="btn btn-primary">add</a></td>
       {/if}
-      
+
       </tr>
       {/foreach}
       </table>

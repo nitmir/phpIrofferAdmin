@@ -123,6 +123,11 @@ table.terminal td {
 	text-align:left;
 }
 }
+@media screen and (max-width: 600px) {
+	.modal.fade.in {
+		left:0px;
+	}
+}
 @media screen and (max-height: 600px) {
 .modal{
 	width: auto;

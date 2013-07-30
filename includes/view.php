@@ -1,53 +1,53 @@
 <?php
-function needed_params($key, $params){
-	for($i=0;isset($key[$i]);$i++){
-		if(!isset($params[$key[$i]])){
-			die('Params '.$key[$i].' necessary');
-		}
-	}
-}
+$_VIEW=array(
+	'bot_listing' => array(
+		'php_file' => 'bot_xdl.php',
+		'url_rewrite' => function ($_1, $_2) { return sprintf('bot-%s/list/%s', $_1, $_2);},
+		'params' => array('bot_id', 'group')
+	),
+	'files_listing' => array(
+		'php_file' => 'bot_listul.php',
+		'url_rewrite' => function ($_1, $_2) { return sprintf('bot-%s/files%s', $_1, $_2==''?'/':$_2);},
+		'params' => array('bot_id', 'path')
+	),
+	'bot_console' => array(
+		'php_file' => 'bot_command.php',
+		'url_rewrite' => function ($_1) { return sprintf('bot-%s/console/', $_1);},
+		'params' => array('bot_id')
+	),
+	'bot_management' => array(
+		'php_file' => 'admin_bots.php',
+		'url_rewrite' => function () { return 'bots/';},
+		'params' => array()
+	),
+	'main' => array(
+		'php_file' => 'main.php',
+		'url_rewrite' => function () { return '';},
+		'params' => array()
+	)
+);
+
 
 function build_url($base, $params){
-	return $base.http_build_query($params);
+	return ROOT.$base.(!empty($params)?'?':'').http_build_query($params);
 }
+
 
 function view($page, $params=array(), $raw=false){
-	switch($page){
-		case "main":
-			return 'main.php';
-		case "bot_listing":
-			needed_params(array('bot_id', 'group'), $params);
-			return bot_listing($params['bot_id'], $params['group'], $raw);
-			break;
-		case "files_listing":
-			needed_params(array('bot_id', 'path'), $params);
-			return files_listing($params['bot_id'], $params['path'], $raw);
-			break;
-		case "bot_console":
-			needed_params(array('bot_id'), $params);
-			return bot_console($params['bot_id'], $raw);
-			break;
-		default:
-			die('Unknow view '.$page);
+	global $_VIEW;
+	if(isset($_VIEW[$page])){
+		needed_params($_VIEW[$page]['params'], $params);
+		if(REWRITE_URL&&isset($_VIEW[$page]['url_rewrite'])){
+			$base=call_user_func_array($_VIEW[$page]['url_rewrite'], sub_array($_VIEW[$page]['params'], $params));
+			$params=array();
+		} else {
+			$base=$_VIEW[$page]['php_file'];
+			$params=sub_array($_VIEW[$page]['params'], $params);
+		}
+		if($raw){
+			return array($base, $params);
+		} else {
+			return build_url($base, $params);
+		}
 	}
-}
-
-
-function bot_listing($bot_id, $group, $raw){
-	$php_file='bot_xdl.php?';
-	$params=array('bot_id'=>$bot_id, 'group' => $group);
-	if($raw){return array($php_file, $params);}
-	else{return build_url($php_file, $params);}
-}
-function files_listing($bot_id, $path, $raw){
-	$php_file='bot_listul.php?';
-	$params=array('bot_id'=>$bot_id, 'path' => $path);
-	if($raw){return array($php_file, $params);}
-	else{return build_url($php_file, $params);}
-}
-function bot_console($bot_id, $raw){
-	$php_file='bot_command.php?';
-	$params=array('bot_id'=>$bot_id);
-	if($raw){return array($php_file, $params);}
-	else{return build_url($php_file, $params);}
 }

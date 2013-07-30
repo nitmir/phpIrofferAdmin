@@ -127,11 +127,11 @@ class IROFFER {
 		$array=array_slice($this->command('INFO '.$n), 2, -3);
 		for($i=0; isset($array[$i]); $i++){
 			$array[$i]=preg_split('/  +/', trim($array[$i]), 2);
-			$array[strtolower(trim($array[$i][0]))]=trim($array[$i][1]);
+
+			$array[strtolower(trim($array[$i][0]))]=trim(@$array[$i][1]);
 			unset($array[$i]);
 		}
 		return $array;
 	}
 }
 
-?>

@@ -36,10 +36,10 @@ function run(cmd) {
 		hist_ptr = hist_cmd.length - 1;
 	}
 	$.ajax({
-        url: "run_command.php",
+        url: "{$ROOT}run_command.php",
         type: 'get',
         async: false,
-        data: { id: "{$bot['id']}", command: cmd },
+        data: { bot_id: "{$params.bot.id}", command: cmd },
         success: function(data) {
            terminal.innerHTML = terminal.innerHTML + "\n" + data;
         } 
@@ -80,7 +80,7 @@ function stroke(code){
 </script>
 
 <div class="terminal">
-<pre class="terminal"><div id="terminal" >Welcome to {$bot['name']}
+<pre class="terminal"><div id="terminal" >Welcome to {$params.bot.name}
 
 Entering DCC Chat Admin Interface
 For Help type "help"
