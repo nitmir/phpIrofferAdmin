@@ -49,18 +49,3 @@ function level_require($lvl){
 		die();
 	}
 }
-
-function logout(){
-	if(is_logged()&&isset($_GET['logout'])){
-		foreach(array_keys($_SESSION) as $key){
-			unset($_SESSION[$key]);
-		}
-		$_SESSION=array();
-		unset($_SESSION);
-		if (ini_get("session.use_cookies")) {
-			$params = session_get_cookie_params();
-			setcookie(session_name(), '', time() - 42000,$params["path"], $params["domain"],$params["secure"], $params["httponly"]);
-		}
-		session_destroy();
-	}
-}

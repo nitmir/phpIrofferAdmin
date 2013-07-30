@@ -15,6 +15,7 @@ $_ACTION = array(
     'delete_bot' => 'delete_bot',
     'create_bot' => 'create_bot',
     'login' => 'login',
+    'logout' => 'logout',
 );
 $_ACTION_VIEW = array(
     $_ACTION['edit_pack'] => 'bot_listing',
@@ -29,6 +30,7 @@ $_ACTION_VIEW = array(
     $_ACTION['delete_bot'] => 'bot_management',
     $_ACTION['create_bot'] => 'bot_management',
     $_ACTION['login'] => 'main',
+    $_ACTION['logout'] => 'main',
 );
 $_ACTION_REVERSE = array();
 foreach($_ACTION as $key => $value){ $_ACTION_REVERSE[$value]=$key; }
@@ -41,7 +43,7 @@ function action_url($action, $type, $params){
             list($base, $params_)=view($_ACTION_VIEW[$_ACTION_REVERSE[$action]], $params, true);
             if(REWRITE_URL){
                 if(count($params ['values'])>1) die('Only support one value as action parameter');
-                return build_url($base.($base[strlen($base)-1]!='/'?'/':'').'action/'.$action.'/'.$params ['values'][0], $params_);
+                return build_url($base.($base!=''&&$base[strlen($base)-1]!='/'?'/':'').'action/'.$action.'/'.$params ['values'][0], $params_);
             }else{
                 return build_url($base, array_replace($params_, array('action'=>$action, 'values'=>$params ['values'])));
             }

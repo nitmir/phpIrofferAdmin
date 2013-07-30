@@ -7,7 +7,6 @@ require('template.php');
 require('login_functions.php');
 
 session_start();
-logout();
 login_require();
 params();
 action();

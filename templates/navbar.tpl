@@ -30,7 +30,7 @@
             </ul>
 	    <ul class="nav pull-right">
 		<li><a class="whoami" href="admin_users.php"><i class="icon-user icon-white"></i> {$user.name}</a></li>
-		<li style="text-align:right;"><a href="?logout=1" class="logout_link" ><i class="icon-off icon-white"></i> {'Logout'|gettext}</a></li>
+		<li style="text-align:right;"><a href="{action action=$action.logout type='get' params=[] values=['']}" class="logout_link" ><i class="icon-off icon-white"></i> {'Logout'|gettext}</a></li>
 	    </ul>
 
           </div><!--/.nav-collapse -->

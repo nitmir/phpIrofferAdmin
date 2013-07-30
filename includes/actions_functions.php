@@ -107,7 +107,7 @@ function action_post_edit_pack($params){
         if($params['values_old']['group']!=$params['values']['group']){
             $mess=$conn->group($params['values_old']['pack'], $params['values']['group']);
             if(preg_match('/GROUP: \[Pack '.$params['values_old']['pack'].'\]/', $mess)){
-                if($_POST['group']=='MAIN'){
+                if($params['values']['group']=='MAIN'){
                     $conn->regroup('MAIN', 'MAIN');
                 }
                 $_SESSION['message_success'] []=sprintf(_('Pack #%s set to group %s'), $params['values_old']['pack'], $params['values']['group']);
@@ -199,4 +199,20 @@ function action_get_delete_bot($params){
 	}
     header('Location: '.view('bot_management', $params));
     die();
+}
+function action_get_logout($params){
+	if(is_logged()){
+		foreach(array_keys($_SESSION) as $key){
+			unset($_SESSION[$key]);
+		}
+		$_SESSION=array();
+		unset($_SESSION);
+		if (ini_get("session.use_cookies")) {
+			$params = session_get_cookie_params();
+			setcookie(session_name(), '', time() - 42000,$params["path"], $params["domain"],$params["secure"], $params["httponly"]);
+		}
+		session_destroy();
+		header('Location: '.view('login'));
+		die();
+	}
 }

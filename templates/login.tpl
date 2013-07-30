@@ -5,7 +5,7 @@
 {include file='navbar_base.tpl'}
 {/block}
 {block name="container"}
-      <form class="form-signin" method="POST" action="{action type='post' action=$action.login param=$params}">
+      <form class="form-signin" method="POST" action="{action type='post' action=$action.login params=[]}">
         <h2 class="form-signin-heading">{'Please sign in'|gettext}</h2>
         <input type="text" class="input-block-level" placeholder="{'Login'|gettext}" name="iroffer_username">
         <input type="password" class="input-block-level" placeholder="{'Password'|gettext}" name="iroffer_password">
