@@ -1,4 +1,4 @@
-{extends file="base.tpl"} 
+{extends file="base.tpl"}
 {block name="title"}phpIroffer - {'login'|gettext}{/block}
 {block name="description"}phpIroffer login page{/block}
 {block name="navbar"}

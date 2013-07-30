@@ -13,7 +13,7 @@ function get_info(pack) {
         data: { bot_id: "{$params.bot.id}", pack: pack },
         success: function(data) {
             json = $.parseJSON(data);
-        } 
+        }
      });
     return json;
 }
@@ -79,14 +79,14 @@ function group(pack, file){
                         '<th id="file_path_th">{'Path:'|gettext}</th>'+
                         '<td><div style="overflow-x:auto;white-space:nowrap;height:40px" id="file_path">'+info['filename']+'</div></td>'+
                     '</tr>'+
-                '</table>' + 
+                '</table>' +
             '</form>'+
         '</div>';
     } else {
         var div = '{'error getting pack informations'|gettext}';
     }
 
-    bootbox.dialog(div, [ 
+    bootbox.dialog(div, [
         {
             "label" : "{'Save'|gettext}",
             "class" : "btn-primary",

@@ -25,11 +25,11 @@ function scrollToBottom(elm_id){
 		if(elm.removeChild)
 			elm.removeChild(f);
 	}
-} 
+}
 function run(cmd) {
 	var terminal = document.getElementById('terminal');
 	terminal.innerHTML = terminal.innerHTML + cmd;
-	if (hist_cmd[hist_cmd.length -1 ] != cmd) { 
+	if (hist_cmd[hist_cmd.length -1 ] != cmd) {
 		hist_ptr = hist_cmd.length;
 		hist_cmd[hist_cmd.length] = cmd;
 	} else {
@@ -42,7 +42,7 @@ function run(cmd) {
         data: { bot_id: "{$params.bot.id}", command: cmd },
         success: function(data) {
            terminal.innerHTML = terminal.innerHTML + "\n" + data;
-        } 
+        }
      });
 	scrollToBottom('terminal');
 }
@@ -76,7 +76,7 @@ function stroke(code){
 		hist_last = "down";
 	}
 }
-		
+
 </script>
 
 <div class="terminal">
@@ -89,13 +89,13 @@ For Help type "help"
 <tr>
 <!---->
 <td class="terminal">
-	<input name="textbox1" id="textbox1" type="text" class="input-medium terminal" 
+	<input name="textbox1" id="textbox1" type="text" class="input-medium terminal"
 	onkeydown="stroke(event.keyCode) "
 	placeholder="Type something..." /></td>
 <td><input name="btnsend" id="btnsend" onclick="send()" type="button" value="Send"  class="btn btn-primary" /></td>
 </tr>
 </table>
 </div>
-	
+
 {/block}
 

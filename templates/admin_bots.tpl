@@ -1,4 +1,4 @@
-{extends file="base.tpl"} 
+{extends file="base.tpl"}
 {block name="title"}phpIroffer - bots management{/block}
 {block name="description"}{/block}
 {block name="navbar"}

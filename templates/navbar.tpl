@@ -1,4 +1,4 @@
-{extends file="navbar_base.tpl"} 
+{extends file="navbar_base.tpl"}
 {block name="navbar_link"}{view page='main' params=$params}{/block}
 {block name="navbar_buttons"}
           <div class="nav-collapse collapse">
@@ -32,6 +32,6 @@
 		<li><a class="whoami" href="admin_users.php"><i class="icon-user icon-white"></i> {$user.name}</a></li>
 		<li style="text-align:right;"><a href="?logout=1" class="logout_link" ><i class="icon-off icon-white"></i> {'Logout'|gettext}</a></li>
 	    </ul>
-	    
+
           </div><!--/.nav-collapse -->
 {/block}

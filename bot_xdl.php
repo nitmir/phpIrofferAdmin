@@ -16,7 +16,7 @@ if($_PARAMS['bot']!==false){
 			return false;
 		}
 		if(!valide_group($_PARAMS['group'], $groups)){
-			header('Location: '.view('bot_listing', array('bot_id'=>$bot['id'], 'group' => ''))); 
+			header('Location: '.view('bot_listing', array('bot_id'=>$bot['id'], 'group' => '')));
 			die();
 		}
 		$packs=$conn->xdlgroup($_GET['group']);

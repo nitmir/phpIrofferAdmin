@@ -8,7 +8,7 @@
  * Purpose:  build url to a view
  * -------------------------------------------------------------
  */
- 
+
  function smarty_function_view($params, &$smarty)
 {
     return view($params['page'], array_replace($params['params'], $params));

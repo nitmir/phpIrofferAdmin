@@ -6,8 +6,8 @@ $MYSQL['username']='iroffer';
 $MYSQL['password']='password';
 $MYSQL['database']='iroffer';
 
-setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
-setlocale (LC_ALL, "fr_FR"); 
+setlocale (LC_TIME, 'fr_FR.utf8','fra');
+setlocale (LC_ALL, "fr_FR");
 
 
 define('ADMIN',10);

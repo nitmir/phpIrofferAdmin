@@ -49,7 +49,7 @@ class IROFFER {
 		while(($output[]=fgets($this->nntp))!==false);
 		return preg_replace('/[\x00-\x1F]/', '', $output);
 	}
-	
+
 	function xdl($group_only=false){ return $this->_xdl('XDL', $group_only);}
 	function xdlfull(){ return $this->_xdl('XDLFULL')[0];}
 	function xdlgroup($group){ return $this->_xdl('XDLGROUP "'.$group.'"')[0];}

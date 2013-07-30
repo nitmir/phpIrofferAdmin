@@ -8,7 +8,7 @@
     <meta name="author" content="Valentin">
 
     {include file='styles.tpl'}
-    
+
     <script src="{$ROOT}js/jquery.min.js"></script>
     <script src="{$ROOT}js/bootstrap.min.js"></script>
     <script src="{$ROOT}js/bootbox.min.js"></script>
@@ -22,7 +22,7 @@
     <div class="container top">
 	{include file='message.tpl'}
 	{block name="container"}{/block}
-    </div> 
+    </div>
     <div id="bottom"></div>
     </div>
   </body>

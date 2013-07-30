@@ -1,4 +1,4 @@
-{extends file="base.tpl"} 
+{extends file="base.tpl"}
 {block name="title"}{$params.bot.name} - {block name="bot_title"}{/block}{/block}
 {block name="description"}{$params.bot.name} - {block name="bot_description"}{/block}{/block}
 {block name="navbar"}
