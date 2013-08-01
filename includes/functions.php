@@ -28,7 +28,8 @@ function db(){
 // to display sql error
 function dberror(){
     list($err,$state,$info)=db()->errorInfo();
-    return $err.' '.$state.' '.$info."\n";
+    //~ return $err.' '.$state.' '.$info."\n";
+    return $info."\n";
 }
 
 // check if $params as all key listed in $keys

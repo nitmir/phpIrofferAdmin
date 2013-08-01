@@ -5,69 +5,116 @@
 {include file='navbar.tpl' page='admin'}
 {/block}
 {block name="container"}
-	<h1>Iroffer User</h1>
-	<h2>My infos</h2>
+    <h1>{'Iroffer User'|gettext}</h1>
+    <h2>{'My infos'|gettext}</h2>
       <table class="table table-striped table-hover">
-      <tr><th>Name</th><td>{$user['name']}</td></tr>
-      <tr><th>Email</th><td>{$user['email']}</td></tr>
-      <tr><th>Password</th><td>*****</td></tr>
-      <tr><th>Last login</th><td>{$user['last_login']}</td></tr>
-      <tr><th>Created</th><td>{$user['created']}</td></tr>
-      <tr><th></th><td style="text-align:right;"><a href="?edit=personal" class="btn btn-primary">edit</a></td></tr>
+      {if $params.action == $action.edit_user && $params.values.0 == 'personal'}
+        <form method="POST" action="{action action=$action.edit_user type='post' params=$params}">
+            <tr>
+            <th>{'Name'|gettext}</th>
+            <td>
+                <input type="hidden" name="action" value="{$action.edit_user}"/>
+                <input type="hidden" name="values[id]" value="{$user['id']}"/>
+                <input type="hidden" name="values_old[name]" value="{$user['name']}"/>
+                <input type="test" name="values[name]" value="{$user['name']}"/>
+            </td>
+            </tr>
+            <tr>
+                <th>{'Email'|gettext}</th>
+                <td>
+                    <input type="hidden" name="values_old[email]" value="{$user['email']}"/>
+                    <input type="text" name="values[email]" value="{$user['email']}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>{'Password'|gettext}</th>
+                <td>
+                    <input type="password" name="values[password1]" value="" style="width:100px;" placeholder="{'password'|gettext}"/><br/>
+                    <input type="password" name="values[password2]" value="" style="width:100px;" placeholder="{'confirmation'|gettext}"/>
+                </td>
+            </tr>
+            <tr><th>{'Last login'|gettext}</th><td>{$user['last_login']}</td></tr>
+            <tr><th>{'Created'|gettext}</th><td>{$user['created']}</td></tr>
+            <tr>
+                <th></th>
+                <td style="text-align:right;">
+                    <input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary"/>
+                    <a href="{view page='users' params=$params}" class="btn btn-primary">{'undo'|gettext}</a>
+                </td>
+            </tr>
+        </form>
+      {else}
+      <tr><th>{'Name'|gettext}</th><td>{$user['name']}</td></tr>
+      <tr><th>{'Email'|gettext}</th><td>{$user['email']}</td></tr>
+      <tr><th>{'Password'|gettext}</th><td>*****</td></tr>
+      <tr><th>{'Last login'|gettext}</th><td>{$user['last_login']}</td></tr>
+      <tr><th>{'Created'|gettext}</th><td>{$user['created']}</td></tr>
+      <tr><th></th><td style="text-align:right;"><a href="{action action=$action.edit_user type='get' params=$params values=['personal']}" class="btn btn-primary">{'edit'|gettext}</a></td></tr>
+      {/if}
       </table>
       {if $user['right'] == 'ADMIN' }
-      <h2>User list</h2>
+      <h2>{'User list'|gettext}</h2>
       <table class="table table-striped table-hover">
-      <tr id="user_0" >
-      <th>Name</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th>Last login</th>
-      <th>Created</th>
+      <tr id="user_-1" >
+      <th>{'Name'|gettext}</th>
+      <th>{'Email'|gettext}</th>
+      <th>{'Password'|gettext}</th>
+      <th>{'Last login'|gettext}</th>
+      <th>{'Created'|gettext}</th>
       <th></th>
       </tr>
       {foreach $user_list as $key => $user}
-      {if $edit == $key}
+      {if $params.action == $action.edit_user && $params.values.0 == $user.id}
       <tr id="user_{$key}">
-      <form method="POST" action="admin_users.php">
-		<td>
-			<input type="hidden" name="user_id" value="{$user['id']}"/>
-			<input type="text" name="name" value="{$user['name']}" style="width:100px;"/>
-		</td>
-	      <td><input type="text" name="email" value="{$user['email']}" style="width:100px;"/></td>
-	      <td>
-			<input type="password" name="password1" value="" style="width:100px;" placeholder="password"/><br/>
-			<input type="password" name="password2" value="" style="width:100px;" placeholder="confirmation"/>
-	      </td>
-		<td>{$user['last_login']}</td>
-		<td>{$user['created']}</td>
-	      <td style="text-align:right;"><input type="submit" name="submit" value="edit" class="btn btn-primary"> <a href="admin_users.php#user_{$key - 1}" class="btn btn-primary">undo</a></td>
-	</form>
-	</tr>
-	{else}
+      <form method="POST" action="{action action=$action.edit_user type='post' params=$params}">
+        <td>
+                        <input type="hidden" name="action" value="{$action.edit_user}"/>
+            <input type="hidden" name="values[id]" value="{$user['id']}"/>
+            <input type="hidden" name="values_old[name]" value="{$user['name']}"/>
+            <input type="text" name="values[name]" value="{$user['name']}" style="width:100px;"/>
+        </td>
+          <td>
+            <input type="hidden" name="values_old[email]" value="{$user['email']}" style="width:100px;"/>
+            <input type="text" name="values[email]" value="{$user['email']}" style="width:100px;"/>
+        </td>
+          <td>
+            <input type="password" name="values[password1]" value="" style="width:100px;" placeholder="{'password'|gettext}"/><br/>
+            <input type="password" name="values[password2]" value="" style="width:100px;" placeholder="{'confirmation'|gettext}"/>
+          </td>
+        <td>{$user['last_login']}</td>
+        <td>{$user['created']}</td>
+          <td style="text-align:right;"><input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary"> <a href="{view page='users' params=$params}#user_{$key - 1}" class="btn btn-primary">{'undo'|gettext}</a></td>
+    </form>
+    </tr>
+    {else}
       <tr id="user_{$key}">
       <td>{$user['name']}</td>
       <td>{$user['email']}</td>
       <td>**********</td>
       <td>{$user['last_login']}</td>
       <td>{$user['created']}</td>
-      <td style="text-align:right;"><a href="?edit={$key}#user_{$key - 1}" class="btn btn-primary">edit</a> <a href="?del={$key}" class="btn btn-primary">del</a></td>
+      <td style="text-align:right;">
+          <a href="{action action=$action.edit_user type='get' params=$params values=[$user.id]}#user_{$key - 1}" class="btn btn-primary">{'edit'|gettext}</a>
+          <a href="{action action=$action.delete_user type='get' params=$params values=[$user.id]}" class="btn btn-primary" onclick="return confirm('{{'Delete user %s?'|gettext}|sprintf:$user.name}')">{'del'|gettext}</a></td>
       </tr>
       {/if}
       {/foreach}
       <tr>
-      <form method="POST" action="admin_bots.php">
-	      <td><input type="text" name="name" value="" style="width:100px;" placeholder="name"/></td>
-	      <td><input type="text" name="email" value="" style="width:100px;" placeholder="email"/></td>
-	      <td>
-			<input type="password" name="password1" value="" style="width:100px;" placeholder="password"/><br/>
-			<input type="password" name="password2" value="" style="width:100px;" placeholder="confirmation"/>
-	      </td>
-	      <td></td>
-	      <td></td>
-	      <td style="text-align:right;"><input type="submit" name="submit" value="add" class="btn btn-primary"></td>
-	</form>
-	</tr>
+      <form method="POST" action="{action action=$action.create_user type='post' params=$params}">
+          <td>
+                  <input type="hidden" name="action" value="{$action.create_user}"/>
+                  <input type="text" name="values[name]" value="" style="width:100px;" placeholder="{'name'|gettext}"/>
+              </td>
+          <td><input type="text" name="values[email]" value="" style="width:100px;" placeholder="{'email'|gettext}"/></td>
+          <td>
+            <input type="password" name="values[password1]" value="" style="width:100px;" placeholder="{'password'|gettext}"/><br/>
+            <input type="password" name="values[password2]" value="" style="width:100px;" placeholder="{'confirmation'|gettext}"/>
+          </td>
+          <td></td>
+          <td></td>
+          <td style="text-align:right;"><input type="submit" name="submit" value="{'Add'|gettext}" class="btn btn-primary"></td>
+    </form>
+    </tr>
       </table>
       {/if}
 {/block}

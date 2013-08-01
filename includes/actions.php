@@ -16,6 +16,9 @@ $_ACTION = array(
     'create_bot' => 'create_bot',
     'login' => 'login',
     'logout' => 'logout',
+    'edit_user' => 'edit_user',
+    'create_user' => 'create_user',
+    'delete_user' => 'delete_user',
 );
 $_ACTION_VIEW = array(
     $_ACTION['edit_pack'] => 'bot_listing',
@@ -31,6 +34,9 @@ $_ACTION_VIEW = array(
     $_ACTION['create_bot'] => 'bot_management',
     $_ACTION['login'] => 'main',
     $_ACTION['logout'] => 'main',
+    $_ACTION['edit_user'] => 'users',
+    $_ACTION['create_user'] => 'users',
+    $_ACTION['delete_user'] => 'users',
 );
 $_ACTION_REVERSE = array();
 foreach($_ACTION as $key => $value){ $_ACTION_REVERSE[$value]=$key; }

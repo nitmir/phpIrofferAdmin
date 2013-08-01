@@ -9,7 +9,7 @@ if($_SESSION['right']=='ADMIN'){
 	$user_list=array();
 	$query=db()->query("SELECT * FROM users ORDER BY name");
 	while($data=$query->fetch()){
-		$user_list[$data['id']]=$data;
+		$user_list[]=$data;
 		$tpl->assign('user_list', $user_list);
 	}
 }

@@ -99,7 +99,7 @@ function group(pack, file){
             "class" : "btn-primary"
         },
     ]);
-    $('#file_path').css("width", $("#sendname").width() - $("#file_path_th").width() + "px");
+    $('#file_path').css("width", Math.max($("#sendname").width(), 530) - $("#file_path_th").width() + "px");
 }
 </script>
     {if {$packs|@count} > 0 }
@@ -120,7 +120,7 @@ function group(pack, file){
                     <td>{$pack['size']}</td>
                     <td style="text-align:right;white-space:nowrap;">
                         <a class="btn btn-primary" onclick="group({$pack['pack']}, '{$pack.file|escape:javascript}')" >{'edit'|gettext}</a>
-                        <a href="{action action=$action.delete_pack type='get' params=$params values=[$pack.pack]}" class="btn btn-primary" title="{'Remove pack from the bot'|gettext}" onclick="return confirm('{'Removing pack #%s - %s [%s] ?'|gettext|sprintf:{$pack['pack']}:{$pack['file']}:{$pack['size']}}')">del</a>
+                        <a href="{action action=$action.delete_pack type='get' params=$params values=[$pack.pack]}" class="btn btn-primary" title="{'Remove pack from the bot'|gettext}" onclick="return confirm('{'Removing pack #%s - %s [%s] ?'|gettext|sprintf:{$pack['pack']}:{$pack['file']}:{$pack['size']}}')">{'del'|gettext}</a>
                     </td>
                 </tr>
             {/foreach}

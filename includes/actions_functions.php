@@ -5,6 +5,8 @@ function action_get_edit_group($param){
 }
 function action_get_edit_bot($param){
 }
+function action_get_edit_user($params){
+}
 function action_get_delete_pack($params){
     if($params['bot']!==false){
         $conn = new IROFFER($params['bot']['host'], $params['bot']['port'], $params['bot']['password']);
@@ -181,7 +183,7 @@ function action_post_create_bot($params){
                 db()->quote($_SESSION['id']).
             ")")or die(dberror());
         }else{
-            die(_('couple (host, port) already used and wrong password'));
+            $_SESSION['message_error'] []=_('couple (host, port) already used and wrong password');
         }
     }
     header('Location: '.view('bot_management', $params));
@@ -189,30 +191,96 @@ function action_post_create_bot($params){
 }
 
 function action_get_delete_bot($params){
-	if($_SESSION['right']=='ADMIN'){
-		db()->query("DELETE FROM bots WHERE id=".db()->quote($params['values'][0])."")or die(dberror());
-	} else {
-		db()->query("DELETE FROM `bot_user` WHERE "
+    if($_SESSION['right']=='ADMIN'){
+        db()->query("DELETE FROM bots WHERE id=".db()->quote($params['values'][0])."")or die(dberror());
+    } else {
+        db()->query("DELETE FROM `bot_user` WHERE "
             ."user_id=".db()->quote($_SESSION['id'])." AND "
             ."bot_id=".db()->quote($params['values'][0]).
         "")or die(dberror());
-	}
+    }
     header('Location: '.view('bot_management', $params));
     die();
 }
 function action_get_logout($params){
-	if(is_logged()){
-		foreach(array_keys($_SESSION) as $key){
-			unset($_SESSION[$key]);
-		}
-		$_SESSION=array();
-		unset($_SESSION);
-		if (ini_get("session.use_cookies")) {
-			$params = session_get_cookie_params();
-			setcookie(session_name(), '', time() - 42000,$params["path"], $params["domain"],$params["secure"], $params["httponly"]);
-		}
-		session_destroy();
-		header('Location: '.view('login'));
-		die();
-	}
+    if(is_logged()){
+        foreach(array_keys($_SESSION) as $key){
+            unset($_SESSION[$key]);
+        }
+        $_SESSION=array();
+        unset($_SESSION);
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,$params["path"], $params["domain"],$params["secure"], $params["httponly"]);
+        }
+        session_destroy();
+        header('Location: '.view('login'));
+        die();
+    }
+}
+
+function action_post_edit_user($params){
+    if($params['values']['id']==$_SESSION['id'] || $_SESSION['right'] == 'ADMIN'){
+        $succs=array();
+        $erros=array();
+
+        // Update name
+        if(strlen($params['values']['name'])>=3){
+            if($params['values']['name']!=$params['values_old']['name']){
+                $SET.=', name='.db()->quote(trim($params['values']['name']));
+                $succs[]=sprintf(_('Name of %s updated to %s'), $params['values_old']['name'], $params['values']['name']);
+            }
+        } else {
+            $errors []=_('Names sould be longer than 3 character');
+        }
+        // Update email
+        if($params['values']['email'] != $params['values_old']['email']){
+            $SET.=', email='.db()->quote(trim($params['values']['email']));
+            $succs[]=sprintf(_('Email of %s updated to %s'), $params['values_old']['name'], $params['values']['email']);
+        }
+        //Update Password
+        if($params['values']['password1']!='' || $params['values']['password2']!=''){
+            if($params['values']['password1']==$params['values']['password2']){
+                $SET.=', password='.db()->quote(crypt($params['values']['password1']));
+                $succs[]=sprintf(_('Password of %s updated'), $params['values_old']['name']);
+            } else {
+                $errors []=_('Passwords mismatch, no updated');
+            }
+        }
+        // Do the upate
+        if(db()->query('UPDATE users SET id=id'.$SET.' WHERE id='.db()->quote($params['values']['id']))){
+            if($params['values']['id']==$_SESSION['id']){
+                session($_SESSION['id']);
+            }
+            $_SESSION['message_success'] =array_merge($_SESSION['message_success'], $succs);
+            $_SESSION['message_error'] =array_merge($_SESSION['message_error'], $errors);
+        } else {
+            $_SESSION['message_error'] []=printf(_('Update error: %s'), dberror());
+        }
+        header('Location: '.view('users'));
+        die();
+    }
+}
+
+function action_post_create_user($params){
+    if($params['values']['password1']==$params['values']['password2']&&$params['values']['password1']!=''){
+        if(strlen($params['values']['name'])>=3){
+            if(db()->query("INSERT INTO users (name, email, password) VALUES ("
+                .db()->quote($params['values']['name']).", "
+                .db()->quote($params['values']['email']).", "
+                .db()->quote(crypt($params['values']['password1'])).")")
+            ) {
+                $_SESSION['message_success']=sprintf(_('User %s created'), $params['values']['name']);
+            } else {
+                $_SESSION['message_error'] []=sprintf(_('Creation error: %s'), dberror());
+            }
+        }else{
+            $_SESSION['message_error'] []=_('Names sould be longer than 3 character');
+        }
+    } else {
+        $_SESSION['message_error'] []=_('Passwords mismatch, user creation abort');
+    }
+
+    header('Location: '.view('users'));
+    die();
 }

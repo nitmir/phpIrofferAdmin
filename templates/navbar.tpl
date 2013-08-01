@@ -7,7 +7,7 @@
               <li{nav_active name='admin' page="$page" class='dropdown'}>
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{'Parameters'|gettext}<i class="caret"></i></a>
 		<ul class="dropdown-menu" role="menu">
-			<li><a href="admin_users.php">{'User information'|gettext}</a></li>
+			<li><a href="{view page='users' params=$params}">{'User information'|gettext}</a></li>
 			<li><a href="{view page='bot_management' params=$params}">{'Manage Bots'|gettext}</a></li>
 			{if $user['right'] == 'ADMIN' }<li><a href="admin_bots_users.php">{'Assign bots to users'|gettext}</a></li>{/if}
 		</ul>
@@ -29,7 +29,7 @@
 		</li>
             </ul>
 	    <ul class="nav pull-right">
-		<li><a class="whoami" href="admin_users.php"><i class="icon-user icon-white"></i> {$user.name}</a></li>
+		<li><a class="whoami" href="{view page='users' params=$params}"><i class="icon-user icon-white"></i> {$user.name}</a></li>
 		<li style="text-align:right;"><a href="{action action=$action.logout type='get' params=[] values=['']}" class="logout_link" ><i class="icon-off icon-white"></i> {'Logout'|gettext}</a></li>
 	    </ul>
 

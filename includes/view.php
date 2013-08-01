@@ -29,7 +29,12 @@ $_VIEW=array(
 		'php_file' => 'login.php',
 		'url_rewrite' => function () { return 'login/';},
 		'params' => array()
-	)
+	),
+	'users' => array(
+		'php_file' => 'admin_users.php',
+		'url_rewrite' => function () { return 'users/';},
+		'params' => array()
+	),
 );
 
 

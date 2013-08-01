@@ -13,7 +13,7 @@ setlocale (LC_ALL, "fr_FR");
 define('ADMIN',10);
 define('USER',1);
 
-define('ROOT', '/xdcc/');
+define('ROOT', '/');
 define('REWRITE_URL', true);
 
 $config['level']=array(

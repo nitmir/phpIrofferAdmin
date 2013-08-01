@@ -5,7 +5,7 @@ RewriteRule ^bot-([0-9]+)/files(.*)(?:/action/([^/]*)/(.*))$  bot_listul.php?bot
 RewriteRule ^bot-([0-9]+)/files(.*)$  bot_listul.php?bot_id=$1&path=$2&action=$3&values[0]=$4 [QSA,L]
 
 # Bot pack listing
-RewriteRule ^bot-([0-9]+)/list(?:/([^/]*))?(?:/action/([^/]*)/([^/]*))?$  bot_xdl.php?bot_id=$1&group=$2&action=$3&values[0]=$4 [QSA,L]
+RewriteRule ^bot-([0-9]+)(?:-[^/]*)?/list(?:/([^/]*))?(?:/action/([^/]*)/([^/]*))?$  bot_xdl.php?bot_id=$1&group=$2&action=$3&values[0]=$4 [QSA,L]
 
 # Admin shell
 RewriteRule ^bot-([0-9]+)/console/$  bot_command.php?bot_id=$1 [QSA,L]
@@ -18,3 +18,6 @@ RewriteRule ^(?:action/([^/]*)/([^/]*))?$ main.php?action=$1&values[0]=$2 [QSA,L
 
 # login
 RewriteRule ^login/$ login.php [QSA,L]
+
+# users
+RewriteRule ^users/(?:action/([^/]*)/([^/]*))?$ admin_users.php?action=$1&values[0]=$2 [QSA,L]
