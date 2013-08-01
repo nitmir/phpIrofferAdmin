@@ -83,6 +83,7 @@ pre.terminal {
 	border:5px solid black;
 	margin: 0px;
 	padding: 0px;
+	overflow-y: auto;
 }
 
 div.terminal {
@@ -92,16 +93,12 @@ div.terminal {
 	border:5px solid #3c3b37;
 	border-radius: 5px;
 }
-pre.terminal div {
-	overflow-y: scroll;
-	height:445px;
-	padding:0px;
-}
 
 table.terminal {
 	margin-top: 10px;
 	border-radius: 5px;
 	padding-bottom: 5px;
+	width: 100%;
 }
 table.terminal, td.terminal {
 	width:98%;

@@ -49,7 +49,7 @@ function action_url($action, $type, $params){
             list($base, $params_)=view($_ACTION_VIEW[$_ACTION_REVERSE[$action]], $params, true);
             if(REWRITE_URL){
                 if(count($params ['values'])>1) die('Only support one value as action parameter');
-                return build_url($base.($base!=''&&$base[strlen($base)-1]!='/'?'/':'').'action/'.$action.'/'.$params ['values'][0], $params_);
+                return build_url($base.($base!=''&&$base[strlen($base)-1]!='/'?'/':'').'action/'.$action.'/'.encode_url($params ['values'][0]), $params_);
             }else{
                 return build_url($base, array_replace($params_, array('action'=>$action, 'values'=>$params ['values'])));
             }

@@ -120,8 +120,20 @@ class IROFFER {
 	function adddir($path){
 		return $this->command('ADDDIR "'.$path.'"')[1];
 	}
+	function removedir($path){
+		return $this->command('REMOVEDIR "'.$path.'"')[1];
+	}
+	function addgroup($group, $dir){
+		return $this->command('ADDGROUP "'.$group.'" "'.$dir.'"')[1];
+	}
+	function addnew($path){
+		return $this->command('ADDNEW "'.$path.'"')[1];
+	}
 	function chdesc($pack, $desc){
 		return $this->command('CHDESC '.$pack.' "'.$desc.'"')[1];
+	}
+	function status(){
+		return $this->command('STATUS')[1];
 	}
 	function info($n){
 		$array=array_slice($this->command('INFO '.$n), 2, -3);

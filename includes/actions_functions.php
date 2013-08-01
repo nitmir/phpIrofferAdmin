@@ -64,12 +64,40 @@ function action_get_add_file($params){
         die();
     }
 }
-function action_get_add_dir($params){
+function action_post_add_dir($params){
     if($params['bot']!==false){
         $conn = new IROFFER($params['bot']['host'], $params['bot']['port'], $params['bot']['password']);
-        $message=$conn->adddir($params['values'][0]);
+        switch($params['values']['add_type']){
+            case 'ADDGROUP': 
+                if($params['values']['group']!=''){
+                    $message=$conn->addgroup($params['values']['group'], $params['values']['dir']);
+                } else {
+                    $_SESSION['message_error'] []=_('Please choose a non empty group name');
+                    header('Location: '.view('files_listing', $params));
+                    die();
+                }
+                break;
+            case 'ADDNEW': $message=$conn->addnew($params['values']['dir']); break;
+            case 'ADDDIR': $message=$conn->adddir($params['values']['dir']); break;
+            default: $message=_('Invalid method for adddir'); break;
+        }
         if(preg_match('/Adding ([0-9]+) files from dir (.*)/', $message, $match)){
             $_SESSION['message_success'] []=sprintf(_('%s files added from dir %s'), $match[1], $match[2]);
+        } elseif ($message=='--> ADMIN QUIT requested (DCC Chat: telnet) (network: 1)'){
+            $_SESSION['message_warning'] []=_('Nothing to do');
+        } else {
+            $_SESSION['message_error'] []=_($message);
+        }
+        header('Location: '.view('files_listing', $params));
+        die();
+    }
+}
+function action_get_delete_dir($params){
+    if($params['bot']!==false){
+        $conn = new IROFFER($params['bot']['host'], $params['bot']['port'], $params['bot']['password']);
+        $message=$conn->removedir($params['values'][0]);
+        if ($message=='--> ADMIN QUIT requested (DCC Chat: telnet) (network: 1)'){
+            $_SESSION['message_success'] []=_('No error reported');
         } else {
             $_SESSION['message_error'] []=_($message);
         }
@@ -263,24 +291,26 @@ function action_post_edit_user($params){
 }
 
 function action_post_create_user($params){
-    if($params['values']['password1']==$params['values']['password2']&&$params['values']['password1']!=''){
-        if(strlen($params['values']['name'])>=3){
-            if(db()->query("INSERT INTO users (name, email, password) VALUES ("
-                .db()->quote($params['values']['name']).", "
-                .db()->quote($params['values']['email']).", "
-                .db()->quote(crypt($params['values']['password1'])).")")
-            ) {
-                $_SESSION['message_success']=sprintf(_('User %s created'), $params['values']['name']);
-            } else {
-                $_SESSION['message_error'] []=sprintf(_('Creation error: %s'), dberror());
+    if($_SESSION['right'] == 'ADMIN'){
+        if($params['values']['password1']==$params['values']['password2']&&$params['values']['password1']!=''){
+            if(strlen($params['values']['name'])>=3){
+                if(db()->query("INSERT INTO users (name, email, password) VALUES ("
+                    .db()->quote($params['values']['name']).", "
+                    .db()->quote($params['values']['email']).", "
+                    .db()->quote(crypt($params['values']['password1'])).")")
+                ) {
+                    $_SESSION['message_success']=sprintf(_('User %s created'), $params['values']['name']);
+                } else {
+                    $_SESSION['message_error'] []=sprintf(_('Creation error: %s'), dberror());
+                }
+            }else{
+                $_SESSION['message_error'] []=_('Names sould be longer than 3 character');
             }
-        }else{
-            $_SESSION['message_error'] []=_('Names sould be longer than 3 character');
+        } else {
+            $_SESSION['message_error'] []=_('Passwords mismatch, user creation abort');
         }
-    } else {
-        $_SESSION['message_error'] []=_('Passwords mismatch, user creation abort');
-    }
 
-    header('Location: '.view('users'));
-    die();
+        header('Location: '.view('users'));
+        die();
+    }
 }

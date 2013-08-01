@@ -3,7 +3,8 @@
 {block name="bot_title"}{'File listing'|gettext}{/block}
 {block name="bot_description"}{/block}
 {block name="bot_container"}
-<script language="javascript">
+<script type="text/javascript">
+//<![CDATA[
 function newgroup(fld,len,idx) {
         if ((idx+1)==len) {
             var other='';
@@ -38,6 +39,7 @@ function add_dir(path, dir){
                         '<td style="width:10px"><input name="values[add_type]" type="radio" value="ADDGROUP" style="width:95%" id="add_dir_group"/></td>'+
                         '<td>'+
                             '<select name="values[group]" onchange="newgroup(this,this.options.length,this.options.selectedIndex)" onclick="document.getElementById(\'add_dir_group\').checked = true"style="width:95%">'+
+                                '<option></option>'+
                                 {foreach $groups as $g}
                                 '<option>{$g["name"]}</option>'+
                                 {/foreach}
@@ -64,6 +66,7 @@ function add_dir(path, dir){
     ]);
     $('#file_path').css("width", Math.max($("#sendname").width(), 530) - $("#file_path_th").width() + "px");
 }
+//]]>
 </script>
     {if $params.path=='/'}{$params.path=''}{/if}
     <h2>{'File listing'|gettext}</h2>

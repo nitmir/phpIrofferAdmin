@@ -83,3 +83,7 @@ function params() {
 		$_PARAMS['bot']=false;
 	}
 }
+
+function encode_url($url){
+	return str_replace('%2F', '/', rawurlencode($url));
+}

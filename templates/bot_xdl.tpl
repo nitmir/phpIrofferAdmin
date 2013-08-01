@@ -3,7 +3,8 @@
 {block name="bot_title"}listing{if ($params.group) != ''} of group {$params.group}{/if}{/block}
 {block name="bot_description"}{/block}
 {block name="bot_container"}
-<script language="javascript">
+<script type="text/javascript">
+//<![CDATA[
 function get_info(pack) {
     var json = null;
     $.ajax({
@@ -101,6 +102,7 @@ function group(pack, file){
     ]);
     $('#file_path').css("width", Math.max($("#sendname").width(), 530) - $("#file_path_th").width() + "px");
 }
+//]]>
 </script>
     {if {$packs|@count} > 0 }
     <h2>{if ($params.group) != ''}{'Packs listing of group %s'|gettext|sprintf:{$params.group}}{else}{'Packs listing'|gettext}{/if}</h2>
@@ -167,6 +169,7 @@ function group(pack, file){
                 </tr>
             {/if}
         {/foreach}
+	</table>
     {/if}
 {/block}
 

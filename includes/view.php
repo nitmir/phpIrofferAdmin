@@ -2,17 +2,17 @@
 $_VIEW=array(
 	'bot_listing' => array(
 		'php_file' => 'bot_xdl.php',
-		'url_rewrite' => function ($_1, $_2) { return sprintf('bot-%s/list/%s', $_1, $_2);},
+		'url_rewrite' => function ($_1, $_2) { return sprintf('bot-%s/list/%s', encode_url($_1), encode_url($_2));},
 		'params' => array('bot_id', 'group')
 	),
 	'files_listing' => array(
 		'php_file' => 'bot_listul.php',
-		'url_rewrite' => function ($_1, $_2) { return sprintf('bot-%s/files%s', $_1, $_2==''?'/':$_2);},
+		'url_rewrite' => function ($_1, $_2) { return sprintf('bot-%s/files%s', encode_url($_1), $_2==''?'/':encode_url($_2));},
 		'params' => array('bot_id', 'path')
 	),
 	'bot_console' => array(
 		'php_file' => 'bot_command.php',
-		'url_rewrite' => function ($_1) { return sprintf('bot-%s/console/', $_1);},
+		'url_rewrite' => function ($_1) { return sprintf('bot-%s/console/', encode_url($_1));},
 		'params' => array('bot_id')
 	),
 	'bot_management' => array(

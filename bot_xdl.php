@@ -27,5 +27,5 @@ if($_PARAMS['bot']!==false){
 	$tpl->assign('groups', $groups);
 	display("templates/bot_xdl.tpl");
 }else {
-	header("Location: main.php");
+	header("Location: ".view('main'));
 }

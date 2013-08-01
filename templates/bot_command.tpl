@@ -4,7 +4,8 @@
 {block name="bot_description"}{/block}
 {block name="bot_container"}
 	<h2>Admnistration shell</h2>
-	<script language="javascript">
+	<script type="text/javascript">
+//<![CDATA[
 var hist_cmd = new Array(['HELP'])
 var hist_ptr = 0
 var hist_last = ""
@@ -76,22 +77,22 @@ function stroke(code){
 		hist_last = "down";
 	}
 }
-
+//]]>
 </script>
 
 <div class="terminal">
-<pre class="terminal"><div id="terminal" >Welcome to {$params.bot.name}
+<pre class="terminal" id="terminal">Welcome to {$params.bot.name}
 
 Entering DCC Chat Admin Interface
 For Help type "help"
-</div></pre>
-<table width="100%" class="terminal">
+</pre>
+<table class="terminal">
 <tr>
 <!---->
 <td class="terminal">
 	<input name="textbox1" id="textbox1" type="text" class="input-medium terminal"
 	onkeydown="stroke(event.keyCode) "
-	placeholder="Type something..." /></td>
+	placeholder="{'Type something...'|gettext}" /></td>
 <td><input name="btnsend" id="btnsend" onclick="send()" type="button" value="Send"  class="btn btn-primary" /></td>
 </tr>
 </table>

@@ -2,3 +2,4 @@ templates_c/
 *.pot
 utils/template_introspection/
 utils/to_translate.txt
+includes/config.db.php

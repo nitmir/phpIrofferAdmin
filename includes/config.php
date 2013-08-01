@@ -1,10 +1,7 @@
 <?php
 
-//paramètres de connection à la base de donnée
-$MYSQL['host']='localhost';
-$MYSQL['username']='iroffer';
-$MYSQL['password']='password';
-$MYSQL['database']='iroffer';
+//database params
+require('config.db.php');
 
 setlocale (LC_TIME, 'fr_FR.utf8','fra');
 setlocale (LC_ALL, "fr_FR");
@@ -16,7 +13,12 @@ define('USER',1);
 define('ROOT', '/');
 define('REWRITE_URL', true);
 
-$config['level']=array(
+
+
+$_CONFIG['level']=array(
 	USER => 'USER',
 	ADMIN => 'ADMIN',
 );
+
+$_CONFIG['display_error']=0;
+$_CONFIG['session_name']='phpIrofferAdmin';

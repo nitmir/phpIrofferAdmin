@@ -8,5 +8,5 @@ if($_PARAMS['bot']!==false){
 	$tpl->assign('files', $conn->listul($_PARAMS['path']));
 	display("templates/bot_listul.tpl");
 }else {
-	header("Location: main.php");
+	header("Location: ".view('main'));
 }
