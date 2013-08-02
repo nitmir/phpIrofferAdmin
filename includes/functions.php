@@ -6,6 +6,9 @@ function db(){
     if($pdo!==false){
         return $pdo;
     }
+    if(!isset($MYSQL)||empty($MYSQL)){
+	return false;
+    }
     if(!$pdo = new PDO('mysql:host='.$MYSQL['host'].';dbname='.$MYSQL['database'], $MYSQL['username'], $MYSQL['password'])){
     list($err,$_,$info)=$pdo->errorInfo();
         switch ($err){
