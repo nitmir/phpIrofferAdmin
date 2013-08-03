@@ -6,8 +6,7 @@ $PHP_INCLUDES=array('smarty3/Smarty.class.php', 'includes/config.db.php');
 $READABLE_FILES=array();
 $WRITABLE_FILES=array('templates_c/');
 
-$DB_QUERY=array(db(), 'query');
-$SQL_TABLE=array();
+$SQL_TABLE=array('users', 'bots', 'bot_user');
 
 $MISC=array(
 	'root_path' => array(
@@ -29,12 +28,12 @@ $MISC=array(
 		}
 	),
 	'database_connection' => array(
-		function () { return 'Database connection';}, 
+		'Database connection', 
 		function(){ 
-		try { return function_exists('db')&&db(); } catch(PDOException $e){ return false; }}
+		try { return function_exists('db')&&db(); } catch(PDOException $e){ echo ' '.nl2br($e);return false; }}
 	),
 	'database_table' => array(
-		function () { return 'Import sql scheme';},
+		'Import sql scheme',
 		function () {
 			global $FAILED;
 			if(!in_array('database_connection', $FAILED['MISC'])){
@@ -48,11 +47,12 @@ $MISC=array(
 	),
 		
 	'first_user' => array(
-		function () { return 'First user Creation'; },
+		'First user Creation',
 		function() {
 			global $FAILED;
 			if(!in_array('database_table', $FAILED['MISC'])){
 				$query=db()->query("SELECT count(*) FROM users");
+				if(!$query) return false;
 				if($query->fetch()[0]==='0'){
 					if(isset($_POST['action'])&&$_POST['action']=='create_first_user'){
 						if(db()->query("INSERT INTO users (`right`, name, email, password) VALUES ('ADMIN', "
@@ -100,17 +100,17 @@ if(isset($WRITABLE_FILES)&&!empty($WRITABLE_FILES)){
 	$FAILED['WRITABLE_FILES']=test('Check for write permission:', $WRITABLE_FILES, 'is_writable');
 }
 
-if(isset($SQL_TABLE)&&!empty($SQL_TABLE)){
-	$tables=get_tables($DB_QUERY);
-        $FAILED['SQL_TABLE']=test('SQL tables:', $SQL_TABLE, function ($elt) { global $tables; return in_array($elt, $tables);});
-}
-
 if(isset($MISC)&&!empty($MISC)){
 	$FAILED['MISC']=array();
 	echo '<h2>Misc:</h2>';
 	echo '<ul style="max-width:600px;width:auto">';
 	foreach($MISC as $key =>$test){
-		echo '<li style="border-bottom: 1px dotted black">'.call_user_func($test[0]);
+		echo '<li style="border-bottom: 1px dotted black">';
+		if($test[0] instanceof  Closure){
+			echo call_user_func($test[0]);
+		} else {
+			echo $test[0];
+		}
 		if(call_user_func($test[1])){
 			echo ' <span style="color:green; font-weight:bold;text-align:right;float: right;">[OK]</span>';
 		} else {
@@ -120,6 +120,12 @@ if(isset($MISC)&&!empty($MISC)){
 	}
 	echo '</ul>';
 }
+
+if(isset($SQL_TABLE)&&!empty($SQL_TABLE)){
+	$tables=get_tables();
+        $FAILED['SQL_TABLE']=test('SQL tables:', $SQL_TABLE, function ($elt) { global $tables; return in_array($elt, $tables);});
+}
+
 if(isset($CUSTOM_HTML)){
 	echo $CUSTOM_HTML;
 }
@@ -145,7 +151,7 @@ function test($title, $array, $test_function, $display_function=false){
 
 function get_tables($db_query){
 	$tables=array();
-	$query=call_user_func($db_query, 'show tables');
+	$query=db()->query('show tables');
 	while($data=$query->fetch()) $tables[]=$data[0];
 	return $tables;
 }
