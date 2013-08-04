@@ -1,8 +1,0 @@
-<?php
-
-//database params
-$MYSQL['host']='localhost';
-$MYSQL['username']='iroffer';
-$MYSQL['password']='password';
-$MYSQL['database']='iroffer';
-

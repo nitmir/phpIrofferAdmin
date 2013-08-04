@@ -2,7 +2,7 @@
 @include('includes/functions.php');
 
 $PHP_EXTENTIONS = array('PDO', 'pdo_mysql');
-$PHP_INCLUDES=array('smarty3/Smarty.class.php', 'includes/config.db.php');
+$PHP_INCLUDES=array('smarty3/Smarty.class.php', 'includes/config.php');
 $READABLE_FILES=array();
 $WRITABLE_FILES=array('templates_c/');
 
@@ -12,7 +12,7 @@ $MISC=array(
 	'root_path' => array(
 		function () {
 			global $FAILED, $MYSQL;
-			if(!in_array('includes/config.db.php', $FAILED['PHP_INCLUDES'])){
+			if(!in_array('includes/config.php', $FAILED['PHP_INCLUDES'])){
 				include('includes/config.php');
 				$root=dirname($_SERVER['SCRIPT_NAME']);
 				if($root!='/')$root.='/';
@@ -28,8 +28,8 @@ $MISC=array(
 		}
 	),
 	'database_connection' => array(
-		'Database connection', 
-		function(){ 
+		'Database connection',
+		function(){
 		try { return function_exists('db')&&db(); } catch(PDOException $e){ echo ' '.nl2br($e);return false; }}
 	),
 	'database_table' => array(
@@ -45,7 +45,7 @@ $MISC=array(
 			}
 		}
 	),
-		
+
 	'first_user' => array(
 		'First user Creation',
 		function() {
@@ -77,10 +77,10 @@ $MISC=array(
 					return true;
 				}
 			}
-			
+
 		}
 	),
-		
+
 );
 
 
