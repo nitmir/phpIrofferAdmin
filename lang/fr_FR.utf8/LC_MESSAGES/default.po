@@ -1,8 +1,9 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# phpIrofferAdmin french translation.
+# Copyright (C) 2013 phpIrofferAdmin Valentin Samir
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: rofferPhpAdmin\n"

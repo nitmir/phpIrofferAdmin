@@ -1,3 +1,11 @@
+{*
+* This file is part of phpIrofferAdmin.
+*
+* (c) 2013 Valentin Samir
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*}
 {extends file="bot.tpl"}
 {block name="assign"}{assign var="subpage" value="xdl"}{/block}
 {block name="bot_title"}listing{if ($params.group) != ''} of group {$params.group}{/if}{/block}

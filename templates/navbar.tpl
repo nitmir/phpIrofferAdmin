@@ -1,3 +1,11 @@
+{*
+* This file is part of phpIrofferAdmin.
+*
+* (c) 2013 Valentin Samir
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*}
 {extends file="navbar_base.tpl"}
 {block name="navbar_link"}{view page='main' params=$params}{/block}
 {block name="navbar_buttons"}
