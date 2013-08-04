@@ -7,6 +7,38 @@ function action_get_edit_bot($param){
 }
 function action_get_edit_user($params){
 }
+function action_post_manage_user_bot($params){
+    global $_ACTION;
+    print_r($_POST);
+    if($_SESSION['right']=='ADMIN'){
+	$delete=array();
+	$insert=array();
+	foreach($params['values']['bots'] as $id){
+		if(!in_array($id, $params['values_old']['bots'])){
+			db()->query("INSERT INTO bot_user (bot_id, user_id) VALUES (".db()->quote($id).", ".db()->quote($params['values']['user']).")")or die(dberror());
+		}
+	}
+	foreach($params['values_old']['bots'] as $id){
+		if(!in_array($id, $params['values']['bots'])){
+			db()->query("DELETE FROM bot_user WHERE bot_id=".db()->quote($id)." AND user_id=".db()->quote($params['values']['user']))or die(dberror());
+		}
+	}
+	header('Location: '.action_url($_ACTION['manage_user_bot'], 'get', array('values' => array($params['values']['user']))).'#user_'.$params['values']['ancre']);
+	die();
+    }
+}
+function action_get_manage_user_bot($params){
+    global $_PARAMS;
+    if($_SESSION['right']=='ADMIN'){
+        $query=db()->query("SELECT * FROM bots ORDER BY name");
+        $_PARAMS['all_bots']=$query->fetchAll();
+        $query=db()->query("SELECT * FROM bots, bot_user WHERE bots.id=bot_user.bot_id AND bot_user.user_id='".$params['values'][0]."' ORDER BY name")or die(dberror());
+        $_PARAMS['user_bots']=array();
+        while($data=$query->fetch()){
+            $_PARAMS['user_bots'][$data['id']]=$data;
+        }
+    }
+}
 function action_get_delete_pack($params){
     if($params['bot']!==false){
         $conn = new IROFFER($params['bot']['host'], $params['bot']['port'], $params['bot']['password']);
@@ -252,6 +284,12 @@ function action_post_edit_user($params){
         $succs=array();
         $erros=array();
 
+       // Update right
+       if($params['values']['right']!=$params['values_old']['right']&&$_SESSION['right'] == 'ADMIN'){
+           $SET.=', `right`='.db()->quote(trim($params['values']['right']));
+           $succs[]=sprintf(_('Right of %s updated to %s'), $params['values_old']['name'], $params['values']['right']);
+       }
+
         // Update name
         if(strlen($params['values']['name'])>=3){
             if($params['values']['name']!=$params['values_old']['name']){
@@ -283,7 +321,7 @@ function action_post_edit_user($params){
             $_SESSION['message_success'] =array_merge($_SESSION['message_success'], $succs);
             $_SESSION['message_error'] =array_merge($_SESSION['message_error'], $errors);
         } else {
-            $_SESSION['message_error'] []=printf(_('Update error: %s'), dberror());
+            $_SESSION['message_error'] []=sprintf(_('Update error: %s'), dberror().' '.'UPDATE users SET id=id'.$SET.' WHERE id='.db()->quote($params['values']['id']));
         }
         header('Location: '.view('users'));
         die();

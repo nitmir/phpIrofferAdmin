@@ -9,7 +9,6 @@
 		<ul class="dropdown-menu" role="menu">
 			<li role="menuitem"><a href="{view page='users' params=$params}">{'User information'|gettext}</a></li>
 			<li role="menuitem"><a href="{view page='bot_management' params=$params}">{'Manage Bots'|gettext}</a></li>
-			{if $user['right'] == 'ADMIN' }<li role="menuitem"><a href="admin_bots_users.php">{'Assign bots to users'|gettext}</a></li>{/if}
 		</ul>
 		</li>
 		<li{nav_active name='bots' page="$page" class='dropdown'} role="menuitem">

@@ -61,6 +61,7 @@
       <th>{'Password'|gettext}</th>
       <th>{'Last login'|gettext}</th>
       <th>{'Created'|gettext}</th>
+      <th>{'Rights'|gettext}</th>
       <th></th>
       </tr>
       {foreach $user_list as $key => $user}
@@ -83,16 +84,62 @@
           </td>
         <td>{$user['last_login']}</td>
         <td>{$user['created']}</td>
+          <td>
+            <input type="hidden" name="values_old[right]" value="" style="width:100px;" placeholder="{'password'|gettext}"/>
+            <select name="values[right]">
+            {foreach $config.level as $right}
+            <option{if $user.right == $right} selected{/if}>{$right}</option>
+            {/foreach}
+            </select>
+          </td>
           <td style="text-align:right;"><input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary"> <a href="{view page='users' params=$params}#user_{$key - 1}" class="btn btn-primary">{'undo'|gettext}</a></td>
     </form>
     </tr>
-    {else}
-      <tr id="user_{$key}">
-      <td>{$user['name']}</td>
+    {elseif $params.action == $action.manage_user_bot && $params.values.0 == $user.id}
+    <tr id="user_{$key}">
+    <td><a href="{view page='users' params=$params}#user_{$key - 1}">{$user['name']}</a></td>
       <td>{$user['email']}</td>
       <td>**********</td>
       <td>{$user['last_login']}</td>
       <td>{$user['created']}</td>
+      <td>{$user.right}</td>
+      <td style="text-align:right;"></td>
+    </tr>
+    <form method="post" action="{action action=$action.manage_user_bot type='post' params=$params}">
+    <tr>
+    <td></td>
+    <td colspan="5"/>
+    <input type="hidden" name="action" value="{$action.manage_user_bot}" />
+    <input type="hidden" name="values[user]" value="{$user.id}" />
+    <input type="hidden" name="values[ancre]" value="{$key - 1}" />
+    <ul class="column triple">
+      {foreach $params.all_bots as $bot}
+      <li>
+          {if isset($params.user_bots[$bot.id])}
+              <input type="hidden" name="values_old[bots][]" value="{$bot.id}" />
+              <input type="checkbox" name="values[bots][]" value="{$bot.id}" checked />
+          {else}
+            <input type="checkbox" name="values[bots][]" value="{$bot.id}">
+          {/if}
+          {$bot.name}
+      </li>
+      {/foreach}
+    </ul>
+    <td style="text-align:right;">
+    <input type="submit" name="submit" value="{'save'|gettext}" class="btn btn-primary"/>
+    <a href="{view page='users' params=$params}#user_{$key - 1}" class="btn btn-primary">{'close'|gettext}</a>
+   </td>
+    </td>
+    </tr>
+    </form>
+    {else}
+      <tr id="user_{$key}">
+      <td><a href="{action action=$action.manage_user_bot type='get' params=$params values=[$user.id]}#user_{$key - 1}" title="{'Manage user\'s bots'|gettext}">{$user['name']}</a></td>
+      <td>{$user['email']}</td>
+      <td>**********</td>
+      <td>{$user['last_login']}</td>
+      <td>{$user['created']}</td>
+      <td>{$user.right}</td>
       <td style="text-align:right;">
           <a href="{action action=$action.edit_user type='get' params=$params values=[$user.id]}#user_{$key - 1}" class="btn btn-primary">{'edit'|gettext}</a>
           <a href="{action action=$action.delete_user type='get' params=$params values=[$user.id]}" class="btn btn-primary" onclick="return confirm('{{'Delete user %s?'|gettext}|sprintf:$user.name}')">{'del'|gettext}</a></td>
@@ -110,8 +157,7 @@
             <input type="password" name="values[password1]" value="" style="width:100px;" placeholder="{'password'|gettext}"/><br/>
             <input type="password" name="values[password2]" value="" style="width:100px;" placeholder="{'confirmation'|gettext}"/>
           </td>
-          <td></td>
-          <td></td>
+          <td colspan="3"></td>
           <td style="text-align:right;"><input type="submit" name="submit" value="{'Add'|gettext}" class="btn btn-primary"></td>
     </form>
     </tr>
