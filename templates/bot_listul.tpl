@@ -36,11 +36,11 @@ function add_dir(path, dir){
                     '</tr>'+
                     '<tr>'+
                         '<td style="white-space: nowrap">{'Add every file in directory:'|gettext}</td>'+
-                        '<td colspan="2"><input name="values[add_type]" type="radio" value="ADDDIR" style="width:95%"/></td>'+
+                        '<td><input name="values[add_type]" type="radio" value="ADDDIR"/></td><td></td>'+
                     '</tr>'+
                     '<tr>'+
                         '<td style="white-space: nowrap">{'Add new file in directory:'|gettext}</td>'+
-                        '<td colspan="2" style="width:100%"><input name="values[add_type]" type="radio" value="ADDNEW" style="width:95%"/></td>'+
+                        '<td><input name="values[add_type]" type="radio" value="ADDNEW" style="width:95%"/></td><td></td>'+
                     '</tr>'+
                     '<tr>'+
                         '<td style="white-space: nowrap">{'Add new file in directory to group:'|gettext}</td>'+
