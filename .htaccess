@@ -1,3 +1,4 @@
+<IfModule mod_rewrite.c>
 RewriteEngine on
 
 # Bot files listing
@@ -21,3 +22,4 @@ RewriteRule ^login/$ login.php [QSA,L]
 
 # users
 RewriteRule ^users/(?:action/([^/]*)/([^/]*))?$ admin_users.php?action=$1&values[0]=$2 [QSA,L]
+</IfModule>
