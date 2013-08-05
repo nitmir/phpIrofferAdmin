@@ -93,7 +93,7 @@
         <td>{$user['last_login']}</td>
         <td>{$user['created']}</td>
           <td>
-            <input type="hidden" name="values_old[right]" value="" style="width:100px;" placeholder="{'password'|gettext}"/>
+            <input type="hidden" name="values_old[right]" value="{$user.right}" style="width:100px;" placeholder="{'password'|gettext}"/>
             <select name="values[right]">
             {foreach $config.level as $right}
             <option{if $user.right == $right} selected{/if}>{$right}</option>
