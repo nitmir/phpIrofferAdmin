@@ -3,14 +3,13 @@
 # For the full copyright and license information, please view the LICENSE
 # file that was distributed with this source code.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: rofferPhpAdmin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-01 03:13+0200\n"
-"PO-Revision-Date: 2013-08-01 03:14+0100\n"
-"Last-Translator: Nit <nit@genua.fr>\n"
+"POT-Creation-Date: 2013-08-05 05:21+0200\n"
+"PO-Revision-Date: 2013-08-05 05:22+0100\n"
+"Last-Translator: Valentin Samir <valentin.samir@crans.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -19,532 +18,553 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: ../utils/template_introspection/login.tpl.php:2
-msgid "login"
-msgstr "identifiant"
-
-#: ../utils/template_introspection/login.tpl.php:9
-msgid "Please sign in"
-msgstr "Connexion : "
-
-#: ../utils/template_introspection/login.tpl.php:10
-msgid "Login"
-msgstr "Identifiant"
-
-#: ../utils/template_introspection/login.tpl.php:11
-#: ../utils/template_introspection/admin_users.tpl.php:30
-#: ../utils/template_introspection/admin_users.tpl.php:49
-#: ../utils/template_introspection/admin_users.tpl.php:61
-msgid "Password"
-msgstr "Mot de passe"
-
-#: ../utils/template_introspection/login.tpl.php:12
-msgid "Sign in"
-msgstr "Se connecter"
-
-#: ../utils/template_introspection/main.tpl.php:8
-msgid "Iroffer Admin"
-msgstr "Administration d'Iroffer"
-
-#: ../utils/template_introspection/main.tpl.php:9
-msgid "Links to bots admin"
-msgstr "Liens vers l'administration des robots"
-
-#: ../utils/template_introspection/main.tpl.php:14
-#: ../utils/template_introspection/bot_xdl.tpl.php:106
-#: ../utils/template_introspection/bot_nav.tpl.php:2
-#: ../utils/template_introspection/navbar.tpl.php:22
-msgid "Packs listing"
-msgstr "Liste des paquets"
-
-#: ../utils/template_introspection/main.tpl.php:15
-#: ../utils/template_introspection/bot_nav.tpl.php:3
-#: ../utils/template_introspection/navbar.tpl.php:23
-msgid "Add files"
-msgstr "Ajout de fichiers"
-
-#: ../utils/template_introspection/main.tpl.php:16
-#: ../utils/template_introspection/bot_nav.tpl.php:4
-#: ../utils/template_introspection/navbar.tpl.php:24
-msgid "Console"
-msgstr "Console"
-
-#: ../utils/template_introspection/main.tpl.php:20
-msgid "Bots status"
-msgstr "Statut des robots"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:3
-#: ../utils/template_introspection/bot_listul.tpl.php:70
-msgid "File listing"
-msgstr "Liste des fichiers"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:10
-#: ../utils/template_introspection/bot_xdl.tpl.php:24
-msgid "Please indicate a new group name:"
-msgstr "Merci de donner un nom pour le nouveau groupe"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:14
-#: ../utils/template_introspection/bot_listul.tpl.php:45
-#: ../utils/template_introspection/bot_xdl.tpl.php:28
-#: ../utils/template_introspection/bot_xdl.tpl.php:62
-msgid "New group"
-msgstr "Nouveau groupe"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:29
-msgid "Add every file in directory:"
-msgstr "Ajouter tous les fichiers du répertoire :"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:33
-msgid "Add new file in directory:"
-msgstr "Ajouter les nouveaux fichiers du répertoire :"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:37
-msgid "Add new file in directory to group:"
-msgstr "Ajouter les nouveaux fichiers du répertoire dans le groupe : "
-
-#: ../utils/template_introspection/bot_listul.tpl.php:55
-#: ../utils/template_introspection/bot_xdl.tpl.php:91
-msgid "Save"
-msgstr "Sauvegarder"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:62
-#: ../utils/template_introspection/bot_xdl.tpl.php:98
-msgid "Cancel"
-msgstr "Annuler"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:74
-#: ../utils/template_introspection/bot_xdl.tpl.php:138
-#: ../utils/template_introspection/admin_bots.tpl.php:11
-#: ../utils/template_introspection/admin_bots.tpl.php:53
-#: ../utils/template_introspection/admin_users.tpl.php:106
-msgid "name"
-msgstr "nom"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:75
-#: ../utils/template_introspection/bot_xdl.tpl.php:112
-msgid "size"
-msgstr "taille"
-
-#: ../utils/template_introspection/bot_listul.tpl.php:85
+#: ../includes/actions_functions.php:54
 #, php-format
-msgid "Remove every pack found in %s"
-msgstr "Supprime tous les paquets correspondant aux fichiers de %s"
+msgid "Pack %s (%s) removed"
+msgstr "Le paquet %s (%s) a été supprimé"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:85
+#: ../includes/actions_functions.php:56
 #, php-format
-msgid "Remove every pack found in %s?"
-msgstr "Supprimer tous les paquets correspondant aux fichiers de %s ?"
+msgid "Invalid pack number %s, unable to remove it"
+msgstr "Numéro de pack %s invalide, impossible de le supprimer"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:85
-#: ../utils/template_introspection/bot_xdl.tpl.php:123
-#: ../utils/template_introspection/bot_xdl.tpl.php:165
-#: ../utils/template_introspection/admin_bots.tpl.php:46
-#: ../utils/template_introspection/admin_users.tpl.php:98
-msgid "del"
+#: ../includes/actions_functions.php:69
+#, php-format
+msgid "Group %s deleted"
+msgstr "Groupe %s supprimé"
+
+#: ../includes/actions_functions.php:82
+#, php-format
+msgid "Delete all pack from group %s"
+msgstr "Suppression de tous les paquets du groupe %s"
+
+#: ../includes/actions_functions.php:84
+#, php-format
+msgid "Error deleting all pack from group %s"
+msgstr "Erreur durant la suppression de tous les paquets du groupe %s"
+
+#: ../includes/actions_functions.php:96
+#, php-format
+msgid "File %s added at pack #%s"
+msgstr "Le fichier %s a été ajouté en paquet #%s"
+
+#: ../includes/actions_functions.php:98
+#, php-format
+msgid "File %s is already added."
+msgstr "Le fichier %s a déjà été ajouté."
+
+#: ../includes/actions_functions.php:114
+msgid "Please choose a non empty group name"
+msgstr "Merci de choisir un nom de groupe non vide"
+
+#: ../includes/actions_functions.php:121
+msgid "Invalid method for adddir"
+msgstr "Méthode invalide pour adddir"
+
+#: ../includes/actions_functions.php:124
+#, php-format
+msgid "%s files added from dir %s"
+msgstr "%s fichiers ont été ajouté à partir du répertoire %s"
+
+#: ../includes/actions_functions.php:126
+msgid "Nothing to do"
+msgstr "Rien à faire"
+
+#: ../includes/actions_functions.php:139
+msgid "No error reported"
+msgstr "Aucune erreur de rapporté"
+
+#: ../includes/actions_functions.php:153
+#, php-format
+msgid "Description of group %s changed to %s"
+msgstr "Description du groupe %s modifié en %s"
+
+#: ../includes/actions_functions.php:161
+#, php-format
+msgid "Group %s renamed to %s"
+msgstr "Groupe %s renommé en %s"
+
+#: ../includes/actions_functions.php:182
+#, php-format
+msgid "Pack #%s set to group %s"
+msgstr "Paquet #%s assigné au groupe %s"
+
+#: ../includes/actions_functions.php:190
+#, php-format
+msgid "Description of pack #%s changed"
+msgstr "Description du groupe %s modifié"
+
+#: ../includes/actions_functions.php:198
+#, php-format
+msgid "Pack #%s moved to #%s"
+msgstr "Paquet #%s déplacer en position #%s"
+
+#: ../includes/actions_functions.php:253
+msgid "couple (host, port) already used and wrong password"
 msgstr ""
+"L'adresse host:port est déjà utilisé et le mot de passe fourni ne concorde "
+"pas"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:86
+#: ../includes/actions_functions.php:297
 #, php-format
-msgid "Add every file in %s"
-msgstr "Ajoute tous les fichiers contenu dans %s"
+msgid "Right of %s updated to %s"
+msgstr "Droit de %s mis à jour au statut de %s"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:86
-#: ../utils/template_introspection/bot_listul.tpl.php:91
-#: ../utils/template_introspection/admin_bots.tpl.php:58
-msgid "add"
+#: ../includes/actions_functions.php:304
+#, php-format
+msgid "Name of %s updated to %s"
+msgstr "Nom de l'utilisateur %s mis à jour en %s"
+
+#: ../includes/actions_functions.php:307 ../includes/actions_functions.php:352
+msgid "Names sould be longer than 3 character"
+msgstr "Les noms d'utilisateur devraient faire plus de 3 caractères"
+
+#: ../includes/actions_functions.php:312
+#, php-format
+msgid "Email of %s updated to %s"
+msgstr "Email de l'utilisateur %s mis à jour en %s"
+
+#: ../includes/actions_functions.php:318
+#, php-format
+msgid "Password of %s updated"
+msgstr "Mise à jour du mot de passe de %s"
+
+#: ../includes/actions_functions.php:320
+msgid "Passwords mismatch, no updated"
 msgstr ""
+"Non concordance des deux mots de passe, mise à jour des informations annulée"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:47
-msgid "pack:"
-msgstr "paquet :"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:51
-msgid "Description:"
-msgstr "Description :"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:55
-msgid "Groups:"
-msgstr "Groupes :"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:58
-msgid "None"
-msgstr "Aucun"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:67
-msgid "CRC 32:"
-msgstr "CRC 32 :"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:71
-msgid "md5 sum:"
-msgstr "Σ md5"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:75
-msgid "Last Modified:"
-msgstr "Dernière modif :"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:79
-msgid "Path:"
-msgstr "Chemin :"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:86
-msgid "error getting pack informations"
-msgstr "Erreur la récupération des informations du paquet"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:106
+#: ../includes/actions_functions.php:331
 #, php-format
-msgid "Packs listing of group %s"
-msgstr "Liste des paquets du groupe %s"
+msgid "Update error: %s"
+msgstr "Erreur de mise à jour : %s"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:110
-msgid "hit"
+#: ../includes/actions_functions.php:347
+#, php-format
+msgid "User %s created"
+msgstr "Utilisateur %s crée"
+
+#: ../includes/actions_functions.php:349
+#, php-format
+msgid "Creation error: %s"
+msgstr "Erreur de création : %s"
+
+#: ../includes/actions_functions.php:355
+msgid "Passwords mismatch, user creation abort"
 msgstr ""
+"Non concordance des deux mots de passe, création de l'utilisateur annulé"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:111
-#: ../utils/template_introspection/bot_xdl.tpl.php:139
-msgid "description"
-msgstr "description"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:113
-msgid "back"
-msgstr "retour"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:117
-msgid "detail"
-msgstr "détail"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:122
-#: ../utils/template_introspection/bot_xdl.tpl.php:154
-#: ../utils/template_introspection/bot_xdl.tpl.php:164
-#: ../utils/template_introspection/admin_bots.tpl.php:32
-#: ../utils/template_introspection/admin_bots.tpl.php:45
-#: ../utils/template_introspection/admin_users.tpl.php:41
-#: ../utils/template_introspection/admin_users.tpl.php:52
-#: ../utils/template_introspection/admin_users.tpl.php:86
-#: ../utils/template_introspection/admin_users.tpl.php:97
-msgid "edit"
-msgstr "édit"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:123
-msgid "Remove pack from the bot"
-msgstr "Supprime le paquets du robot"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:123
-#, php-format
-msgid "Removing pack #%s - %s [%s] ?"
-msgstr "Supprimer le paquet #%s - %s [%s] ?"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:129
-msgid "Delete group and all contening packs"
-msgstr "Supprimer le groupe et tous ses paquets"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:129
-#, php-format
-msgid "Removing all packs of group %s?"
-msgstr "Supprimer tous les paquets du groupe %s ?"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:129
-msgid "delete all packs"
-msgstr "Suppression de tous les paquets du groupe"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:135
-msgid "Groups listing"
-msgstr "Liste des groupes"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:155
-#: ../utils/template_introspection/admin_bots.tpl.php:33
-#: ../utils/template_introspection/admin_users.tpl.php:42
-#: ../utils/template_introspection/admin_users.tpl.php:86
-msgid "undo"
-msgstr "annuler"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:164
-msgid "Change group name or description"
-msgstr "Changer le nom du groupe ou sa description"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:165
-msgid "Move packs to no group"
-msgstr "N'assigne le paquet à aucun groupe"
-
-#: ../utils/template_introspection/bot_xdl.tpl.php:165
-#, php-format
-msgid "Deleting %s ?\\nThis will put all packs in no group"
-msgstr "Supprimer %s\\nTous les paquets ne seront plus assigné à aucun groupe"
-
-#: ../utils/template_introspection/message.tpl.php:3
-msgid "Warning:"
-msgstr "Attention :"
-
-#: ../utils/template_introspection/message.tpl.php:6
-msgid "Error:"
-msgstr "Erreur : "
-
-#: ../utils/template_introspection/message.tpl.php:9
-msgid "Success:"
-msgstr "Réussite :"
-
-#: ../utils/template_introspection/message.tpl.php:12
-msgid "Info:"
-msgstr "Info :"
-
-#: ../utils/template_introspection/admin_bots.tpl.php:8
-msgid "Manage bots"
-msgstr "Gestion des robots"
-
-#: ../utils/template_introspection/admin_bots.tpl.php:12
-msgid "host"
-msgstr "hôte"
-
-#: ../utils/template_introspection/admin_bots.tpl.php:13
-#: ../utils/template_introspection/admin_bots.tpl.php:55
-msgid "port"
-msgstr "port"
-
-#: ../utils/template_introspection/admin_bots.tpl.php:14
-#: ../utils/template_introspection/admin_bots.tpl.php:56
-#: ../utils/template_introspection/admin_users.tpl.php:32
-#: ../utils/template_introspection/admin_users.tpl.php:81
-#: ../utils/template_introspection/admin_users.tpl.php:110
-msgid "password"
-msgstr "mot de passe"
-
-#: ../utils/template_introspection/admin_bots.tpl.php:15
-msgid "created"
-msgstr "créé le"
-
-#: ../utils/template_introspection/admin_bots.tpl.php:54
-msgid "hostname"
-msgstr "nom d'hôte"
-
-#: ../utils/template_introspection/admin_users.tpl.php:8
-msgid "Iroffer User"
-msgstr "Administration Utilisateur"
-
-#: ../utils/template_introspection/admin_users.tpl.php:9
-msgid "My infos"
-msgstr "Informations personnels"
-
-#: ../utils/template_introspection/admin_users.tpl.php:14
-#: ../utils/template_introspection/admin_users.tpl.php:47
-#: ../utils/template_introspection/admin_users.tpl.php:59
-msgid "Name"
-msgstr "Nom"
-
-#: ../utils/template_introspection/admin_users.tpl.php:23
-#: ../utils/template_introspection/admin_users.tpl.php:48
-#: ../utils/template_introspection/admin_users.tpl.php:60
-msgid "Email"
-msgstr "Email"
-
-#: ../utils/template_introspection/admin_users.tpl.php:33
-#: ../utils/template_introspection/admin_users.tpl.php:82
-#: ../utils/template_introspection/admin_users.tpl.php:111
-msgid "confirmation"
-msgstr "confirmation"
-
-#: ../utils/template_introspection/admin_users.tpl.php:36
-#: ../utils/template_introspection/admin_users.tpl.php:50
-#: ../utils/template_introspection/admin_users.tpl.php:62
-msgid "Last login"
-msgstr "Dernière connexion"
-
-#: ../utils/template_introspection/admin_users.tpl.php:37
-#: ../utils/template_introspection/admin_users.tpl.php:51
-#: ../utils/template_introspection/admin_users.tpl.php:63
-msgid "Created"
-msgstr "Créé le"
-
-#: ../utils/template_introspection/admin_users.tpl.php:56
-msgid "User list"
-msgstr "Liste d'utilisateurs"
-
-#: ../utils/template_introspection/admin_users.tpl.php:98
-#, php-format
-msgid "Delete user %s?"
-msgstr "Supprimer l'utilisateur %s ?"
-
-#: ../utils/template_introspection/admin_users.tpl.php:108
-msgid "email"
-msgstr "email"
-
-#: ../utils/template_introspection/admin_users.tpl.php:115
-msgid "Add"
-msgstr "Ajouter"
-
-#: ../utils/template_introspection/bot_command.tpl.php:94
-msgid "Type something..."
-msgstr "Entrez quelque chose..."
-
-#: ../utils/template_introspection/navbar.tpl.php:6
-msgid "Home"
-msgstr "Accueil"
-
-#: ../utils/template_introspection/navbar.tpl.php:8
-msgid "Parameters"
-msgstr "Paramètres"
-
-#: ../utils/template_introspection/navbar.tpl.php:10
-msgid "User information"
-msgstr "Informations utilisateur"
-
-#: ../utils/template_introspection/navbar.tpl.php:11
-msgid "Manage Bots"
-msgstr "Gérer les robots"
-
-#: ../utils/template_introspection/navbar.tpl.php:12
-msgid "Assign bots to users"
-msgstr "Associer robots et utisateurs"
-
-#: ../utils/template_introspection/navbar.tpl.php:16
-msgid "Bots"
-msgstr "Robots"
-
-#: ../utils/template_introspection/navbar.tpl.php:33
-msgid "Logout"
-msgstr "Déconnexion"
-
-#: ../includes/functions.php:16
+#: ../includes/functions.php:28
 msgid "The server load is very high at the moment. Retrying, please wait..."
 msgstr ""
 "La charge du serveur est actuellement très élevée. Nouvelle tentative en "
 "cours, merci de patienter..."
 
-#: ../includes/functions.php:18
+#: ../includes/functions.php:30
 msgid ""
 "Too many users. Please press the Refresh button in your browser to retry."
 msgstr ""
 "Trop d'utilisateurs connectés. Utilisez le boutons d'actualisation de votre "
 "navigateur pour réessayer."
 
-#: ../includes/actions_functions.php:15
+#: ../utils/template_introspection/main.tpl.php:16
+msgid "Iroffer Admin"
+msgstr "Administration d'Iroffer"
+
+#: ../utils/template_introspection/main.tpl.php:17
+msgid "Links to bots admin"
+msgstr "Liens vers l'administration des robots"
+
+#: ../utils/template_introspection/main.tpl.php:22
+#: ../utils/template_introspection/bot_xdl.tpl.php:116
+#: ../utils/template_introspection/navbar.tpl.php:29
+#: ../utils/template_introspection/bot_nav.tpl.php:10
+msgid "Packs listing"
+msgstr "Liste des paquets"
+
+#: ../utils/template_introspection/main.tpl.php:23
+#: ../utils/template_introspection/navbar.tpl.php:30
+#: ../utils/template_introspection/bot_nav.tpl.php:11
+msgid "Add files"
+msgstr "Ajout de fichiers"
+
+#: ../utils/template_introspection/main.tpl.php:24
+#: ../utils/template_introspection/navbar.tpl.php:31
+#: ../utils/template_introspection/bot_nav.tpl.php:12
+msgid "Console"
+msgstr "Console"
+
+#: ../utils/template_introspection/main.tpl.php:28
+msgid "Bots status"
+msgstr "Statut des robots"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:33
+#: ../utils/template_introspection/bot_listul.tpl.php:19
+msgid "Please indicate a new group name:"
+msgstr "Merci de donner un nom pour le nouveau groupe"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:37
+#: ../utils/template_introspection/bot_xdl.tpl.php:71
+#: ../utils/template_introspection/bot_listul.tpl.php:23
+#: ../utils/template_introspection/bot_listul.tpl.php:54
+msgid "New group"
+msgstr "Nouveau groupe"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:56
+msgid "pack:"
+msgstr "paquet :"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:60
+msgid "Description:"
+msgstr "Description :"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:64
+msgid "Groups:"
+msgstr "Groupes :"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:67
+msgid "None"
+msgstr "Aucun"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:76
+msgid "CRC 32:"
+msgstr "CRC 32 :"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:80
+msgid "md5 sum:"
+msgstr "Σ md5"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:84
+msgid "Last Modified:"
+msgstr "Dernière modif :"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:88
+msgid "Path:"
+msgstr "Chemin :"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:95
+msgid "error getting pack informations"
+msgstr "Erreur la récupération des informations du paquet"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:100
+#: ../utils/template_introspection/bot_listul.tpl.php:64
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:107
+#: ../utils/template_introspection/bot_listul.tpl.php:71
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:116
 #, php-format
-msgid "Pack %s (%s) removed"
-msgstr "Le paquet %s (%s) a été supprimé"
+msgid "Packs listing of group %s"
+msgstr "Liste des paquets du groupe %s"
 
-#: ../includes/actions_functions.php:17
-#, php-format
-msgid "Invalid pack number %s, unable to remove it"
-msgstr "Numéro de pack %s invalide, impossible de le supprimer"
-
-#: ../includes/actions_functions.php:30
-#, php-format
-msgid "Group %s deleted"
-msgstr "Groupe %s supprimé"
-
-#: ../includes/actions_functions.php:43
-#, php-format
-msgid "Delete all pack from group %s"
-msgstr "Suppression de tous les paquets du groupe %s"
-
-#: ../includes/actions_functions.php:45
-#, php-format
-msgid "Error deleting all pack from group %s"
-msgstr "Erreur durant la suppression de tous les paquets du groupe %s"
-
-#: ../includes/actions_functions.php:57
-#, php-format
-msgid "File %s added at pack #%s"
-msgstr "Le fichier %s a été ajouté en paquet #%s"
-
-#: ../includes/actions_functions.php:59
-#, php-format
-msgid "File %s is already added."
-msgstr "Le fichier %s a déjà été ajouté."
-
-#: ../includes/actions_functions.php:75
-msgid "Please choose a non empty group name"
-msgstr "Merci de choisir un nom de groupe non vide"
-
-#: ../includes/actions_functions.php:82
-msgid "Invalid method for adddir"
-msgstr "Méthode invalide pour adddir"
-
-#: ../includes/actions_functions.php:85
-#, php-format
-msgid "%s files added from dir %s"
-msgstr "%s fichiers ont été ajouté à partir du répertoire %s"
-
-#: ../includes/actions_functions.php:87
-msgid "Nothing to do"
-msgstr "Rien à faire"
-
-#: ../includes/actions_functions.php:100
-msgid "No error reported"
-msgstr "Aucune erreur de rapporté"
-
-#: ../includes/actions_functions.php:114
-#, php-format
-msgid "Description of group %s changed to %s"
-msgstr "Description du groupe %s modifié en %s"
-
-#: ../includes/actions_functions.php:122
-#, php-format
-msgid "Group %s renamed to %s"
-msgstr "Groupe %s renommé en %s"
-
-#: ../includes/actions_functions.php:143
-#, php-format
-msgid "Pack #%s set to group %s"
-msgstr "Paquet #%s assigné au groupe %s"
-
-#: ../includes/actions_functions.php:151
-#, php-format
-msgid "Description of pack #%s changed"
-msgstr "Description du groupe %s modifié"
-
-#: ../includes/actions_functions.php:159
-#, php-format
-msgid "Pack #%s moved to #%s"
-msgstr "Paquet #%s déplacer en position #%s"
-
-#: ../includes/actions_functions.php:214
-msgid "couple (host, port) already used and wrong password"
+#: ../utils/template_introspection/bot_xdl.tpl.php:120
+msgid "hit"
 msgstr ""
-"L'adresse host:port est déjà utilisé et le mot de passe fourni ne concorde "
-"pas"
 
-#: ../includes/actions_functions.php:259
+#: ../utils/template_introspection/bot_xdl.tpl.php:121
+#: ../utils/template_introspection/bot_xdl.tpl.php:149
+msgid "description"
+msgstr "description"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:122
+#: ../utils/template_introspection/bot_listul.tpl.php:85
+msgid "size"
+msgstr "taille"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:123
+msgid "back"
+msgstr "retour"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:127
+msgid "detail"
+msgstr "détail"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:132
+#: ../utils/template_introspection/bot_xdl.tpl.php:164
+#: ../utils/template_introspection/bot_xdl.tpl.php:174
+#: ../utils/template_introspection/admin_users.tpl.php:49
+#: ../utils/template_introspection/admin_users.tpl.php:60
+#: ../utils/template_introspection/admin_users.tpl.php:103
+#: ../utils/template_introspection/admin_users.tpl.php:152
+#: ../utils/template_introspection/admin_bots.tpl.php:40
+#: ../utils/template_introspection/admin_bots.tpl.php:53
+msgid "edit"
+msgstr "édit"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:133
+msgid "Remove pack from the bot"
+msgstr "Supprime le paquets du robot"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:133
 #, php-format
-msgid "Name of %s updated to %s"
-msgstr "Nom de l'utilisateur %s mis à jour en %s"
+msgid "Removing pack #%s - %s [%s] ?"
+msgstr "Supprimer le paquet #%s - %s [%s] ?"
 
-#: ../includes/actions_functions.php:262 ../includes/actions_functions.php:307
-msgid "Names sould be longer than 3 character"
-msgstr "Les noms d'utilisateur devraient faire plus de 3 caractères"
-
-#: ../includes/actions_functions.php:267
-#, php-format
-msgid "Email of %s updated to %s"
-msgstr "Email de l'utilisateur %s mis à jour en %s"
-
-#: ../includes/actions_functions.php:273
-#, php-format
-msgid "Password of %s updated"
-msgstr "Mise à jour du mot de passe de %s"
-
-#: ../includes/actions_functions.php:275
-msgid "Passwords mismatch, no updated"
+#: ../utils/template_introspection/bot_xdl.tpl.php:133
+#: ../utils/template_introspection/bot_xdl.tpl.php:175
+#: ../utils/template_introspection/admin_users.tpl.php:153
+#: ../utils/template_introspection/bot_listul.tpl.php:95
+#: ../utils/template_introspection/admin_bots.tpl.php:54
+msgid "del"
 msgstr ""
-"Non concordance des deux mots de passe, mise à jour des informations annulée"
 
-#: ../includes/actions_functions.php:286
+#: ../utils/template_introspection/bot_xdl.tpl.php:139
+msgid "Delete group and all contening packs"
+msgstr "Supprimer le groupe et tous ses paquets"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:139
 #, php-format
-msgid "Update error: %s"
-msgstr "Erreur de mise à jour : %s"
+msgid "Removing all packs of group %s?"
+msgstr "Supprimer tous les paquets du groupe %s ?"
 
-#: ../includes/actions_functions.php:302
+#: ../utils/template_introspection/bot_xdl.tpl.php:139
+msgid "delete all packs"
+msgstr "Suppression de tous les paquets du groupe"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:145
+msgid "Groups listing"
+msgstr "Liste des groupes"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:148
+#: ../utils/template_introspection/admin_users.tpl.php:161
+#: ../utils/template_introspection/bot_listul.tpl.php:84
+#: ../utils/template_introspection/admin_bots.tpl.php:19
+#: ../utils/template_introspection/admin_bots.tpl.php:61
+msgid "name"
+msgstr "nom"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:165
+#: ../utils/template_introspection/admin_users.tpl.php:50
+#: ../utils/template_introspection/admin_users.tpl.php:103
+#: ../utils/template_introspection/admin_bots.tpl.php:41
+msgid "undo"
+msgstr "annuler"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:174
+msgid "Change group name or description"
+msgstr "Changer le nom du groupe ou sa description"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:175
+msgid "Move packs to no group"
+msgstr "N'assigne le paquet à aucun groupe"
+
+#: ../utils/template_introspection/bot_xdl.tpl.php:175
 #, php-format
-msgid "User %s created"
-msgstr "Utilisateur %s crée"
+msgid "Deleting %s ?\\nThis will put all packs in no group"
+msgstr "Supprimer %s\\nTous les paquets ne seront plus assigné à aucun groupe"
 
-#: ../includes/actions_functions.php:304
+#: ../utils/template_introspection/login.tpl.php:10
+msgid "login"
+msgstr "identifiant"
+
+#: ../utils/template_introspection/login.tpl.php:17
+msgid "Please sign in"
+msgstr "Connexion : "
+
+#: ../utils/template_introspection/login.tpl.php:18
+msgid "Login"
+msgstr "Identifiant"
+
+#: ../utils/template_introspection/login.tpl.php:19
+#: ../utils/template_introspection/admin_users.tpl.php:38
+#: ../utils/template_introspection/admin_users.tpl.php:57
+#: ../utils/template_introspection/admin_users.tpl.php:69
+msgid "Password"
+msgstr "Mot de passe"
+
+#: ../utils/template_introspection/login.tpl.php:20
+msgid "Sign in"
+msgstr "Se connecter"
+
+#: ../utils/template_introspection/message.tpl.php:10
+msgid "Warning:"
+msgstr "Attention :"
+
+#: ../utils/template_introspection/message.tpl.php:13
+msgid "Error:"
+msgstr "Erreur : "
+
+#: ../utils/template_introspection/message.tpl.php:16
+msgid "Success:"
+msgstr "Réussite :"
+
+#: ../utils/template_introspection/message.tpl.php:19
+msgid "Info:"
+msgstr "Info :"
+
+#: ../utils/template_introspection/admin_users.tpl.php:16
+msgid "Iroffer User"
+msgstr "Administration Utilisateur"
+
+#: ../utils/template_introspection/admin_users.tpl.php:17
+msgid "My infos"
+msgstr "Informations personnels"
+
+#: ../utils/template_introspection/admin_users.tpl.php:22
+#: ../utils/template_introspection/admin_users.tpl.php:55
+#: ../utils/template_introspection/admin_users.tpl.php:67
+msgid "Name"
+msgstr "Nom"
+
+#: ../utils/template_introspection/admin_users.tpl.php:31
+#: ../utils/template_introspection/admin_users.tpl.php:56
+#: ../utils/template_introspection/admin_users.tpl.php:68
+msgid "Email"
+msgstr "Email"
+
+#: ../utils/template_introspection/admin_users.tpl.php:40
+#: ../utils/template_introspection/admin_users.tpl.php:90
+#: ../utils/template_introspection/admin_users.tpl.php:96
+#: ../utils/template_introspection/admin_users.tpl.php:165
+#: ../utils/template_introspection/admin_bots.tpl.php:22
+#: ../utils/template_introspection/admin_bots.tpl.php:64
+msgid "password"
+msgstr "mot de passe"
+
+#: ../utils/template_introspection/admin_users.tpl.php:41
+#: ../utils/template_introspection/admin_users.tpl.php:91
+#: ../utils/template_introspection/admin_users.tpl.php:166
+msgid "confirmation"
+msgstr "confirmation"
+
+#: ../utils/template_introspection/admin_users.tpl.php:44
+#: ../utils/template_introspection/admin_users.tpl.php:58
+#: ../utils/template_introspection/admin_users.tpl.php:70
+msgid "Last login"
+msgstr "Dernière connexion"
+
+#: ../utils/template_introspection/admin_users.tpl.php:45
+#: ../utils/template_introspection/admin_users.tpl.php:59
+#: ../utils/template_introspection/admin_users.tpl.php:71
+msgid "Created"
+msgstr "Créé le"
+
+#: ../utils/template_introspection/admin_users.tpl.php:64
+msgid "User list"
+msgstr "Liste d'utilisateurs"
+
+#: ../utils/template_introspection/admin_users.tpl.php:72
+msgid "Rights"
+msgstr "Droits"
+
+#: ../utils/template_introspection/admin_users.tpl.php:137
+msgid "save"
+msgstr "sauvegarder"
+
+#: ../utils/template_introspection/admin_users.tpl.php:138
+msgid "close"
+msgstr "fermer"
+
+#: ../utils/template_introspection/admin_users.tpl.php:145
+msgid "Manage user's bots"
+msgstr "Gérer les robots de l'utilisateur"
+
+#: ../utils/template_introspection/admin_users.tpl.php:153
 #, php-format
-msgid "Creation error: %s"
-msgstr "Erreur de création : %s"
+msgid "Delete user %s?"
+msgstr "Supprimer l'utilisateur %s ?"
 
-#: ../includes/actions_functions.php:310
-msgid "Passwords mismatch, user creation abort"
+#: ../utils/template_introspection/admin_users.tpl.php:163
+msgid "email"
+msgstr "email"
+
+#: ../utils/template_introspection/admin_users.tpl.php:169
+msgid "Add"
+msgstr "Ajouter"
+
+#: ../utils/template_introspection/navbar.tpl.php:14
+msgid "Home"
+msgstr "Accueil"
+
+#: ../utils/template_introspection/navbar.tpl.php:16
+msgid "Parameters"
+msgstr "Paramètres"
+
+#: ../utils/template_introspection/navbar.tpl.php:18
+msgid "User information"
+msgstr "Informations utilisateur"
+
+#: ../utils/template_introspection/navbar.tpl.php:19
+msgid "Manage Bots"
+msgstr "Gérer les robots"
+
+#: ../utils/template_introspection/navbar.tpl.php:23
+msgid "Bots"
+msgstr "Robots"
+
+#: ../utils/template_introspection/navbar.tpl.php:40
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:11
+#: ../utils/template_introspection/bot_listul.tpl.php:80
+msgid "File listing"
+msgstr "Liste des fichiers"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:38
+msgid "Add every file in directory:"
+msgstr "Ajouter tous les fichiers du répertoire :"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:42
+msgid "Add new file in directory:"
+msgstr "Ajouter les nouveaux fichiers du répertoire :"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:46
+msgid "Add new file in directory to group:"
+msgstr "Ajouter les nouveaux fichiers du répertoire dans le groupe : "
+
+#: ../utils/template_introspection/bot_listul.tpl.php:95
+#, php-format
+msgid "Remove every pack found in %s"
+msgstr "Supprime tous les paquets correspondant aux fichiers de %s"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:95
+#, php-format
+msgid "Remove every pack found in %s?"
+msgstr "Supprimer tous les paquets correspondant aux fichiers de %s ?"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:96
+#, php-format
+msgid "Add every file in %s"
+msgstr "Ajoute tous les fichiers contenu dans %s"
+
+#: ../utils/template_introspection/bot_listul.tpl.php:96
+#: ../utils/template_introspection/bot_listul.tpl.php:101
+#: ../utils/template_introspection/admin_bots.tpl.php:66
+msgid "add"
 msgstr ""
-"Non concordance des deux mots de passe, création de l'utilisateur annulé"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:16
+msgid "Manage bots"
+msgstr "Gestion des robots"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:20
+msgid "host"
+msgstr "hôte"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:21
+#: ../utils/template_introspection/admin_bots.tpl.php:63
+msgid "port"
+msgstr "port"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:23
+msgid "created"
+msgstr "créé le"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:62
+msgid "hostname"
+msgstr "nom d'hôte"
+
+#: ../utils/template_introspection/bot_command.tpl.php:103
+msgid "Type something..."
+msgstr "Entrez quelque chose..."
+
+#~ msgid "Assign bots to users"
+#~ msgstr "Associer robots et utisateurs"
 
 #~ msgid "Add every file in %s?"
 #~ msgstr "Ajouter tous les fichiers contenu dans %s ?"

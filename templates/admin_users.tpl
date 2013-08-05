@@ -142,7 +142,7 @@
     </form>
     {else}
       <tr id="user_{$key}">
-      <td><a href="{action action=$action.manage_user_bot type='get' params=$params values=[$user.id]}#user_{$key - 1}" title="{'Manage user\'s bots'|gettext}">{$user['name']}</a></td>
+      <td><a href="{action action=$action.manage_user_bot type='get' params=$params values=[$user.id]}#user_{$key - 1}" title="{"Manage user's bots"|gettext}">{$user['name']}</a></td>
       <td>{$user['email']}</td>
       <td>**********</td>
       <td>{$user['last_login']}</td>

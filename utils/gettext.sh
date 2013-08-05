@@ -1,5 +1,5 @@
 #!/bin/bash -x
-
+mkdir -p template_introspection/
 for file in ../templates/*.tpl; do
 	cat $file | ./tpl_to_php_gettext.php > template_introspection/`basename $file`.php
 done
