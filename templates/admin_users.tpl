@@ -115,7 +115,6 @@
     </tr>
     <form method="post" action="{action action=$action.manage_user_bot type='post' params=$params}">
     <tr>
-    <td></td>
     <td colspan="5"/>
     <input type="hidden" name="action" value="{$action.manage_user_bot}" />
     <input type="hidden" name="values[user]" value="{$user.id}" />
@@ -133,7 +132,7 @@
       </li>
       {/foreach}
     </ul>
-    <td style="text-align:right;">
+    <td style="text-align:right;" colspan="2">
     <input type="submit" name="submit" value="{'save'|gettext}" class="btn btn-primary"/>
     <a href="{view page='users' params=$params}#user_{$key - 1}" class="btn btn-primary">{'close'|gettext}</a>
    </td>
