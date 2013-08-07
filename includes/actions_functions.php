@@ -96,6 +96,8 @@ function action_get_add_file($params){
             $_SESSION['message_success'] []=sprintf(_('File %s added at pack #%s'), $match[2], $match[1]);
         } elseif(preg_match('/File \'(.*)\' is already added./', $message, $match)){
             $_SESSION['message_warning'][]=sprintf(_('File %s is already added.'), $match[1]);
+	} elseif(preg_match('@(.*) is not a file@', $message, $match)){
+		$_SESSION['message_error'][]=sprintf(_('%s is not a file'), str_replace('//', '/', $match[1]));
         } else {
             $_SESSION['message_error'] []=_($message);
         }
@@ -118,12 +120,18 @@ function action_post_add_dir($params){
                 break;
             case 'ADDNEW': $message=$conn->addnew($params['values']['dir']); break;
             case 'ADDDIR': $message=$conn->adddir($params['values']['dir']); break;
+	    case 'ADD':
+		$params['values'][0]=$params['values']['dir'];
+		action_get_add_file($params);
+		break;
             default: $message=_('Invalid method for adddir'); break;
         }
         if(preg_match('/Adding ([0-9]+) files from dir (.*)/', $message, $match)){
             $_SESSION['message_success'] []=sprintf(_('%s files added from dir %s'), $match[1], $match[2]);
         } elseif ($message=='--> ADMIN QUIT requested (DCC Chat: telnet) (network: 1)'){
             $_SESSION['message_warning'] []=_('Nothing to do');
+	} elseif(preg_match('/Can\'t Access Directory: (.*) Not a directory/', $message, $match)){
+		$_SESSION['message_error'][]=sprintf(_('%s is not a directory'), str_replace('//', '/', $match[1]));
         } else {
             $_SESSION['message_error'] []=_($message);
         }

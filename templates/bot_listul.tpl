@@ -24,7 +24,7 @@ function newgroup(fld,len,idx) {
             fld.options[idx+1].style.textAlign = 'center'
         }
     }
-function add_dir(path, dir){
+function add_dir(path, dir, symlink=false){
         var div= ''+
         '<div>'+
             '<form class="form-horizontal" method="POST" action="{action action=$action.add_dir type='post' params=$params}" id="add_dir_form">'+
@@ -32,9 +32,15 @@ function add_dir(path, dir){
                 '<input name="values[dir]" type="hidden" value="'+path + '/' + dir+'"/>'+
                 '<table class="table table-striped table-hover">'+
                     '<tr>'+
-                        '<th colspan="3"><span id="sendname">'+path + '/' + dir+'</span></th>'+
-                    '</tr>'+
-                    '<tr>'+
+                        '<th colspan="3"><span id="sendname">'+path + '/' + dir+ (symlink?' ({'symbolic link'|gettext})':'') +'</span></th>'+
+                    '</tr>';
+	if(symlink){
+		div+='<tr>'+
+                        '<td style="white-space: nowrap">{'Add symbolic link as a file:'|gettext}</td>'+
+                        '<td><input name="values[add_type]" type="radio" value="ADD"/></td><td></td>'+
+                    '</tr>';
+	}
+                    div+='<tr>'+
                         '<td style="white-space: nowrap">{'Add every file in directory:'|gettext}</td>'+
                         '<td><input name="values[add_type]" type="radio" value="ADDDIR"/></td><td></td>'+
                     '</tr>'+
@@ -94,6 +100,13 @@ function add_dir(path, dir){
       <td style="text-align:right;">
     <a href="{action action=$action.delete_dir type='get' params=$params values=["{$params.path}/{$file.name}"]}" class="btn btn-primary" title="{'Remove every pack found in %s'|gettext|sprintf:{$file['name']}}" onclick="return confirm('{'Remove every pack found in %s?'|gettext|sprintf:{$file['name']}}')">{'del'|gettext}</a>
     <a href="#" class="btn btn-primary" title="{'Add every file in %s'|gettext|sprintf:{$file['name']}}" onclick="add_dir('{$params.path}', '{$file['name']}')">{'add'|gettext}</a>
+     </td>
+     {elseif $file.size == '=SYMLINK=' }
+     <td><a href="{view page='files_listing' params=$params path="{$params.path}/{$file.name}"}">{$file['name']}</a></td>
+      <td> {'symlink'|gettext} </td>
+      <td style="text-align:right;">
+    <a href="{action action=$action.delete_dir type='get' params=$params values=["{$params.path}/{$file.name}"]}" class="btn btn-primary" title="{'Remove every pack found in %s'|gettext|sprintf:{$file['name']}}" onclick="return confirm('{'Remove every pack found in %s?'|gettext|sprintf:{$file['name']}}')">{'del'|gettext}</a>
+    <a href="#" class="btn btn-primary" title="{'Add every file in %s'|gettext|sprintf:{$file['name']}}" onclick="add_dir('{$params.path}', '{$file['name']}', true)">{'add'|gettext}</a>
      </td>
       {else}
       <td>{$file.name}</td>

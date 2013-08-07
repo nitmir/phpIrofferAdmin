@@ -96,14 +96,22 @@ class IROFFER {
 		}
 	}
 	function listul($path=''){
-		$array=array_slice($this->command('LISTUL "'.$path.'"'), 2, -4);
-		for($i=0; isset($array[$i]); $i++){
-			$array[$i]=preg_split('/ +/', trim($array[$i]), 2);
-			$array[$i]['size']=trim($array[$i][0]);
-			$array[$i]['name']=trim($array[$i][1]);
-			for($j=0; isset($array[$i][$j]); $j++){ unset($array[$i][$j]);}
+		$array=$this->command('LISTUL "'.$path.'"');
+		if(isset($array[1])){
+			$message=$array[1];
+			if(substr($message, 0, 7)=='Listing'){
+				$array=array_slice($array, 2, -4);
+				for($i=0; isset($array[$i]); $i++){
+					$array[$i]=preg_split('/ +/', trim($array[$i]), 2);
+					$array[$i]['size']=trim($array[$i][0]);
+					$array[$i]['name']=trim($array[$i][1]);
+					for($j=0; isset($array[$i][$j]); $j++){ unset($array[$i][$j]);}
+				}
+				return $array;
+			} else {
+				return $message;
+			}
 		}
-		return $array;
 	}
 	function renumber($x, $y){
 		return $this->command('RENUMBER '.$x.' '.$y)[1];
