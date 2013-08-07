@@ -12,7 +12,7 @@ require("includes/require.php");
 
 
 if($_PARAMS['bot']!==false){
-	$conn = new IROFFER($_PARAMS['bot']['host'], $_PARAMS['bot']['port'], $_PARAMS['bot']['password']);
+	$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password());
 
 	if($_PARAMS['group']!=''){
 		$groups=$conn->xdl($group_only=true);

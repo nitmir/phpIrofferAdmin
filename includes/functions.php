@@ -36,6 +36,10 @@ function db(){
     return $pdo;
 }
 
+function session_started(){
+	return session_status() == PHP_SESSION_ACTIVE;
+}
+
 
 // to display sql error
 function dberror(){
@@ -62,39 +66,7 @@ function sub_array($keys, $array){
 	return $return;
 }
 
-// build the list of bot controled by the user
-function botlist(){
-	static $bot_list=false;
-	if($bot_list!==false){
-		return $bot_list;
-	} else {
-		$bot_list=array();
-		$query=db()->query("SELECT * FROM bots, bot_user WHERE bots.id=bot_user.bot_id AND bot_user.user_id='".$_SESSION['id']."' ORDER BY name")or die(dberror());
-		while($data=$query->fetch()){
-			$bot_list[$data['id']]=$data;
-		}
-		return $bot_list;
-	}
-}
 
-// build the params directory
-function params() {
-	global $_PARAMS;
-	$_PARAMS = array();
-	$_PARAMS['bot_id']=isset($_GET['bot_id'])&&isset(botlist()[(int)$_GET['bot_id']])?(int)$_GET['bot_id']:0;
-	$_PARAMS['group']=isset($_GET['group'])?$_GET['group']:'';
-	$_PARAMS['path']=isset($_GET['path'])?$_GET['path']:'';
-	$_PARAMS['action']=isset($_POST['action'])?$_POST['action']:(isset($_GET['action'])?$_GET['action']:'');
-	$_PARAMS['values']=isset($_POST['values'])?$_POST['values']:(isset($_GET['values'])?$_GET['values']:array());
-	$_PARAMS['values_old']=isset($_POST['values_old'])?$_POST['values_old']:(isset($_GET['values_old'])?$_GET['values_old']:array());
-
-	if($_PARAMS['bot_id']>0){
-		$_PARAMS['bot']=botlist()[$_PARAMS['bot_id']];
-		require('includes/iroffer.php');
-	} else {
-		$_PARAMS['bot']=false;
-	}
-}
 
 function encode_url($url){
 	return str_replace('%2F', '/', rawurlencode($url));

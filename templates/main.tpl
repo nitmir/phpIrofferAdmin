@@ -16,21 +16,21 @@
       <h1>{'Iroffer Admin'|gettext}</h1>
       <h2>{'Links to bots admin'|gettext}</h2>
       <table class="table table-striped table-hover">
-      {foreach $bot_list as $b}
+      {foreach $user->bots() as $b}
       <tr>
-      <th>{$b['name']}</th>
-      <td><a href="{view page='bot_listing' params=['bot_id' => $b['id'], 'group' => '']}">{'Packs listing'|gettext}</a></td>
-      <td><a href="{view page='files_listing' params=['bot_id' => $b['id'], 'path' => '']}">{'Add files'|gettext}</a></td>
-      <td><a href="{view page='bot_console' params=['bot_id' => $b['id']]}">{'Console'|gettext}</a></td>
+      <th>{$b->name()}</th>
+      <td><a href="{view page='bot_listing' params=['bot_id' => $b->id(), 'group' => '']}">{'Packs listing'|gettext}</a></td>
+      <td><a href="{view page='files_listing' params=['bot_id' => $b->id(), 'path' => '']}">{'Add files'|gettext}</a></td>
+      <td><a href="{view page='bot_console' params=['bot_id' => $b->id()]}">{'Console'|gettext}</a></td>
       </tr>
       {/foreach}
       </table>
       <h2>{'Bots status'|gettext}</h2>
 	<table class="table table-striped table-hover">
-      {foreach $bot_list as $b}
+      {foreach $user->bots() as $b}
       <tr>
-      <th>{$b['name']}</th>
-      <td>{$status[$b.id]}</td>
+      <th>{$b->name()}</th>
+      <td>{$status[$b->id()]}</td>
       </tr>
       {/foreach}
       </table>

@@ -33,24 +33,7 @@ function display($page){
 	$tpl->assign('subpage', '');
 	$tpl->assign('params', $_PARAMS);
 	$tpl->assign('config', $_CONFIG);
-	if(isset($_SESSION)){
-		$tpl->assign('bot_list', botlist());
-		$tpl->assign('user', $_SESSION);
-		$tpl->assign('message_error', $_SESSION['message_error']);
-		$tpl->assign('message_info', $_SESSION['message_info']);
-		$tpl->assign('message_warning', $_SESSION['message_warning']);
-		$tpl->assign('message_success', $_SESSION['message_success']);
-		$_SESSION['message_error']=array();
-		$_SESSION['message_info']=array();
-		$_SESSION['message_warning']=array();
-		$_SESSION['message_success']=array();
-	}else{
-		$tpl->assign('bot_list', array());
-		$tpl->assign('user', array());
-		$tpl->assign('message_error', array());
-		$tpl->assign('message_info', array());
-		$tpl->assign('message_warning', array());
-		$tpl->assign('message_success', array());
-	}
+	$tpl->assign('messages', messages());
+	$tpl->assign('user', user());
 	$tpl->display($page);
 }

@@ -19,7 +19,7 @@ function get_info(pack) {
         url: "{$ROOT}get_info.php",
         type: 'get',
         async: false,
-        data: { bot_id: "{$params.bot.id}", pack: pack },
+        data: { bot_id: "{$params.bot->id()}", pack: pack },
         success: function(data) {
             json = $.parseJSON(data);
         }

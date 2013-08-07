@@ -24,7 +24,7 @@ function newgroup(fld,len,idx) {
             fld.options[idx+1].style.textAlign = 'center'
         }
     }
-function add_dir(path, dir, symlink=false){
+function add_dir(path, dir, symlink){
         var div= ''+
         '<div>'+
             '<form class="form-horizontal" method="POST" action="{action action=$action.add_dir type='post' params=$params}" id="add_dir_form">'+

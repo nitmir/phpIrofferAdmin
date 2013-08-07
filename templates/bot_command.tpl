@@ -48,7 +48,7 @@ function run(cmd) {
         url: "{$ROOT}run_command.php",
         type: 'get',
         async: false,
-        data: { bot_id: "{$params.bot.id}", command: cmd },
+        data: { bot_id: "{$params.bot->id()}", command: cmd },
         success: function(data) {
            terminal.innerHTML = terminal.innerHTML + "\n" + data;
         }
@@ -89,7 +89,7 @@ function stroke(code){
 </script>
 
 <div class="terminal">
-<pre class="terminal" id="terminal">Welcome to {$params.bot.name}
+<pre class="terminal" id="terminal">Welcome to {$params.bot->name()}
 
 Entering DCC Chat Admin Interface
 For Help type "help"

@@ -21,21 +21,21 @@
       <th>{'port'|gettext}</th>
       <th>{'password'|gettext}</th>
       <th>{'created'|gettext}</th>
-      <th></th>
+      <th style="text-align:right;"><a href="{action action=$action.refresh_bots type='get' params=$params values=['']}" class="btn btn-primary">{'refresh'|gettext}</a></th>
       </tr>
-      {foreach $bot_list as $key => $bot}
-      {if $params.action == $action.edit_bot && $params.values.0 == $bot.id}
+      {foreach $user->bots() as $key => $bot}
+      {if $params.action == $action.edit_bot && $params.values.0 == $bot->id()}
       <tr id="bot_{$key}">
       <form method="POST" action="{action action=$action.edit_bot type='post' params=$params}">
 		<td>
 			<input type="hidden" name="action" value="{$action.edit_bot}"/>
-			<input type="hidden" name="values[id]" value="{$bot.id}"/>
-			<input type="text" name="values[name]" value="{$bot.name}" style="width:100px;"/>
+			<input type="hidden" name="values[id]" value="{$bot->id()}"/>
+			<input type="text" name="values[name]" value="{$bot->name()}" style="width:100px;"/>
 		</td>
-	      <td><input type="text" name="values[host]" value="{$bot.host}" style="width:100px;"/></td>
-	      <td><input type="text" name="values[port]" value="{$bot.port}" style="width:40px;"/></td>
+	      <td><input type="text" name="values[host]" value="{$bot->host()}" style="width:100px;"/></td>
+	      <td><input type="text" name="values[port]" value="{$bot->port()}" style="width:40px;"/></td>
 	      <td><input type="password" name="values[password]" value="" style="width:100px;"/></td>
-	      <td>{$bot.created}</td>
+	      <td>{$bot->created()}</td>
 	      <td style="text-align:right;">
 	          <input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary">
 	          <a href="{view page='bot_management' params=$params}#bot_{$key - 1}" class="btn btn-primary">{'undo'|gettext}</a>
@@ -44,14 +44,14 @@
 	</tr>
 	{else}
       <tr id="bot_{$key}">
-      <td>{$bot.name}</td>
-      <td>{$bot.host}</td>
-      <td>{$bot.port}</td>
+      <td>{$bot->name()}</td>
+      <td>{$bot->host()}</td>
+      <td>{$bot->port()}</td>
       <td>**********</td>
-      <td>{$bot.created}</td>
+      <td>{$bot->created()}</td>
       <td style="text-align:right;">
-	<a href="{action action=$action.edit_bot type='get' params=$params values=[$bot.id]}#bot_{$key - 1}" class="btn btn-primary">{'edit'|gettext}</a>
-	<a href="{action action=$action.delete_bot type='get' params=$params values=[$bot.id]}" class="btn btn-primary">{'del'|gettext}</a>
+	<a href="{action action=$action.edit_bot type='get' params=$params values=[$bot->id()]}#bot_{$key - 1}" class="btn btn-primary">{'edit'|gettext}</a>
+	<a href="{action action=$action.delete_bot type='get' params=$params values=[$bot->id()]}" class="btn btn-primary">{'del'|gettext}</a>
       </td>
       </tr>
       {/if}

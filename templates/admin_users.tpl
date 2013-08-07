@@ -22,16 +22,16 @@
             <th>{'Name'|gettext}</th>
             <td>
                 <input type="hidden" name="action" value="{$action.edit_user}"/>
-                <input type="hidden" name="values[id]" value="{$user['id']}"/>
-                <input type="hidden" name="values_old[name]" value="{$user['name']}"/>
-                <input type="test" name="values[name]" value="{$user['name']}"/>
+                <input type="hidden" name="values[id]" value="{$user->id()}"/>
+                <input type="hidden" name="values_old[name]" value="{$user->name()}"/>
+                <input type="test" name="values[name]" value="{$user->name()}"/>
             </td>
             </tr>
             <tr>
                 <th>{'Email'|gettext}</th>
                 <td>
-                    <input type="hidden" name="values_old[email]" value="{$user['email']}"/>
-                    <input type="text" name="values[email]" value="{$user['email']}"/>
+                    <input type="hidden" name="values_old[email]" value="{$user->email()}"/>
+                    <input type="text" name="values[email]" value="{$user->email()}"/>
                 </td>
             </tr>
             <tr>
@@ -41,8 +41,8 @@
                     <input type="password" name="values[password2]" value="" style="width:100px;" placeholder="{'confirmation'|gettext}"/>
                 </td>
             </tr>
-            <tr><th>{'Last login'|gettext}</th><td>{$user['last_login']}</td></tr>
-            <tr><th>{'Created'|gettext}</th><td>{$user['created']}</td></tr>
+            <tr><th>{'Last login'|gettext}</th><td>{$user->last_login()}</td></tr>
+            <tr><th>{'Created'|gettext}</th><td>{$user->created()}</td></tr>
             <tr>
                 <th></th>
                 <td style="text-align:right;">
@@ -52,15 +52,15 @@
             </tr>
         </form>
       {else}
-      <tr><th>{'Name'|gettext}</th><td>{$user['name']}</td></tr>
-      <tr><th>{'Email'|gettext}</th><td>{$user['email']}</td></tr>
+      <tr><th>{'Name'|gettext}</th><td>{$user->name()}</td></tr>
+      <tr><th>{'Email'|gettext}</th><td>{$user->email()}</td></tr>
       <tr><th>{'Password'|gettext}</th><td>*****</td></tr>
-      <tr><th>{'Last login'|gettext}</th><td>{$user['last_login']}</td></tr>
-      <tr><th>{'Created'|gettext}</th><td>{$user['created']}</td></tr>
+      <tr><th>{'Last login'|gettext}</th><td>{$user->last_login()}</td></tr>
+      <tr><th>{'Created'|gettext}</th><td>{$user->created()}</td></tr>
       <tr><th></th><td style="text-align:right;"><a href="{action action=$action.edit_user type='get' params=$params values=['personal']}" class="btn btn-primary">{'edit'|gettext}</a></td></tr>
       {/if}
       </table>
-      {if $user['right'] == 'ADMIN' }
+      {if $user->right() == 'ADMIN' }
       <h2>{'User list'|gettext}</h2>
       <table class="table table-striped table-hover">
       <tr id="user_-1" >
@@ -73,62 +73,62 @@
       <th></th>
       </tr>
       {foreach $user_list as $key => $user}
-      {if $params.action == $action.edit_user && $params.values.0 == $user.id}
+      {if $params.action == $action.edit_user && $params.values.0 == $user->id()}
       <tr id="user_{$key}">
       <form method="POST" action="{action action=$action.edit_user type='post' params=$params}">
         <td>
                         <input type="hidden" name="action" value="{$action.edit_user}"/>
-            <input type="hidden" name="values[id]" value="{$user['id']}"/>
-            <input type="hidden" name="values_old[name]" value="{$user['name']}"/>
-            <input type="text" name="values[name]" value="{$user['name']}" style="width:100px;"/>
+            <input type="hidden" name="values[id]" value="{$user->id()}"/>
+            <input type="hidden" name="values_old[name]" value="{$user->name()}"/>
+            <input type="text" name="values[name]" value="{$user->name()}" style="width:100px;"/>
         </td>
           <td>
-            <input type="hidden" name="values_old[email]" value="{$user['email']}" style="width:100px;"/>
-            <input type="text" name="values[email]" value="{$user['email']}" style="width:100px;"/>
+            <input type="hidden" name="values_old[email]" value="{$user->email()}" style="width:100px;"/>
+            <input type="text" name="values[email]" value="{$user->email()}" style="width:100px;"/>
         </td>
           <td>
             <input type="password" name="values[password1]" value="" style="width:100px;" placeholder="{'password'|gettext}"/><br/>
             <input type="password" name="values[password2]" value="" style="width:100px;" placeholder="{'confirmation'|gettext}"/>
           </td>
-        <td>{$user['last_login']}</td>
-        <td>{$user['created']}</td>
+        <td>{$user->last_login()}</td>
+        <td>{$user->created()}</td>
           <td>
-            <input type="hidden" name="values_old[right]" value="{$user.right}" style="width:100px;" placeholder="{'password'|gettext}"/>
+            <input type="hidden" name="values_old[right]" value="{$user->right()}" style="width:100px;" placeholder="{'password'|gettext}"/>
             <select name="values[right]">
             {foreach $config.level as $right}
-            <option{if $user.right == $right} selected{/if}>{$right}</option>
+            <option{if $user->right() == $right} selected{/if}>{$right}</option>
             {/foreach}
             </select>
           </td>
           <td style="text-align:right;"><input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary"> <a href="{view page='users' params=$params}#user_{$key - 1}" class="btn btn-primary">{'undo'|gettext}</a></td>
     </form>
     </tr>
-    {elseif $params.action == $action.manage_user_bot && $params.values.0 == $user.id}
+    {elseif $params.action == $action.manage_user_bot && $params.values.0 == $user->id()}
     <tr id="user_{$key}">
-    <td><a href="{view page='users' params=$params}#user_{$key - 1}">{$user['name']}</a></td>
-      <td>{$user['email']}</td>
+    <td><a href="{view page='users' params=$params}#user_{$key - 1}">{$user->name()}</a></td>
+      <td>{$user->email()}</td>
       <td>**********</td>
-      <td>{$user['last_login']}</td>
-      <td>{$user['created']}</td>
-      <td>{$user.right}</td>
+      <td>{$user->last_login()}</td>
+      <td>{$user->created()}</td>
+      <td>{$user->right()}</td>
       <td style="text-align:right;"></td>
     </tr>
     <form method="post" action="{action action=$action.manage_user_bot type='post' params=$params}">
     <tr>
     <td colspan="5"/>
     <input type="hidden" name="action" value="{$action.manage_user_bot}" />
-    <input type="hidden" name="values[user]" value="{$user.id}" />
+    <input type="hidden" name="values[user]" value="{$user->id()}" />
     <input type="hidden" name="values[ancre]" value="{$key - 1}" />
     <ul class="column triple">
       {foreach $params.all_bots as $bot}
       <li>
-          {if isset($params.user_bots[$bot.id])}
-              <input type="hidden" name="values_old[bots][]" value="{$bot.id}" />
-              <input type="checkbox" name="values[bots][]" value="{$bot.id}" checked />
+          {if isset($params.user_bots[$bot->id()])}
+              <input type="hidden" name="values_old[bots][]" value="{$bot->id()}" />
+              <input type="checkbox" name="values[bots][]" value="{$bot->id()}" checked />
           {else}
-            <input type="checkbox" name="values[bots][]" value="{$bot.id}">
+            <input type="checkbox" name="values[bots][]" value="{$bot->id()}">
           {/if}
-          {$bot.name}
+          {$bot->name()}
       </li>
       {/foreach}
     </ul>
@@ -141,15 +141,15 @@
     </form>
     {else}
       <tr id="user_{$key}">
-      <td><a href="{action action=$action.manage_user_bot type='get' params=$params values=[$user.id]}#user_{$key - 1}" title="{"Manage user's bots"|gettext}">{$user['name']}</a></td>
-      <td>{$user['email']}</td>
+      <td><a href="{action action=$action.manage_user_bot type='get' params=$params values=[$user->id()]}#user_{$key - 1}" title="{"Manage user's bots"|gettext}">{$user->name()}</a></td>
+      <td>{$user->email()}</td>
       <td>**********</td>
-      <td>{$user['last_login']}</td>
-      <td>{$user['created']}</td>
-      <td>{$user.right}</td>
+      <td>{$user->last_login()}</td>
+      <td>{$user->created()}</td>
+      <td>{$user->right()}</td>
       <td style="text-align:right;">
-          <a href="{action action=$action.edit_user type='get' params=$params values=[$user.id]}#user_{$key - 1}" class="btn btn-primary">{'edit'|gettext}</a>
-          <a href="{action action=$action.delete_user type='get' params=$params values=[$user.id]}" class="btn btn-primary" onclick="return confirm('{{'Delete user %s?'|gettext}|sprintf:$user.name}')">{'del'|gettext}</a></td>
+          <a href="{action action=$action.edit_user type='get' params=$params values=[$user->id()]}#user_{$key - 1}" class="btn btn-primary">{'edit'|gettext}</a>
+          <a href="{action action=$action.delete_user type='get' params=$params values=[$user->id()]}" class="btn btn-primary" onclick="return confirm('{{{'Delete user %s?'|gettext}|sprintf:$user->name()}|escape:javascript}')">{'del'|gettext}</a></td>
       </tr>
       {/if}
       {/foreach}
