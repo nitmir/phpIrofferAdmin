@@ -9,6 +9,7 @@
 */
 
 require("includes/controler.php");
+session_write_close();
 
 if($_PARAMS['bot']!==false&&isset($_GET['pack'])){
 	$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password());
