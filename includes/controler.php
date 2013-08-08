@@ -7,4 +7,4 @@ session_start();
 login_require();
 params();
 action();
-
+session_write_close();
