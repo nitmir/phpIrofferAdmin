@@ -9,12 +9,5 @@
 */
 
 require("includes/controler.php");
-require('includes/iroffer.php');
 
-$status=array();
-foreach(user()->bots() as $bot){
-	$conn = new IROFFER($bot->host(), $bot->port(), $bot->password());
-	$status[$bot->id()]=$conn->status();
-}
-$tpl->assign('status', $status);
 display("templates/main.tpl");

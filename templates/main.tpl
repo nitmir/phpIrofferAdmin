@@ -13,6 +13,20 @@
 {include file='navbar.tpl' page='home'}
 {/block}
 {block name="container"}
+<script>
+function get_status(bot_id, span_id){
+$.get('{$ROOT}run_command.php', { bot_id: bot_id, command: "STATUS" })
+.done(function(data) {
+document.getElementById(span_id).innerHTML=data.substring(data.indexOf("\n"));
+});
+}
+function get_info(bot_id){
+$.get('{$ROOT}run_command.php', { bot_id: bot_id, command: "BOTINFO" })
+.done(function(data) {
+alert(data.substring(data.indexOf("\n")));
+});
+}
+</script>
       <h1>{'Iroffer Admin'|gettext}</h1>
       <h2>{'Links to bots admin'|gettext}</h2>
       <table class="table table-striped table-hover">
@@ -30,7 +44,7 @@
       {foreach $user->bots() as $b}
       <tr>
       <th>{$b->name()}</th>
-      <td>{$status[$b->id()]}</td>
+      <td onclick="get_info({$b->id()})"><span id="bot_status_{$b->id()}"></span><script>get_status({$b->id()}, 'bot_status_{$b->id()}');</script></td>
       </tr>
       {/foreach}
       </table>
