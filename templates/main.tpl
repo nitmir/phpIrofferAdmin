@@ -43,8 +43,9 @@ alert(data.substring(data.indexOf("\n")));
 	<table class="table table-striped table-hover">
       {foreach $user->bots() as $b}
       <tr>
-      <th>{$b->name()}</th>
-      <td onclick="get_info({$b->id()})"><span id="bot_status_{$b->id()}"></span><script>get_status({$b->id()}, 'bot_status_{$b->id()}');</script></td>
+      <th onclick="get_info({$b->id()})"><a href="#" title="{'detailed info'|gettext}">{$b->name()}</a></th>
+      <td><span id="bot_status_{$b->id()}"></span><script>get_status({$b->id()}, 'bot_status_{$b->id()}');</script></td>
+      <td onclick="get_status({$b->id()}, 'bot_status_{$b->id()}');"><a href="#" class="icon-refresh icon-black" title="{'refresh status'|gettext}"></a></td>
       </tr>
       {/foreach}
       </table>
