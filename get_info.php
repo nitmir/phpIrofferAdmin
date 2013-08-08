@@ -8,7 +8,7 @@
 * file that was distributed with this source code.
 */
 
-require("includes/require.php");
+require("includes/controler.php");
 
 if($_PARAMS['bot']!==false&&isset($_GET['pack'])){
 	$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password());
@@ -18,4 +18,3 @@ if($_PARAMS['bot']!==false&&isset($_GET['pack'])){
 	echo "error";
 	print_r($_GET);
 }
-

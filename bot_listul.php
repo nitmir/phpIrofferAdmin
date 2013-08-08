@@ -8,8 +8,7 @@
 * file that was distributed with this source code.
 */
 
-require("includes/require.php");
-
+require("includes/controler.php");
 
 if($_PARAMS['bot']!==false){
 	$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password());

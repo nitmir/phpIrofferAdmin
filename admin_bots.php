@@ -8,5 +8,6 @@
 * file that was distributed with this source code.
 */
 
-require("includes/require.php");
+require("includes/controler.php");
+
 display("templates/admin_bots.tpl");

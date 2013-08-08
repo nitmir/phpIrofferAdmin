@@ -8,8 +8,6 @@
 * file that was distributed with this source code.
 */
 
-require('includes/config.php');
-require('includes/functions.php');
-require('includes/view.php');
+require("includes/controler.php");
+
 header("Location: ".view('main'));
-?>

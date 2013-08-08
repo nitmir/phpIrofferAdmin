@@ -65,6 +65,27 @@ class USER_DATA {
 	public function delete(){
 		return db()->query("DELETE FROM users WHERE id=".db()->quote($this->id));
 	}
+
+	public function update($name=false, $email=false, $password=false, $right=false){
+		$succs=array();
+		$erros=array();
+		$SET='';
+		if($right)
+			$SET.=', `right`='.db()->quote($right);
+		if($name)
+			$SET.=', name='.db()->quote($name);
+		if($email)
+			$SET.=', email='.db()->quote($email);
+		if($password)
+			$SET.=', password='.db()->quote(crypt($passwor));
+		if(db()->query('UPDATE users SET id=id'.$SET.' WHERE id='.db()->quote($this->id))){
+			return true;
+		} else {
+			 messages()->error(sprintf(_('Update error: %s'), dberror().' '.'UPDATE users SET id=id'.$SET.' WHERE id='.db()->quote($this->id)));
+			 return false;
+		}
+	}
+
 }
 
 class USER {
@@ -171,6 +192,10 @@ class USER {
 	
 	public function delete(){
 		return $this->data->delete();
+	}
+
+	public function update($name=false, $email=false, $password=false, $right=false){
+		return $this->data->update($name, $email, $password, $right);
 	}
 }
 

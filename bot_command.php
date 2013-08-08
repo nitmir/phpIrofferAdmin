@@ -8,11 +8,10 @@
 * file that was distributed with this source code.
 */
 
-require("includes/require.php");
+require("includes/controler.php");
 
 if($_PARAMS['bot']!==false){
 	display("templates/bot_command.tpl");
 }else {
-	echo "error";
-	print_r($_GET);
+	header("Location: ".view('main'));
 }

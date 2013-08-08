@@ -263,16 +263,23 @@ function action_post_edit_user($params){
         $succs=array();
         $erros=array();
 
+	$name=false;
+	$email=false;
+	$password=false;
+	$right=false;
+
+	$user=USER::byID($params['values']['id']);
+
        // Update right
        if($params['values']['right']!=$params['values_old']['right']&&user()->right() == 'ADMIN'){
-           $SET.=', `right`='.db()->quote(trim($params['values']['right']));
+           $right=trim($params['values']['right']);
            $succs[]=sprintf(_('Right of %s updated to %s'), $params['values_old']['name'], $params['values']['right']);
        }
 
         // Update name
         if(strlen($params['values']['name'])>=3){
             if($params['values']['name']!=$params['values_old']['name']){
-                $SET.=', name='.db()->quote(trim($params['values']['name']));
+		$name=trim($params['values']['name']);
                 $succs[]=sprintf(_('Name of %s updated to %s'), $params['values_old']['name'], $params['values']['name']);
             }
         } else {
@@ -280,27 +287,25 @@ function action_post_edit_user($params){
         }
         // Update email
         if($params['values']['email'] != $params['values_old']['email']){
-            $SET.=', email='.db()->quote(trim($params['values']['email']));
+	    $email=trim($params['values']['email']);
             $succs[]=sprintf(_('Email of %s updated to %s'), $params['values_old']['name'], $params['values']['email']);
         }
         //Update Password
         if($params['values']['password1']!='' || $params['values']['password2']!=''){
             if($params['values']['password1']==$params['values']['password2']){
-                $SET.=', password='.db()->quote(crypt($params['values']['password1']));
+		$password=$params['values']['password1'];
                 $succs[]=sprintf(_('Password of %s updated'), $params['values_old']['name']);
             } else {
                 $errors []=_('Passwords mismatch, no updated');
             }
         }
         // Do the upate
-        if(db()->query('UPDATE users SET id=id'.$SET.' WHERE id='.db()->quote($params['values']['id']))){
-            if($params['values']['id']==user()->id()){
+        if($user->update($name, $email, $password, $right)){
+            if($user->id()==user()->id()){
                 user()->load();
             }
             messages()->success($succs);
             messages()->error($errors);
-        } else {
-            messages()->error(sprintf(_('Update error: %s'), dberror().' '.'UPDATE users SET id=id'.$SET.' WHERE id='.db()->quote($params['values']['id'])));
         }
         header('Location: '.view('users'));
         die();

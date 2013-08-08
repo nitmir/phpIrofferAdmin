@@ -8,8 +8,9 @@
 * file that was distributed with this source code.
 */
 
-require("includes/require.php");
+require("includes/controler.php");
 require('includes/iroffer.php');
+
 $status=array();
 foreach(user()->bots() as $bot){
 	$conn = new IROFFER($bot->host(), $bot->port(), $bot->password());
@@ -17,6 +18,3 @@ foreach(user()->bots() as $bot){
 }
 $tpl->assign('status', $status);
 display("templates/main.tpl");
-//~ $page_name='home';
-//~ include('includes/header.php'); 
-?>

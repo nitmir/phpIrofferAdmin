@@ -8,8 +8,7 @@
 * file that was distributed with this source code.
 */
 
-require("includes/require.php");
-require('includes/iroffer.php');
+require("includes/controler.php");
 
 $tpl->assign('user_list', user()->all_users());
 display("templates/admin_users.tpl");

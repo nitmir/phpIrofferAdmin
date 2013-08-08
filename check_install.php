@@ -164,4 +164,3 @@ function get_tables($db_query){
 	while($data=$query->fetch()) $tables[]=$data[0];
 	return $tables;
 }
-
