@@ -8,6 +8,6 @@
 * file that was distributed with this source code.
 */
 
-require("includes/require");
+require("includes/require.php");
 
 display("templates/login.tpl");
