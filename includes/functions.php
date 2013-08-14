@@ -19,7 +19,7 @@ function needed_params($keys, $params){
 	}
 }
 
-// extrack the array of kers defines in $keys
+// extrack the array of keys defines in $keys
 function sub_array($keys, $array){
 	$return=array();
 	for($i=0; isset($keys[$i]); $i++){
@@ -27,8 +27,6 @@ function sub_array($keys, $array){
 	}
 	return $return;
 }
-
-
 
 function encode_url($url){
 	return str_replace('%2F', '/', rawurlencode($url));

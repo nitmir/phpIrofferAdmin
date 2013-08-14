@@ -27,7 +27,7 @@ class USER_DATA {
 		if(isset($data['id'])){
 			return new USER_DATA($data['id']);
 		} else {
-			throw new Exception('User '.$name.' not found');
+			throw new Exception('User id not found in row');
 		}
 	}
 	public function fetch(){
@@ -40,7 +40,7 @@ class USER_DATA {
 	}
 	
 	public function login(){
-		db()->exec("UPDATE users SET last_login=NOW(), ip='".$_SERVER['REMOTE_ADDR']."' WHERE id='".$this->id."'")or die(dberror());
+		db()->exec("UPDATE users SET last_login=NOW(), ip='".$_SERVER['REMOTE_ADDR']."' WHERE id=".db()->quote($this->id))or die(dberror());
 	}
 
 	public static function all_users(){
@@ -155,7 +155,7 @@ class USER {
 		return $inst;
 	}
 	function USER(){
-		$inst->data=new USER_DATA(0);
+		$this->data = new USER_DATA(-1);
 	}
 	
 	private function check_pass($password){

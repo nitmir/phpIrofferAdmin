@@ -133,7 +133,9 @@ class BOT {
 		$inst->load($data);
 		return $inst;
 	}
-	function BOT(){}
+	function BOT(){
+		$this->data = new BOT_DATA(-1);
+	}
 	
 	public static function by_user($user_id){
 		return BOT_DATA::by_user($user_id);
