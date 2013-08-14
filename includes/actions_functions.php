@@ -242,7 +242,7 @@ function action_get_delete_bot($params){
     die();
 }
 function action_get_logout($params){
-    if(is_logged()){
+    if(user()->valid()){
         foreach(array_keys($_SESSION) as $key){
             unset($_SESSION[$key]);
         }

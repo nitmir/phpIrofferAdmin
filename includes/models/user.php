@@ -39,6 +39,10 @@ class USER_DATA {
 		}
 	}
 	
+	public function login(){
+		db()->exec("UPDATE users SET last_login=NOW(), ip='".$_SERVER['REMOTE_ADDR']."' WHERE id='".$this->id."'")or die(dberror());
+	}
+
 	public static function all_users(){
 		$query=db()->query("SELECT * FROM users ORDER BY name");
 		$array=array();
@@ -112,6 +116,8 @@ class USER {
 	public function valid($password=false){
 		if($password!==false){
 			$this->valid = $this->check_pass($password);
+			if($this->valid)
+				$this->data->login();
 		}
 		return $this->valid;
 	}
@@ -148,7 +154,9 @@ class USER {
 		$inst->load($data);
 		return $inst;
 	}
-	function USER(){}
+	function USER(){
+		$inst->data=new USER_DATA(0);
+	}
 	
 	private function check_pass($password){
 		list($_,$algo,$salt,$_)=explode('$', $this->password);
@@ -202,12 +210,16 @@ class USER {
 
 function user($name=false){
 	if($name!==false&&session_started()){
-		$_SESSION['user']=USER::byName($name);
+		try{
+			$_SESSION['user']=USER::byName($name);
+		} catch(Exception $e) {
+			return new USER();
+		}
 	}
 	if(isset($_SESSION['user'])){
 		return $_SESSION['user'];
 	} else {
-		return false;
+		return new USER();;
 	}
 }
 
