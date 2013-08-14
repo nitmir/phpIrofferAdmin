@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rofferPhpAdmin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-07 18:21+0200\n"
-"PO-Revision-Date: 2013-08-07 18:22+0100\n"
+"POT-Creation-Date: 2013-08-15 01:08+0200\n"
+"PO-Revision-Date: 2013-08-15 01:10+0100\n"
 "Last-Translator: Nit <nit@genua.fr>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,164 +18,174 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: ../includes/functions.php:28
+#: ../includes/sql.php:28
 msgid "The server load is very high at the moment. Retrying, please wait..."
 msgstr ""
 "La charge du serveur est actuellement très élevée. Nouvelle tentative en "
 "cours, merci de patienter..."
 
-#: ../includes/functions.php:30
+#: ../includes/sql.php:30
 msgid ""
 "Too many users. Please press the Refresh button in your browser to retry."
 msgstr ""
 "Trop d'utilisateurs connectés. Utilisez le boutons d'actualisation de votre "
 "navigateur pour réessayer."
 
-#: ../includes/actions_functions.php:54
+#: ../includes/models/user.php:88
 #, php-format
-msgid "Pack %s (%s) removed"
-msgstr "Le paquet %s (%s) a été supprimé"
+msgid "Update error: %s"
+msgstr "Erreur de mise à jour : %s"
 
-#: ../includes/actions_functions.php:56
-#, php-format
-msgid "Invalid pack number %s, unable to remove it"
-msgstr "Numéro de pack %s invalide, impossible de le supprimer"
-
-#: ../includes/actions_functions.php:69
-#, php-format
-msgid "Group %s deleted"
-msgstr "Groupe %s supprimé"
-
-#: ../includes/actions_functions.php:82
-#, php-format
-msgid "Delete all pack from group %s"
-msgstr "Suppression de tous les paquets du groupe %s"
-
-#: ../includes/actions_functions.php:84
-#, php-format
-msgid "Error deleting all pack from group %s"
-msgstr "Erreur durant la suppression de tous les paquets du groupe %s"
-
-#: ../includes/actions_functions.php:96
-#, php-format
-msgid "File %s added at pack #%s"
-msgstr "Le fichier %s a été ajouté en paquet #%s"
-
-#: ../includes/actions_functions.php:98
-#, php-format
-msgid "File %s is already added."
-msgstr "Le fichier %s a déjà été ajouté."
-
-#: ../includes/actions_functions.php:100
-#, php-format
-msgid "%s is not a file"
-msgstr "%s n'est pas un fichier"
-
-#: ../includes/actions_functions.php:116
-msgid "Please choose a non empty group name"
-msgstr "Merci de choisir un nom de groupe non vide"
-
-#: ../includes/actions_functions.php:127
-msgid "Invalid method for adddir"
-msgstr "Méthode invalide pour adddir"
-
-#: ../includes/actions_functions.php:130
-#, php-format
-msgid "%s files added from dir %s"
-msgstr "%s fichiers ont été ajouté à partir du répertoire %s"
-
-#: ../includes/actions_functions.php:132
-msgid "Nothing to do"
-msgstr "Rien à faire"
-
-#: ../includes/actions_functions.php:134 ../bot_listul.php:22
-#, php-format
-msgid "%s is not a directory"
-msgstr "%s n'est pas un répertoire"
-
-#: ../includes/actions_functions.php:147
-msgid "No error reported"
-msgstr "Aucune erreur de rapporté"
-
-#: ../includes/actions_functions.php:161
-#, php-format
-msgid "Description of group %s changed to %s"
-msgstr "Description du groupe %s modifié en %s"
-
-#: ../includes/actions_functions.php:169
-#, php-format
-msgid "Group %s renamed to %s"
-msgstr "Groupe %s renommé en %s"
-
-#: ../includes/actions_functions.php:190
-#, php-format
-msgid "Pack #%s set to group %s"
-msgstr "Paquet #%s assigné au groupe %s"
-
-#: ../includes/actions_functions.php:198
-#, php-format
-msgid "Description of pack #%s changed"
-msgstr "Description du groupe %s modifié"
-
-#: ../includes/actions_functions.php:206
-#, php-format
-msgid "Pack #%s moved to #%s"
-msgstr "Paquet #%s déplacer en position #%s"
-
-#: ../includes/actions_functions.php:261
+#: ../includes/models/bot.php:84
 msgid "couple (host, port) already used and wrong password"
 msgstr ""
 "L'adresse host:port est déjà utilisé et le mot de passe fourni ne concorde "
 "pas"
 
-#: ../includes/actions_functions.php:305
+#: ../includes/actions_functions.php:58
+#, php-format
+msgid "Pack %s (%s) removed"
+msgstr "Le paquet %s (%s) a été supprimé"
+
+#: ../includes/actions_functions.php:60
+#, php-format
+msgid "Invalid pack number %s, unable to remove it"
+msgstr "Numéro de pack %s invalide, impossible de le supprimer"
+
+#: ../includes/actions_functions.php:73
+#, php-format
+msgid "Group %s deleted"
+msgstr "Groupe %s supprimé"
+
+#: ../includes/actions_functions.php:86
+#, php-format
+msgid "Delete all pack from group %s"
+msgstr "Suppression de tous les paquets du groupe %s"
+
+#: ../includes/actions_functions.php:88
+#, php-format
+msgid "Error deleting all pack from group %s"
+msgstr "Erreur durant la suppression de tous les paquets du groupe %s"
+
+#: ../includes/actions_functions.php:100
+#, php-format
+msgid "File %s added at pack #%s"
+msgstr "Le fichier %s a été ajouté en paquet #%s"
+
+#: ../includes/actions_functions.php:102
+#, php-format
+msgid "File %s is already added."
+msgstr "Le fichier %s a déjà été ajouté."
+
+#: ../includes/actions_functions.php:104
+#, php-format
+msgid "%s is not a file"
+msgstr "%s n'est pas un fichier"
+
+#: ../includes/actions_functions.php:120
+msgid "Please choose a non empty group name"
+msgstr "Merci de choisir un nom de groupe non vide"
+
+#: ../includes/actions_functions.php:131
+msgid "Invalid method for adddir"
+msgstr "Méthode invalide pour adddir"
+
+#: ../includes/actions_functions.php:134
+#, php-format
+msgid "%s files added from dir %s"
+msgstr "%s fichiers ont été ajouté à partir du répertoire %s"
+
+#: ../includes/actions_functions.php:136
+msgid "Nothing to do"
+msgstr "Rien à faire"
+
+#: ../includes/actions_functions.php:138 ../bot_listul.php:21
+#, php-format
+msgid "%s is not a directory"
+msgstr "%s n'est pas un répertoire"
+
+#: ../includes/actions_functions.php:151
+msgid "No error reported"
+msgstr "Aucune erreur de rapporté"
+
+#: ../includes/actions_functions.php:165
+#, php-format
+msgid "Description of group %s changed to %s"
+msgstr "Description du groupe %s modifié en %s"
+
+#: ../includes/actions_functions.php:173
+#, php-format
+msgid "Group %s renamed to %s"
+msgstr "Groupe %s renommé en %s"
+
+#: ../includes/actions_functions.php:194
+#, php-format
+msgid "Pack #%s set to group %s"
+msgstr "Paquet #%s assigné au groupe %s"
+
+#: ../includes/actions_functions.php:202
+#, php-format
+msgid "Description of pack #%s changed"
+msgstr "Description du groupe %s modifié"
+
+#: ../includes/actions_functions.php:210
+#, php-format
+msgid "Pack #%s moved to #%s"
+msgstr "Paquet #%s déplacer en position #%s"
+
+#: ../includes/actions_functions.php:276
 #, php-format
 msgid "Right of %s updated to %s"
 msgstr "Droit de %s mis à jour au statut de %s"
 
-#: ../includes/actions_functions.php:312
+#: ../includes/actions_functions.php:283
 #, php-format
 msgid "Name of %s updated to %s"
 msgstr "Nom de l'utilisateur %s mis à jour en %s"
 
-#: ../includes/actions_functions.php:315 ../includes/actions_functions.php:360
+#: ../includes/actions_functions.php:286 ../includes/actions_functions.php:325
 msgid "Names sould be longer than 3 character"
 msgstr "Les noms d'utilisateur devraient faire plus de 3 caractères"
 
-#: ../includes/actions_functions.php:320
+#: ../includes/actions_functions.php:291
 #, php-format
 msgid "Email of %s updated to %s"
 msgstr "Email de l'utilisateur %s mis à jour en %s"
 
-#: ../includes/actions_functions.php:326
+#: ../includes/actions_functions.php:297
 #, php-format
 msgid "Password of %s updated"
 msgstr "Mise à jour du mot de passe de %s"
 
-#: ../includes/actions_functions.php:328
+#: ../includes/actions_functions.php:299
 msgid "Passwords mismatch, no updated"
 msgstr ""
 "Non concordance des deux mots de passe, mise à jour des informations annulée"
 
-#: ../includes/actions_functions.php:339
-#, php-format
-msgid "Update error: %s"
-msgstr "Erreur de mise à jour : %s"
-
-#: ../includes/actions_functions.php:355
+#: ../includes/actions_functions.php:320
 #, php-format
 msgid "User %s created"
 msgstr "Utilisateur %s crée"
 
-#: ../includes/actions_functions.php:357
+#: ../includes/actions_functions.php:322
 #, php-format
 msgid "Creation error: %s"
 msgstr "Erreur de création : %s"
 
-#: ../includes/actions_functions.php:363
+#: ../includes/actions_functions.php:328
 msgid "Passwords mismatch, user creation abort"
 msgstr ""
 "Non concordance des deux mots de passe, création de l'utilisateur annulé"
+
+#: ../includes/actions_functions.php:341
+#, php-format
+msgid "User %s deleted"
+msgstr "Utilisateur %s supprimé"
+
+#: ../includes/actions_functions.php:343 ../includes/actions_functions.php:346
+#, php-format
+msgid "Deletion error: %s"
+msgstr "Erreur de suppression : %s"
 
 #: ../utils/template_introspection/admin_bots.tpl.php:16
 msgid "Manage bots"
@@ -210,6 +220,10 @@ msgstr "mot de passe"
 #: ../utils/template_introspection/admin_bots.tpl.php:23
 msgid "created"
 msgstr "créé le"
+
+#: ../utils/template_introspection/admin_bots.tpl.php:24
+msgid "refresh"
+msgstr "rafraîchir"
 
 #: ../utils/template_introspection/admin_bots.tpl.php:40
 #: ../utils/template_introspection/admin_bots.tpl.php:53
@@ -367,7 +381,7 @@ msgstr "Liste des paquets du groupe %s"
 
 #: ../utils/template_introspection/bot_xdl.tpl.php:116
 #: ../utils/template_introspection/bot_nav.tpl.php:10
-#: ../utils/template_introspection/main.tpl.php:22
+#: ../utils/template_introspection/main.tpl.php:36
 #: ../utils/template_introspection/navbar.tpl.php:29
 msgid "Packs listing"
 msgstr "Liste des paquets"
@@ -449,13 +463,13 @@ msgid "Info:"
 msgstr "Info :"
 
 #: ../utils/template_introspection/bot_nav.tpl.php:11
-#: ../utils/template_introspection/main.tpl.php:23
+#: ../utils/template_introspection/main.tpl.php:37
 #: ../utils/template_introspection/navbar.tpl.php:30
 msgid "Add files"
 msgstr "Ajout de fichiers"
 
 #: ../utils/template_introspection/bot_nav.tpl.php:12
-#: ../utils/template_introspection/main.tpl.php:24
+#: ../utils/template_introspection/main.tpl.php:38
 #: ../utils/template_introspection/navbar.tpl.php:31
 msgid "Console"
 msgstr "Console"
@@ -554,17 +568,25 @@ msgstr "Identifiant"
 msgid "Sign in"
 msgstr "Se connecter"
 
-#: ../utils/template_introspection/main.tpl.php:16
+#: ../utils/template_introspection/main.tpl.php:30
 msgid "Iroffer Admin"
 msgstr "Administration d'Iroffer"
 
-#: ../utils/template_introspection/main.tpl.php:17
+#: ../utils/template_introspection/main.tpl.php:31
 msgid "Links to bots admin"
 msgstr "Liens vers l'administration des robots"
 
-#: ../utils/template_introspection/main.tpl.php:28
+#: ../utils/template_introspection/main.tpl.php:42
 msgid "Bots status"
 msgstr "Statut des robots"
+
+#: ../utils/template_introspection/main.tpl.php:46
+msgid "detailed info"
+msgstr "informations détaillées"
+
+#: ../utils/template_introspection/main.tpl.php:48
+msgid "refresh status"
+msgstr "rafraîchir le statut"
 
 #: ../utils/template_introspection/navbar.tpl.php:14
 msgid "Home"
