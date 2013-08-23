@@ -8,6 +8,7 @@
 * file that was distributed with this source code.
 */
 
+@include('includes/sql.php');
 @include('includes/functions.php');
 
 $PHP_EXTENTIONS = array('PDO', 'pdo_mysql');
