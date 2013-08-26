@@ -13,7 +13,7 @@ session_write_close();
 
 if($_PARAMS['bot']!==false&&isset($_GET['command'])){
 	try{
-		$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password());
+		$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password(), $_CONFIG['iroffer_timeout']);
 	} catch (IROFFER_ERROR $error){
                 print("\n".htmlspecialchars($error->getMessage())."\n");
 		exit(0);

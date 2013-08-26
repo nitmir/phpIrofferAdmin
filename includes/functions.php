@@ -52,12 +52,13 @@ function params() {
 }
 
 function iroffer($bot){
+	global $_CONFIG;
 	try{
-		$conn = new IROFFER($bot->host(), $bot->port(), $bot->password());
-		return $conn;
+		$conn = new IROFFER($bot->host(), $bot->port(), $bot->password(), $_CONFIG['iroffer_timeout']);
 	} catch (IROFFER_ERROR $error){
 		messages()->error($error->getMessage());
+		header("Location: ".view('main'));
+		exit(0);
 	}
-	header("Location: ".view('main'));
-	die();
+	return $conn;
 }

@@ -18,11 +18,13 @@ class IROFFER {
 	var $version;
 	var $error_number;
 	var $error_message;
+	var $timeout = 5;
 
-	function IROFFER ($server, $port, $password) {
+	function IROFFER ($server, $port, $password, $timeout=NULL) {
 		$this->server = $server;
 		$this->port = $port;
 		$this->password = $password;
+		if($timeout) $this->timeout = $timeout;
 		$this->connect();
 	}
 
@@ -30,7 +32,7 @@ class IROFFER {
 		if($this->conn) {
 			return true;
 		}
-		$this->nntp = fsockopen($this->server, $this->port, $this->error_number, $this->error_message);
+		$this->nntp = fsockopen($this->server, $this->port, $this->error_number, $this->error_message, $this->timeout);
 		if ($this->nntp === false) throw new IROFFER_ERROR('Unable to connect to the bot at address '.$this->server.':'.$this->port.'. Error n°'.$this->error_number.': '.$this->error_message);
 		if($this->nntp) {
 			//stream_set_blocking($this->nntp, 0);

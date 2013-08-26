@@ -33,3 +33,4 @@ $_CONFIG['level']=array(
 
 $_CONFIG['display_error']=0;
 $_CONFIG['session_name']='phpIrofferAdmin';
+$_CONFIG['iroffer_timeout']=3; //timeout then connecting to iroffer telnet interface in seconds

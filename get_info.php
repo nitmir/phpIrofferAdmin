@@ -12,7 +12,7 @@ require("includes/controler.php");
 session_write_close();
 
 if($_PARAMS['bot']!==false&&isset($_GET['pack'])){
-	$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password());
+	$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password(), $_CONFIG['iroffer_timeout']);
 	$result=$conn->info($_GET['pack']);
 	print(json_encode($result));
 }else {
