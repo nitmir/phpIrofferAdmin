@@ -33,11 +33,13 @@ class IROFFER {
 			return true;
 		}
 		$this->nntp = fsockopen($this->server, $this->port, $this->error_number, $this->error_message, $this->timeout);
-		if ($this->nntp === false) throw new IROFFER_ERROR('Unable to connect to the bot at address '.$this->server.':'.$this->port.'. Error n°'.$this->error_number.': '.$this->error_message);
 		if($this->nntp) {
-			//stream_set_blocking($this->nntp, 0);
+			stream_set_timeout($this->nntp, max(5, $this->timeout));
 			$this->bot=explode(' ', fgets($this->nntp, 4096), 4)[2];
 			$this->version=fgets($this->nntp, 4096);
+			stream_set_timeout($this->nntp, max(30, $this->timeout));
+			if(substr($this->version, 0, 7) != 'iroffer')
+				throw new IROFFER_ERROR('Bad iroffer version : '.($this->version!=NULL?$this->version:'NULL'));
 			while(strlen(fgets($this->nntp, 4096))>2);
 			$this->send($this->password);
 			while(strlen(fgets($this->nntp, 4096))>2);
@@ -45,7 +47,7 @@ class IROFFER {
 
 			return true;
 		} else {
-			return false;
+			throw new IROFFER_ERROR('Unable to connect to the bot at address '.$this->server.':'.$this->port.'. Error n°'.$this->error_number.': '.$this->error_message);
 		}
 	}
 	function send($str) {
