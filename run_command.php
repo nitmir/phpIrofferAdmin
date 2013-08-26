@@ -12,7 +12,12 @@ require("includes/controler.php");
 session_write_close();
 
 if($_PARAMS['bot']!==false&&isset($_GET['command'])){
-	$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password());
+	try{
+		$conn = new IROFFER($_PARAMS['bot']->host(), $_PARAMS['bot']->port(), $_PARAMS['bot']->password());
+	} catch (IROFFER_ERROR $error){
+                print("\n".htmlspecialchars($error->getMessage())."\n");
+		exit(0);
+        }
 	$result=array_slice($conn->command($_GET['command']), 0, -3);
 	foreach($result as $line){
 		print(htmlspecialchars($line)."\n");

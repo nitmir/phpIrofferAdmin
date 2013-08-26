@@ -7,6 +7,7 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
+class IROFFER_ERROR extends Exception {}
 
 class IROFFER {
 	var $conn;
@@ -22,6 +23,7 @@ class IROFFER {
 		$this->server = $server;
 		$this->port = $port;
 		$this->password = $password;
+		$this->connect();
 	}
 
 	function connect() {
@@ -29,6 +31,7 @@ class IROFFER {
 			return true;
 		}
 		$this->nntp = fsockopen($this->server, $this->port, $this->error_number, $this->error_message);
+		if ($this->nntp === false) throw new IROFFER_ERROR('Unable to connect to the bot at address '.$this->server.':'.$this->port.'. Error n°'.$this->error_number.': '.$this->error_message);
 		if($this->nntp) {
 			//stream_set_blocking($this->nntp, 0);
 			$this->bot=explode(' ', fgets($this->nntp, 4096), 4)[2];

@@ -52,7 +52,7 @@ function action_get_manage_user_bot($params){
 }
 function action_get_delete_pack($params){
     if($params['bot']!==false){
-        $conn = new IROFFER($params['bot']->host(), $params['bot']->port(), $params['bot']->password());
+        $conn = iroffer($params['bot']);;
         $mess=$conn->remove($params['values'][0]);
         if(preg_match('/Removed Pack ([0-9]+) \[(.*)\]/', $mess, $match)){
             messages()->success(sprintf(_('Pack %s (%s) removed'), $match[1], $match[2]));
@@ -67,7 +67,7 @@ function action_get_delete_pack($params){
 }
 function action_get_delete_group($params){
     if($params['bot']!==false){
-        $conn = new IROFFER($params['bot']->host(), $params['bot']->port(), $params['bot']->password());
+        $conn = iroffer($params['bot']);;
         $mess=$conn->regroup($params['values'][0], 'MAIN');
         if($mess=='REGROUP: Old: '.$params['values'][0].' New: MAIN'){
             messages()->success(sprintf(_('Group %s deleted'), $params['values'][0]));
@@ -80,7 +80,7 @@ function action_get_delete_group($params){
 }
 function action_get_delete_all_pack_from_group($params){
     if($params['bot']!==false){
-        $conn = new IROFFER($params['bot']->host(), $params['bot']->port(), $params['bot']->password());
+        $conn = iroffer($params['bot']);;
         $mess=$conn->removegroup($params['values'][0]);
         if($mess){
             messages()->success(sprintf(_('Delete all pack from group %s'), $params['values'][0]));
@@ -94,7 +94,7 @@ function action_get_delete_all_pack_from_group($params){
 }
 function action_get_add_file($params){
     if($params['bot']!==false){
-        $conn = new IROFFER($params['bot']->host(), $params['bot']->port(), $params['bot']->password());
+        $conn = iroffer($params['bot']);;
         $message=$conn->add($params['values'][0]);
         if(preg_match('/Added: \[Pack ([0-9]+)\] \[File (.*)\]/', $message, $match)){
             messages()->success(sprintf(_('File %s added at pack #%s'), $match[2], $match[1]));
@@ -111,7 +111,7 @@ function action_get_add_file($params){
 }
 function action_post_add_dir($params){
     if($params['bot']!==false){
-        $conn = new IROFFER($params['bot']->host(), $params['bot']->port(), $params['bot']->password());
+        $conn = iroffer($params['bot']);;
         switch($params['values']['add_type']){
             case 'ADDGROUP': 
                 if($params['values']['group']!=''){
@@ -145,7 +145,7 @@ function action_post_add_dir($params){
 }
 function action_get_delete_dir($params){
     if($params['bot']!==false){
-        $conn = new IROFFER($params['bot']->host(), $params['bot']->port(), $params['bot']->password());
+        $conn = iroffer($params['bot']);;
         $message=$conn->removedir($params['values'][0]);
         if ($message=='--> ADMIN QUIT requested (DCC Chat: telnet) (network: 1)'){
             messages()->success(_('No error reported'));
@@ -158,7 +158,7 @@ function action_get_delete_dir($params){
 }
 function action_post_edit_group($params){
     if($params['bot']!==false){
-        $conn = new IROFFER($params['bot']->host(), $params['bot']->port(), $params['bot']->password());
+        $conn = iroffer($params['bot']);;
         if($params['values']['description']!=$params['values_old']['description']){
             $mess=$conn->groupdesc($params['values_old']['name'], $params['values']['description']);
             if($mess=='New GROUPDESC: '.$params['values']['description']){
@@ -184,7 +184,7 @@ function action_post_edit_pack($params){
         if($params['values_old']['group']=='') $params['values_old']['group']='MAIN';
         if($params['values']['group']=='') $params['values']['group']='MAIN';
 
-        $conn = new IROFFER($params['bot']->host(), $params['bot']->port(), $params['bot']->password());
+        $conn = iroffer($params['bot']);;
         if($params['values_old']['group']!=$params['values']['group']){
             $mess=$conn->group($params['values_old']['pack'], $params['values']['group']);
             if(preg_match('/GROUP: \[Pack '.$params['values_old']['pack'].'\]/', $mess)){
