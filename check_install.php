@@ -18,6 +18,8 @@ $WRITABLE_FILES=array('templates_c/');
 
 $SQL_TABLE=array('users', 'bots', 'bot_user');
 
+$CUSTOM_HTML='';
+
 $MISC=array(
 	'root_path' => array(
 		function () {
@@ -159,7 +161,7 @@ function test($title, $array, $test_function, $display_function=false){
 	return $failed;
 }
 
-function get_tables($db_query){
+function get_tables(){
 	$tables=array();
 	$query=db()->query('show tables');
 	while($data=$query->fetch()) $tables[]=$data[0];
