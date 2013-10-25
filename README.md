@@ -8,6 +8,7 @@ with user `demo` and password `demo`
 ## Installation
 
 ### Requirements
+ * php5.4
  * php mysql pdo
  * php smarty3 template engine
  * a mysql database for storing bots and users credentials
