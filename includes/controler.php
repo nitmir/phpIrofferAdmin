@@ -7,4 +7,5 @@ session_start();
 messages();
 login_require();
 params();
+set_language();
 action();

@@ -36,6 +36,7 @@ function encode_url($url){
 function params() {
 	global $_PARAMS;
 	$_PARAMS = array();
+        $_PARAMS['lang']='en';
 	$_PARAMS['bot_id']=isset($_GET['bot_id'])&&user()->own_bot((int)$_GET['bot_id'])?(int)$_GET['bot_id']:0;
 	$_PARAMS['group']=isset($_GET['group'])?$_GET['group']:'';
 	$_PARAMS['path']=isset($_GET['path'])?$_GET['path']:'';

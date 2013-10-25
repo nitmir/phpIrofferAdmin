@@ -82,15 +82,29 @@ function add_dir(path, dir, symlink){
 }
 //]]>
 </script>
+<script type="text/javascript">
+        $(document).ready(function(){
+        $('#listul_table').dataTable(dataTablesDefaultsParams({
+          "aoColumns": [
+            null,
+            { "sType":"file-size", "bSearchable": false},
+            { "bSortable": false, "bSearchable": false }
+          ]
+        }));
+      });
+</script>
     {if $params.path=='/'}{$params.path=''}{/if}
     <h2>{'File listing'|gettext}</h2>
     <h4>{$params.path}</h4>
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover" id="listul_table">
+      <thead>
       <tr>
       <th>{'name'|gettext}</th>
       <th>{'size'|gettext}</th>
-      <th></th>
+      <th style="text-align:right;">{if $params.path!=''}<a href="{view page='files_listing' params=$params path="{$params.path|dirname}"}" class="btn btn-primary"><i class="icon-arrow-up icon-white"></i></span></a>{/if}</th>
       </tr>
+      </thead>
+      <tbody>
       {if $params.path != ''}<tr><td><a href="{view page='files_listing' params=$params path="{$params.path|dirname}"}">..</a></td><td/><td/></tr>{/if}
       {foreach $files as $key => $file}
       <tr id="pack_{$key}">
@@ -116,6 +130,7 @@ function add_dir(path, dir, symlink){
 
       </tr>
       {/foreach}
+      </tbody>
       </table>
 {/block}
 

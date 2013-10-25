@@ -10,4 +10,5 @@
 
 require("includes/require.php");
 
+set_language();
 display("templates/login.tpl");

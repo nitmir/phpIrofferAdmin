@@ -13,6 +13,7 @@
 {block name="bot_container"}
 <script type="text/javascript">
 //<![CDATA[
+
 function get_info(pack) {
     var json = null;
     $.ajax({
@@ -113,8 +114,22 @@ function group(pack, file){
 //]]>
 </script>
     {if {$packs|@count} > 0 }
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('#xdl_table').dataTable(dataTablesDefaultsParams({
+          "aoColumns": [
+            { "sType": "num-html", "bSearchable": false },
+            { "bSearchable": false},
+            null,
+            null,
+            { "bSortable": false, "bSearchable": false }
+          ]
+        }));
+      });
+    </script>
     <h2>{if ($params.group) != ''}{'Packs listing of group %s'|gettext|sprintf:{$params.group}}{else}{'Packs listing'|gettext}{/if}</h2>
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover" id="xdl_table">
+            <thead>
             <tr id="pack_-1">
                 <th>n°</th>
                 <th>{'hit'|gettext}</th>
@@ -122,6 +137,8 @@ function group(pack, file){
                 <th>{'size'|gettext}</th>
                 <th style="text-align:right;">{if ($params.group) != ''}<a href="{view page='bot_listing' params=$params group=''}" class="btn btn-primary">{'back'|gettext}</a></br>{/if}</th>
             </tr>
+            </thead>
+            <tbody>
             {foreach $packs as $key => $pack}
                 <tr id="pack_{$key}">
                     <td><a href="#pack_{{$key} - 1}" title="{'detail'|gettext}">{$pack['pack']}</a></td>
@@ -135,20 +152,37 @@ function group(pack, file){
                 </tr>
             {/foreach}
             {if ($params.group) != ''}
+            </tbody>
+            <tfoot>
             <tr>
             <td style="text-align:right;" colspan="5"><a href="{action action=$action.delete_all_pack_from_group type='get' params=$params values=[$params.group]}" class="btn btn-danger" title="{'Delete group and all contening packs'|gettext}" onclick="return confirm('{'Removing all packs of group %s?'|gettext|sprintf:{$params.group}}')">{'delete all packs'|gettext}</a></td>
             </tr>
+            </tfoot>
             {/if}
         </table>
         {/if}
     {if $params.group == '' && {$groups|@count} > 0}
+        <script type="text/javascript">
+            $(document).ready(function(){
+            $('#groups_table').dataTable(dataTablesDefaultsParams({
+              "aoColumns": [
+                null,
+                null,
+                { "bSortable": false, "bSearchable": false }
+              ]
+            }));
+          });
+        </script>
         <h2>{'Groups listing'|gettext}</h2>
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover" id="groups_table">
+        <thead>
         <tr id="group_-1" >
             <th>{'name'|gettext}</th>
             <th>{'description'|gettext}</th>
             <th></th>
         </tr>
+        </thead>
+        <tbody>
         {foreach $groups as $key => $group}
             {if $params.action == $action.edit_group && $params.values.0 == $group.name }
                 <tr id="group_{$key}">
@@ -177,6 +211,7 @@ function group(pack, file){
                 </tr>
             {/if}
         {/foreach}
+        </tbody>
 	</table>
     {/if}
 {/block}

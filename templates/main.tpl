@@ -27,9 +27,22 @@ alert(data.substring(data.indexOf("\n")));
 });
 }
 </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('#main_table').dataTable(dataTablesDefaultsParams({
+          "aoColumns": [
+            { "bSortable": false },
+            { "bSortable": false, "bSearchable": false },
+            { "bSortable": false, "bSearchable": false },
+            { "bSortable": false, "bSearchable": false }
+          ],
+          "iDisplayLength": 10
+        }));
+      });
+    </script>
       <h1>{'Iroffer Admin'|gettext}</h1>
       <h2>{'Links to bots admin'|gettext}</h2>
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover" id="main_table">
       {foreach $user->bots() as $b}
       <tr>
       <th>{$b->name()}</th>
@@ -39,8 +52,9 @@ alert(data.substring(data.indexOf("\n")));
       </tr>
       {/foreach}
       </table>
+      <br/>
       <h2>{'Bots status'|gettext}</h2>
-	<table class="table table-striped table-hover">
+	<table class="table table-striped table-hover" id="main_table2">
       {foreach $user->bots() as $b}
       <tr>
       <th onclick="get_info({$b->id()})"><a href="#" title="{'detailed info'|gettext}">{$b->name()}</a></th>

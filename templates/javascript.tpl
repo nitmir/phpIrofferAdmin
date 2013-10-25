@@ -7,7 +7,7 @@
     /* Some gobals params for dataTables */
     function dataTablesDefaultsParams(params) { 
         return $.extend({
-                   "aLengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "{{"All"|gettext}}"]],
+                   "aLengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "{"All"|gettext}"]],
                    "iDisplayLength": 50,
                    "oLanguage": { "sUrl": "{$ROOT}deps/datatables/lang/{$params.lang}.txt" },
                }, params);
