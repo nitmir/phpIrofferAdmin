@@ -7,5 +7,5 @@
 * file that was distributed with this source code.
 *}
     <!-- Le styles -->
-    <link href="{$ROOT}deps/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{$ROOT}deps/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="{$ROOT}css/style.css" rel="stylesheet"/>

@@ -17,9 +17,7 @@
 
     {include file='styles.tpl'}
 
-    <script src="{$ROOT}deps/js/jquery.min.js" type="text/javascript"></script>
-    <script src="{$ROOT}deps/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="{$ROOT}deps/js/bootbox.min.js" type="text/javascript"></script>
+    {include file='javascript.tpl'}
   </head>
 
   <body>
