@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rofferPhpAdmin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-15 01:08+0200\n"
-"PO-Revision-Date: 2013-08-15 01:10+0100\n"
+"POT-Creation-Date: 2013-10-25 17:55+0200\n"
+"PO-Revision-Date: 2013-10-25 17:56+0100\n"
 "Last-Translator: Nit <nit@genua.fr>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -193,8 +193,8 @@ msgstr "Gestion des robots"
 
 #: ../utils/template_introspection/admin_bots.tpl.php:19
 #: ../utils/template_introspection/admin_bots.tpl.php:61
-#: ../utils/template_introspection/bot_listul.tpl.php:90
-#: ../utils/template_introspection/bot_xdl.tpl.php:148
+#: ../utils/template_introspection/bot_listul.tpl.php:102
+#: ../utils/template_introspection/bot_xdl.tpl.php:180
 #: ../utils/template_introspection/admin_users.tpl.php:160
 msgid "name"
 msgstr "nom"
@@ -227,9 +227,9 @@ msgstr "rafraîchir"
 
 #: ../utils/template_introspection/admin_bots.tpl.php:40
 #: ../utils/template_introspection/admin_bots.tpl.php:53
-#: ../utils/template_introspection/bot_xdl.tpl.php:132
-#: ../utils/template_introspection/bot_xdl.tpl.php:164
-#: ../utils/template_introspection/bot_xdl.tpl.php:174
+#: ../utils/template_introspection/bot_xdl.tpl.php:149
+#: ../utils/template_introspection/bot_xdl.tpl.php:198
+#: ../utils/template_introspection/bot_xdl.tpl.php:208
 #: ../utils/template_introspection/admin_users.tpl.php:49
 #: ../utils/template_introspection/admin_users.tpl.php:60
 #: ../utils/template_introspection/admin_users.tpl.php:103
@@ -238,17 +238,17 @@ msgid "edit"
 msgstr "édit"
 
 #: ../utils/template_introspection/admin_bots.tpl.php:41
-#: ../utils/template_introspection/bot_xdl.tpl.php:165
+#: ../utils/template_introspection/bot_xdl.tpl.php:199
 #: ../utils/template_introspection/admin_users.tpl.php:50
 #: ../utils/template_introspection/admin_users.tpl.php:103
 msgid "undo"
 msgstr "annuler"
 
 #: ../utils/template_introspection/admin_bots.tpl.php:54
-#: ../utils/template_introspection/bot_listul.tpl.php:101
-#: ../utils/template_introspection/bot_listul.tpl.php:108
-#: ../utils/template_introspection/bot_xdl.tpl.php:133
-#: ../utils/template_introspection/bot_xdl.tpl.php:175
+#: ../utils/template_introspection/bot_listul.tpl.php:115
+#: ../utils/template_introspection/bot_listul.tpl.php:122
+#: ../utils/template_introspection/bot_xdl.tpl.php:150
+#: ../utils/template_introspection/bot_xdl.tpl.php:209
 #: ../utils/template_introspection/admin_users.tpl.php:152
 msgid "del"
 msgstr ""
@@ -258,26 +258,26 @@ msgid "hostname"
 msgstr "nom d'hôte"
 
 #: ../utils/template_introspection/admin_bots.tpl.php:66
-#: ../utils/template_introspection/bot_listul.tpl.php:102
-#: ../utils/template_introspection/bot_listul.tpl.php:109
-#: ../utils/template_introspection/bot_listul.tpl.php:114
+#: ../utils/template_introspection/bot_listul.tpl.php:116
+#: ../utils/template_introspection/bot_listul.tpl.php:123
+#: ../utils/template_introspection/bot_listul.tpl.php:128
 msgid "add"
 msgstr ""
 
 #: ../utils/template_introspection/bot_listul.tpl.php:11
-#: ../utils/template_introspection/bot_listul.tpl.php:86
+#: ../utils/template_introspection/bot_listul.tpl.php:97
 msgid "File listing"
 msgstr "Liste des fichiers"
 
 #: ../utils/template_introspection/bot_listul.tpl.php:19
-#: ../utils/template_introspection/bot_xdl.tpl.php:33
+#: ../utils/template_introspection/bot_xdl.tpl.php:34
 msgid "Please indicate a new group name:"
 msgstr "Merci de donner un nom pour le nouveau groupe"
 
 #: ../utils/template_introspection/bot_listul.tpl.php:23
 #: ../utils/template_introspection/bot_listul.tpl.php:60
-#: ../utils/template_introspection/bot_xdl.tpl.php:37
-#: ../utils/template_introspection/bot_xdl.tpl.php:71
+#: ../utils/template_introspection/bot_xdl.tpl.php:38
+#: ../utils/template_introspection/bot_xdl.tpl.php:72
 msgid "New group"
 msgstr "Nouveau groupe"
 
@@ -302,142 +302,142 @@ msgid "Add new file in directory to group:"
 msgstr "Ajouter les nouveaux fichiers du répertoire dans le groupe : "
 
 #: ../utils/template_introspection/bot_listul.tpl.php:70
-#: ../utils/template_introspection/bot_xdl.tpl.php:100
+#: ../utils/template_introspection/bot_xdl.tpl.php:101
 msgid "Save"
 msgstr "Sauvegarder"
 
 #: ../utils/template_introspection/bot_listul.tpl.php:77
-#: ../utils/template_introspection/bot_xdl.tpl.php:107
+#: ../utils/template_introspection/bot_xdl.tpl.php:108
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:91
-#: ../utils/template_introspection/bot_xdl.tpl.php:122
+#: ../utils/template_introspection/bot_listul.tpl.php:103
+#: ../utils/template_introspection/bot_xdl.tpl.php:137
 msgid "size"
 msgstr "taille"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:101
-#: ../utils/template_introspection/bot_listul.tpl.php:108
+#: ../utils/template_introspection/bot_listul.tpl.php:115
+#: ../utils/template_introspection/bot_listul.tpl.php:122
 #, php-format
 msgid "Remove every pack found in %s"
 msgstr "Supprime tous les paquets correspondant aux fichiers de %s"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:101
-#: ../utils/template_introspection/bot_listul.tpl.php:108
+#: ../utils/template_introspection/bot_listul.tpl.php:115
+#: ../utils/template_introspection/bot_listul.tpl.php:122
 #, php-format
 msgid "Remove every pack found in %s?"
 msgstr "Supprimer tous les paquets correspondant aux fichiers de %s ?"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:102
-#: ../utils/template_introspection/bot_listul.tpl.php:109
+#: ../utils/template_introspection/bot_listul.tpl.php:116
+#: ../utils/template_introspection/bot_listul.tpl.php:123
 #, php-format
 msgid "Add every file in %s"
 msgstr "Ajoute tous les fichiers contenu dans %s"
 
-#: ../utils/template_introspection/bot_listul.tpl.php:106
+#: ../utils/template_introspection/bot_listul.tpl.php:120
 msgid "symlink"
 msgstr ""
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:56
+#: ../utils/template_introspection/bot_xdl.tpl.php:57
 msgid "pack:"
 msgstr "paquet :"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:60
+#: ../utils/template_introspection/bot_xdl.tpl.php:61
 msgid "Description:"
 msgstr "Description :"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:64
+#: ../utils/template_introspection/bot_xdl.tpl.php:65
 msgid "Groups:"
 msgstr "Groupes :"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:67
+#: ../utils/template_introspection/bot_xdl.tpl.php:68
 msgid "None"
 msgstr "Aucun"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:76
+#: ../utils/template_introspection/bot_xdl.tpl.php:77
 msgid "CRC 32:"
 msgstr "CRC 32 :"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:80
+#: ../utils/template_introspection/bot_xdl.tpl.php:81
 msgid "md5 sum:"
 msgstr "Σ md5"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:84
+#: ../utils/template_introspection/bot_xdl.tpl.php:85
 msgid "Last Modified:"
 msgstr "Dernière modif :"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:88
+#: ../utils/template_introspection/bot_xdl.tpl.php:89
 msgid "Path:"
 msgstr "Chemin :"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:95
+#: ../utils/template_introspection/bot_xdl.tpl.php:96
 msgid "error getting pack informations"
 msgstr "Erreur la récupération des informations du paquet"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:116
+#: ../utils/template_introspection/bot_xdl.tpl.php:130
 #, php-format
 msgid "Packs listing of group %s"
 msgstr "Liste des paquets du groupe %s"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:116
+#: ../utils/template_introspection/bot_xdl.tpl.php:130
 #: ../utils/template_introspection/bot_nav.tpl.php:10
-#: ../utils/template_introspection/main.tpl.php:36
+#: ../utils/template_introspection/main.tpl.php:49
 #: ../utils/template_introspection/navbar.tpl.php:29
 msgid "Packs listing"
 msgstr "Liste des paquets"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:120
+#: ../utils/template_introspection/bot_xdl.tpl.php:135
 msgid "hit"
 msgstr ""
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:121
-#: ../utils/template_introspection/bot_xdl.tpl.php:149
+#: ../utils/template_introspection/bot_xdl.tpl.php:136
+#: ../utils/template_introspection/bot_xdl.tpl.php:181
 msgid "description"
 msgstr "description"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:123
+#: ../utils/template_introspection/bot_xdl.tpl.php:138
 msgid "back"
 msgstr "retour"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:127
+#: ../utils/template_introspection/bot_xdl.tpl.php:144
 msgid "detail"
 msgstr "détail"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:133
+#: ../utils/template_introspection/bot_xdl.tpl.php:150
 msgid "Remove pack from the bot"
 msgstr "Supprime le paquets du robot"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:133
+#: ../utils/template_introspection/bot_xdl.tpl.php:150
 #, php-format
 msgid "Removing pack #%s - %s [%s] ?"
 msgstr "Supprimer le paquet #%s - %s [%s] ?"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:139
+#: ../utils/template_introspection/bot_xdl.tpl.php:158
 msgid "Delete group and all contening packs"
 msgstr "Supprimer le groupe et tous ses paquets"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:139
+#: ../utils/template_introspection/bot_xdl.tpl.php:158
 #, php-format
 msgid "Removing all packs of group %s?"
 msgstr "Supprimer tous les paquets du groupe %s ?"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:139
+#: ../utils/template_introspection/bot_xdl.tpl.php:158
 msgid "delete all packs"
 msgstr "Suppression de tous les paquets du groupe"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:145
+#: ../utils/template_introspection/bot_xdl.tpl.php:176
 msgid "Groups listing"
 msgstr "Liste des groupes"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:174
+#: ../utils/template_introspection/bot_xdl.tpl.php:208
 msgid "Change group name or description"
 msgstr "Changer le nom du groupe ou sa description"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:175
+#: ../utils/template_introspection/bot_xdl.tpl.php:209
 msgid "Move packs to no group"
 msgstr "N'assigne le paquet à aucun groupe"
 
-#: ../utils/template_introspection/bot_xdl.tpl.php:175
+#: ../utils/template_introspection/bot_xdl.tpl.php:209
 #, php-format
 msgid "Deleting %s ?\\nThis will put all packs in no group"
 msgstr "Supprimer %s\\nTous les paquets ne seront plus assigné à aucun groupe"
@@ -462,14 +462,18 @@ msgstr "Réussite :"
 msgid "Info:"
 msgstr "Info :"
 
+#: ../utils/template_introspection/javascript.tpl.php:10
+msgid "All"
+msgstr "Tout"
+
 #: ../utils/template_introspection/bot_nav.tpl.php:11
-#: ../utils/template_introspection/main.tpl.php:37
+#: ../utils/template_introspection/main.tpl.php:50
 #: ../utils/template_introspection/navbar.tpl.php:30
 msgid "Add files"
 msgstr "Ajout de fichiers"
 
 #: ../utils/template_introspection/bot_nav.tpl.php:12
-#: ../utils/template_introspection/main.tpl.php:38
+#: ../utils/template_introspection/main.tpl.php:51
 #: ../utils/template_introspection/navbar.tpl.php:31
 msgid "Console"
 msgstr "Console"
@@ -568,23 +572,23 @@ msgstr "Identifiant"
 msgid "Sign in"
 msgstr "Se connecter"
 
-#: ../utils/template_introspection/main.tpl.php:30
+#: ../utils/template_introspection/main.tpl.php:43
 msgid "Iroffer Admin"
 msgstr "Administration d'Iroffer"
 
-#: ../utils/template_introspection/main.tpl.php:31
+#: ../utils/template_introspection/main.tpl.php:44
 msgid "Links to bots admin"
 msgstr "Liens vers l'administration des robots"
 
-#: ../utils/template_introspection/main.tpl.php:42
+#: ../utils/template_introspection/main.tpl.php:56
 msgid "Bots status"
 msgstr "Statut des robots"
 
-#: ../utils/template_introspection/main.tpl.php:46
+#: ../utils/template_introspection/main.tpl.php:60
 msgid "detailed info"
 msgstr "informations détaillées"
 
-#: ../utils/template_introspection/main.tpl.php:48
+#: ../utils/template_introspection/main.tpl.php:62
 msgid "refresh status"
 msgstr "rafraîchir le statut"
 
