@@ -173,6 +173,7 @@ function group(pack, file){
             }));
           });
         </script>
+        <br/>
         <h2>{'Groups listing'|gettext}</h2>
         <table class="table table-striped table-hover" id="groups_table">
         <thead>
