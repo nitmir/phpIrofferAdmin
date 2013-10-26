@@ -34,3 +34,5 @@ $_CONFIG['level']=array(
 $_CONFIG['display_error']=0;
 $_CONFIG['session_name']='phpIrofferAdmin';
 $_CONFIG['iroffer_timeout']=3; //timeout then connecting to iroffer telnet interface in seconds
+
+$_CONFIG['datatables']['elements_to_display']=25; //possible values are 10, 25, 50, 100, 500 or -1 (for all elements)

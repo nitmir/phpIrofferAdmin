@@ -27,6 +27,55 @@ function get_info(pack) {
      });
     return json;
 }
+function filtered_packs(table_id) {
+
+  var oTable = $('#' + table_id).dataTable();
+  var pack_id = new Array();
+  var pack_desc = new Array();
+  var pack_size = new Array();
+  var nNodes = oTable._('tr', { "filter":"applied" });
+  for(i=0;nNodes[i] != null; i++){
+	pack_id[i]=$(nNodes[i][0]).text();
+	pack_desc[i]=nNodes[i][2];
+	pack_size[i]=nNodes[i][3];
+  };
+  return new Array(pack_id, pack_desc, pack_size);
+
+}
+
+function delete_filtered_packs(table_id) {
+ var packs = filtered_packs(table_id);
+ var pack_id=packs[0];
+ var pack_desc=packs[1];
+ var pack_size=packs[2];
+ var message = "{'Are you sure you want to remove the following packs:'|gettext}\n";
+ for(i=0; pack_id[i]!=null; i++){
+	message+="  " + pack_id[i] + " - " + pack_desc[i] + " ("+ pack_size[i] +")\n";
+ }
+ if(confirm(message)){
+	var to_delete=getRanges(pack_id);
+	var form = document.createElement("form");
+	form.setAttribute("method", "post");
+	form.setAttribute("action", "{action action=$action.delete_pack type='post' params=$params}");
+
+	var hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "action");
+	hiddenField.setAttribute("value", "{$action.delete_pack}");
+	form.appendChild(hiddenField);
+
+	 for(i=0; to_delete[i]!=null; i++){
+		var hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "values[packs][]");
+		hiddenField.setAttribute("value", to_delete[i]);
+		form.appendChild(hiddenField);
+	}
+
+	document.body.appendChild(form);
+	form.submit();
+ }
+}
 
 function newgroup(fld,len,idx) {
         if ((idx+1)==len) {
@@ -135,7 +184,7 @@ function group(pack, file){
                 <th>{'hit'|gettext}</th>
                 <th>{'description'|gettext}</th>
                 <th>{'size'|gettext}</th>
-                <th style="text-align:right;">{if ($params.group) != ''}<a href="{view page='bot_listing' params=$params group=''}" class="btn btn-primary">{'back'|gettext}</a></br>{/if}</th>
+                <th style="text-align:right;padding-right: 10px;">{if ($params.group) != ''}<a href="{view page='bot_listing' params=$params group=''}" class="btn btn-primary">{'back'|gettext}</a></br>{/if}</th>
             </tr>
             </thead>
             <tbody>
@@ -151,15 +200,15 @@ function group(pack, file){
                     </td>
                 </tr>
             {/foreach}
-            {if ($params.group) != ''}
             </tbody>
             <tfoot>
             <tr>
-            <td style="text-align:right;" colspan="5"><a href="{action action=$action.delete_all_pack_from_group type='get' params=$params values=[$params.group]}" class="btn btn-danger" title="{'Delete group and all contening packs'|gettext}" onclick="return confirm('{'Removing all packs of group %s?'|gettext|sprintf:{$params.group}}')">{'delete all packs'|gettext}</a></td>
+            <td style="text-align:right;" colspan="5"><button class="btn btn-danger" title="{'Removing all packs maching the current search'|gettext}" onclick="delete_filtered_packs('xdl_table')">{'remove all this packs'|gettext}</button></td>
             </tr>
             </tfoot>
-            {/if}
         </table>
+        <br/>
+        <br/>
         {/if}
     {if $params.group == '' && {$groups|@count} > 0}
         <script type="text/javascript">
@@ -173,7 +222,6 @@ function group(pack, file){
             }));
           });
         </script>
-        <br/>
         <h2>{'Groups listing'|gettext}</h2>
         <table class="table table-striped table-hover" id="groups_table">
         <thead>

@@ -26,6 +26,7 @@ body {
 	margin-top:0px;
 	min-height:100%;
 	height:auto !important;
+	position: relative;
 }
 .navbar .container {
 	padding-left: 20px;
@@ -167,3 +168,15 @@ ul.column{
 .triple li  { width:33.333%; }
 .quad li    { width:25%; }
 .six li     { width:16.666%; }
+
+
+#bottom{
+  position: absolute;
+  bottom: 0px;
+  text-align:center;
+  width: 100%;
+}
+
+#bottom a {
+ color: gray;
+}

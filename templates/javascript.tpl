@@ -8,8 +8,22 @@
     function dataTablesDefaultsParams(params) { 
         return $.extend({
                    "aLengthMenu": [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "{"All"|gettext}"]],
-                   "iDisplayLength": 50,
+                   "iDisplayLength": {$config.datatables.elements_to_display},
                    "oLanguage": { "sUrl": "{$ROOT}deps/datatables/lang/{$params.lang}.txt" },
                }, params);
+    }
+
+    function getRanges(array) {
+      var ranges = [], rstart, rend;
+      for (var i = 0; i < array.length; i++) {
+        rstart = array[i];
+        rend = rstart;
+        while (array[i + 1] - array[i] == 1) {
+          rend = array[i + 1]; // increment the index if the numbers sequential
+          i++;
+        }
+        ranges.push(rstart == rend ? rstart+'' : rstart + '-' + rend);
+      }
+      return ranges;
     }
     </script>

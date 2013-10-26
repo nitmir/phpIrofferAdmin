@@ -101,7 +101,7 @@ function add_dir(path, dir, symlink){
       <tr>
       <th>{'name'|gettext}</th>
       <th>{'size'|gettext}</th>
-      <th style="text-align:right;">{if $params.path!=''}<a href="{view page='files_listing' params=$params path="{$params.path|dirname}"}" class="btn btn-primary"><i class="icon-arrow-up icon-white"></i></span></a>{/if}</th>
+      <th style="text-align:right;padding-right: 10px;">{if $params.path!=''}<a href="{view page='files_listing' params=$params path="{$params.path|dirname}"}" class="btn btn-primary"><i class="icon-arrow-up icon-white"></i></span></a>{/if}</th>
       </tr>
       </thead>
       <tbody>

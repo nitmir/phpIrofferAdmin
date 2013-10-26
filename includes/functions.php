@@ -34,7 +34,7 @@ function encode_url($url){
 
 // build the params directory
 function params() {
-	global $_PARAMS;
+	global $_PARAMS, $_CONFIG;
 	$_PARAMS = array();
         $_PARAMS['lang']='en';
 	$_PARAMS['bot_id']=isset($_GET['bot_id'])&&user()->own_bot((int)$_GET['bot_id'])?(int)$_GET['bot_id']:0;
@@ -50,6 +50,11 @@ function params() {
 	} else {
 		$_PARAMS['bot']=new BOT();
 	}
+
+	if(!isset($_CONFIG['iroffer_timeout']))
+		$_CONFIG['iroffer_timeout']=3;
+	if(!isset($_CONFIG['datatables']['elements_to_display']))
+		$_CONFIG['datatables']['elements_to_display']=25;
 }
 
 function iroffer($bot){

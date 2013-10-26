@@ -124,7 +124,16 @@ class IROFFER {
 		return $this->command('RENUMBER '.$x.' '.$y)[1];
 	}
 	function remove($n, $m=false){
-		return $this->command('REMOVE '.$n.($m!==false?' '.$m:''))[1];
+		$result=$this->command('REMOVE '.$n.($m!==false?' '.$m:''));
+		if($m==false){
+			return $result[1];
+		} else {
+			if(isset($result[($m - $n)])){
+				return array_slice($result, 1, ($m - $n) + 1);
+			}else{
+				return array($result[1]);
+			}
+		}
 	}
 	function removegroup($group){
 		return $this->command('REMOVEGROUP "'.$group.'"')[1];

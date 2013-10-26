@@ -52,7 +52,7 @@ function action_get_manage_user_bot($params){
 }
 function action_get_delete_pack($params){
     if($params['bot']!==false){
-        $conn = iroffer($params['bot']);;
+        $conn = iroffer($params['bot']);
         $mess=$conn->remove($params['values'][0]);
         if(preg_match('/Removed Pack ([0-9]+) \[(.*)\]/', $mess, $match)){
             messages()->success(sprintf(_('Pack %s (%s) removed'), $match[1], $match[2]));
@@ -63,6 +63,37 @@ function action_get_delete_pack($params){
         }
         header('Location: '.view('bot_listing', $params));
         die();
+    }
+}
+
+function action_post_delete_pack($params){
+    if($params['bot']!==false){
+        $conn = iroffer($params['bot']);
+        $success='';
+        $error='';
+        for($i=0; isset($params['values']['packs'][$i]); $i++){
+            $pack=explode('-', $params['values']['packs'][$i]);
+            if(isset($pack[1])){
+                $mess_array=$conn->remove($pack[0], $pack[1]);
+            } else{
+                $mess_array=array($conn->remove($pack[0]));
+            }
+            foreach($mess_array as $mess){
+                if(preg_match('/Removed Pack ([0-9]+) \[(.*)\]/', $mess, $match)){
+                   $success.=sprintf(_('Pack %s (%s) removed'), $match[1], $match[2])."\n";
+                } elseif($mess=='Try Specifying a Valid Pack Number'){
+                    $error.=sprintf(_('Invalid pack number %s, unable to remove it'), $params['values'][0])."\n";
+                } else {
+                    $error.=_($mess)."\n";
+                }
+            }
+        }
+    if($success!='')
+        messages()->success($success);
+    if($error!='')
+        messages()->error($error);
+    header('Location: '.view('bot_listing', $params));
+    die();
     }
 }
 function action_get_delete_group($params){

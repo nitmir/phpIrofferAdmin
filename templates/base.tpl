@@ -29,7 +29,8 @@
 	{include file='message.tpl'}
 	{block name="container"}{/block}
     </div>
-    <div id="bottom"></div>
+<br/><br/><br/>
+    <div id="bottom"><a href="https://github.com/nitmir/phpIrofferAdmin">{'phpIrofferAdmin on github'|gettext}</a></div>
     </div>
   </body>
 </html>
