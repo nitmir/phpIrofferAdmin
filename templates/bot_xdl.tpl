@@ -93,7 +93,7 @@ function group(pack, file){
     if(info){
         var div= ''+
         '<div id="add_to_group">'+
-            '<form class="form-horizontal" method="POST" action="{action action=$action.edit_pack type='post' params=$params}" id="edit_form">'+
+            '<form class="form-horizontal" method="post" action="{action action=$action.edit_pack type='post' params=$params}" id="edit_form">'+
                 '<input name="action" type="hidden" value="{$action.edit_pack}"/>'+
                 {foreach ['bot_id', 'group'] as $key}
                 '<input name="values_old[{$key}]" type="hidden" value="{$params[$key]}"/>'+
@@ -235,7 +235,7 @@ function group(pack, file){
         {foreach $groups as $key => $group}
             {if $params.action == $action.edit_group && $params.values.0 == $group.name }
                 <tr id="group_{$key}">
-            <form method="POST" action="{action action=$action.edit_group type='post' params=$params}">
+            <form method="post" action="{action action=$action.edit_group type='post' params=$params}">
                 {foreach ['name' => $group.name, 'description' => $group.description] as $k => $value}
                 <td>
                     <input type="hidden" name="values_old[{$k}]" value="{$value}"/>
@@ -244,7 +244,7 @@ function group(pack, file){
                 {/foreach}
                 <td style="text-align:right;">
                     <input type="hidden" name="action" value="{$action.edit_group}"/>
-                    <input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary">
+                    <input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary"/>
                     <a href="{view page='bot_listing' params=$params}#group_{$key - 1}" class="btn btn-primary">{'undo'|gettext}</a>
                 </td>
             </form>

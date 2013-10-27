@@ -4,6 +4,7 @@
     <script src="{$ROOT}deps/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="{$ROOT}deps/datatables/js/jquery.dataTables.plugins.js" type="text/javascript"></script>
     <script type="text/javascript">
+//<![CDATA[
     /* Some gobals params for dataTables */
     function dataTablesDefaultsParams(params) { 
         return $.extend({
@@ -26,4 +27,5 @@
       }
       return ranges;
     }
+//]]>
     </script>

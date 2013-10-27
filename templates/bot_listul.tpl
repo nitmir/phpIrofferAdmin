@@ -27,7 +27,7 @@ function newgroup(fld,len,idx) {
 function add_dir(path, dir, symlink){
         var div= ''+
         '<div>'+
-            '<form class="form-horizontal" method="POST" action="{action action=$action.add_dir type='post' params=$params}" id="add_dir_form">'+
+            '<form class="form-horizontal" method="post" action="{action action=$action.add_dir type='post' params=$params}" id="add_dir_form">'+
                 '<input name="action" type="hidden" value="{$action.add_dir}"/>'+
                 '<input name="values[dir]" type="hidden" value="'+path + '/' + dir+'"/>'+
                 '<table class="table table-striped table-hover">'+

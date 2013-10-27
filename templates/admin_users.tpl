@@ -17,7 +17,7 @@
     <h2>{'My infos'|gettext}</h2>
       <table class="table table-striped table-hover">
       {if $params.action == $action.edit_user && $params.values.0 == 'personal'}
-        <form method="POST" action="{action action=$action.edit_user type='post' params=$params}">
+        <form method="post" action="{action action=$action.edit_user type='post' params=$params}">
             <tr>
             <th>{'Name'|gettext}</th>
             <td>
@@ -75,7 +75,7 @@
       {foreach $user_list as $key => $user}
       {if $params.action == $action.edit_user && $params.values.0 == $user->id()}
       <tr id="user_{$key}">
-      <form method="POST" action="{action action=$action.edit_user type='post' params=$params}">
+      <form method="post" action="{action action=$action.edit_user type='post' params=$params}">
         <td>
                         <input type="hidden" name="action" value="{$action.edit_user}"/>
             <input type="hidden" name="values[id]" value="{$user->id()}"/>
@@ -126,7 +126,7 @@
               <input type="hidden" name="values_old[bots][]" value="{$bot->id()}" />
               <input type="checkbox" name="values[bots][]" value="{$bot->id()}" checked />
           {else}
-            <input type="checkbox" name="values[bots][]" value="{$bot->id()}">
+            <input type="checkbox" name="values[bots][]" value="{$bot->id()}"/>
           {/if}
           {$bot->name()}
       </li>
@@ -154,7 +154,7 @@
       {/if}
       {/foreach}
       <tr>
-      <form method="POST" action="{action action=$action.create_user type='post' params=$params}">
+      <form method="post" action="{action action=$action.create_user type='post' params=$params}">
           <td>
                   <input type="hidden" name="action" value="{$action.create_user}"/>
                   <input type="text" name="values[name]" value="" style="width:100px;" placeholder="{'name'|gettext}"/>
@@ -165,7 +165,7 @@
             <input type="password" name="values[password2]" value="" style="width:100px;" placeholder="{'confirmation'|gettext}"/>
           </td>
           <td colspan="3"></td>
-          <td style="text-align:right;"><input type="submit" name="submit" value="{'Add'|gettext}" class="btn btn-primary"></td>
+          <td style="text-align:right;"><input type="submit" name="submit" value="{'Add'|gettext}" class="btn btn-primary"/></td>
     </form>
     </tr>
       </table>

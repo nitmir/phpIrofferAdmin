@@ -26,7 +26,7 @@
       {foreach $user->bots() as $key => $bot}
       {if $params.action == $action.edit_bot && $params.values.0 == $bot->id()}
       <tr id="bot_{$key}">
-      <form method="POST" action="{action action=$action.edit_bot type='post' params=$params}">
+      <form method="post" action="{action action=$action.edit_bot type='post' params=$params}">
 		<td>
 			<input type="hidden" name="action" value="{$action.edit_bot}"/>
 			<input type="hidden" name="values[id]" value="{$bot->id()}"/>
@@ -37,7 +37,7 @@
 	      <td><input type="password" name="values[password]" value="" style="width:100px;"/></td>
 	      <td>{$bot->created()}</td>
 	      <td style="text-align:right;">
-	          <input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary">
+	          <input type="submit" name="submit" value="{'edit'|gettext}" class="btn btn-primary"/>
 	          <a href="{view page='bot_management' params=$params}#bot_{$key - 1}" class="btn btn-primary">{'undo'|gettext}</a>
               </td>
 	</form>
@@ -57,13 +57,13 @@
       {/if}
       {/foreach}
       <tr>
-      <form method="POST" action="{action action=$action.create_bot type='post' params=$params}">
+      <form method="post" action="{action action=$action.create_bot type='post' params=$params}">
 	      <td><input type="text" name="values[name]" value="" style="width:100px;" placeholder="{'name'|gettext}" /></td>
 	      <td><input type="text" name="values[host]" value="" style="width:100px;" placeholder="{'hostname'|gettext}"/></td>
 	      <td><input type="text" name="values[port]" value="" style="width:40px;" placeholder="{'port'|gettext}"/></td>
 	      <td><input type="password" name="values[password]" value="" style="width:100px;" placeholder="{'password'|gettext}"/></td>
 	      <td><input type="hidden" name="action" value="{$action.create_bot}" /></td>
-	      <td style="text-align:right;"><input type="submit" name="submit" value="{'add'|gettext}" class="btn btn-primary"></td>
+	      <td style="text-align:right;"><input type="submit" name="submit" value="{'add'|gettext}" class="btn btn-primary"/></td>
 	</form>
 	</tr>
       </table>
