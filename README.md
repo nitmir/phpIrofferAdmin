@@ -2,8 +2,7 @@
 
 This is a web interface to manage iroffer dinoex via the telnet interface of iroffer dinoex
 
-a demo is avaible [here](http://xdcc-demo.genua.fr) (ipv6 only) or [here](http://xdcc-demo.genua.fr.ipv4.sixxs.org/) (ipv4 gateway) 
-with user `demo` and password `demo`
+a demo is avaible [here](http://xdcc-demo.genua.fr) with user `demo` and password `demo`
 
 ## Installation
 
