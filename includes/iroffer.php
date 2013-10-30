@@ -73,10 +73,10 @@ class IROFFER {
 	function xdtrigger(){ return $this->_xdl('XDTRIGGER')[0];}
 
 	private function _xdl($cmd, $group_only=false) {
-		$array=array_slice($this->command($cmd),7,-4);
+		$array=$this->command($cmd);
 		$groups=array();
 		for($i=0; isset($array[$i]); $i++){
-			if(!preg_match('/^group:/', $array[$i])){
+			if(preg_match('/^#[0-9]+/', $array[$i])){ // line is a pack number
 				if(!$group_only){
 					$array[$i]=preg_split('/ +/', preg_replace(array('/\[ */'), array('['), $array[$i]), 4);
 					$array[$i]['pack']=substr(trim($array[$i][0]), 1);
@@ -87,12 +87,14 @@ class IROFFER {
 				} else {
 					unset($array[$i]);
 				}
-			} else {
+			} elseif(preg_match('/^group:/', $array[$i])) { // line is a group
 				$group=preg_split('/ +- +/', preg_replace(array('/\[ */'), array('['), $array[$i]), 2);
 				$groups[]=array(
 					'name' => trim(preg_replace('/^.*group: +/', '', $group[0])),
 					'description' => trim($group[1]),
 				);
+				unset($array[$i]);
+			} else { // otherwise, garbage it
 				unset($array[$i]);
 			}
 		}
