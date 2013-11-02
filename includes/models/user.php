@@ -81,7 +81,7 @@ class USER_DATA {
 		if($email)
 			$SET.=', email='.db()->quote($email);
 		if($password)
-			$SET.=', password='.db()->quote(crypt($passwor));
+			$SET.=', password='.db()->quote(crypt($password));
 		if(db()->query('UPDATE users SET id=id'.$SET.' WHERE id='.db()->quote($this->id))){
 			return true;
 		} else {

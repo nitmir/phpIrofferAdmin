@@ -11,7 +11,7 @@
 {block name="bot_title"}Admnistration shell{/block}
 {block name="bot_description"}{/block}
 {block name="bot_container"}
-	<h2>Admnistration shell</h2>
+	<h2>Administration shell</h2>
 	<script type="text/javascript">
 //<![CDATA[
 var hist_cmd = new Array(['HELP'])
