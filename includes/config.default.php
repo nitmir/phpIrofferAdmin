@@ -8,29 +8,6 @@
 * file that was distributed with this source code.
 */
 
-//database params
-$MYSQL['host']='localhost';
-$MYSQL['username']='iroffer';
-$MYSQL['password']='password';
-$MYSQL['database']='iroffer';
-
-setlocale (LC_TIME, 'fr_FR.utf8','fra');
-setlocale (LC_ALL, "fr_FR");
-
-
-define('ADMIN',10);
-define('USER',1);
-
-define('ROOT', '/');
-define('REWRITE_URL', false);
-
-
-
-$_CONFIG['level']=array(
-	USER => 'USER',
-	ADMIN => 'ADMIN',
-);
-
 /* Should point to the directory (ending with a slash) contening
 * the smarty Smarty.class.php file. By default, we assume the dir smarty3/
 * is inside the php path (for example it is located to /usr/share/php/smarty3/

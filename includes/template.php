@@ -8,7 +8,7 @@
 * file that was distributed with this source code.
 */
 
-require("smarty3/Smarty.class.php"); // On inclut la classe Smarty
+require($_CONFIG['smarty3']."Smarty.class.php"); // On inclut la classe Smarty
 
 $tpl = new Smarty();
 
