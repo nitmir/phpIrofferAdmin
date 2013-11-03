@@ -10,9 +10,11 @@
 
 @include('includes/sql.php');
 @include('includes/functions.php');
+@include('includes/config.default.php');
+@include('includes/config.php');
 
 $PHP_EXTENTIONS = array('PDO', 'pdo_mysql');
-$PHP_INCLUDES=array('smarty3/Smarty.class.php', 'includes/config.php');
+$PHP_INCLUDES=array($_CONFIG['smarty3'].'Smarty.class.php', 'includes/config.php');
 $READABLE_FILES=array();
 $WRITABLE_FILES=array('templates_c/');
 
