@@ -15,7 +15,7 @@ RewriteRule ^bot-([0-9]+)/console/$  bot_command.php?bot_id=$1 [QSA,L]
 RewriteRule ^bots/(?:action/([^/]*)/([^/]*))?$ admin_bots.php?action=$1&values[0]=$2 [QSA,L]
 
 # main
-RewriteRule ^(?:action/([^/]*)/([^/]*))?$ main.php?action=$1&values[0]=$2 [QSA,L]
+RewriteRule ^(?:index.php)?(?:action/([^/]*)/([^/]*))?$ main.php?action=$1&values[0]=$2 [QSA,L]
 
 # login
 RewriteRule ^login/$ login.php [QSA,L]
