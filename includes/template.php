@@ -39,5 +39,6 @@ function display($page){
 	$tpl->assign('config', $_CONFIG);
 	$tpl->assign('messages', messages());
 	$tpl->assign('user', user());
+	$tpl->inheritance_merge_compiled_includes = false;
 	$tpl->display($page);
 }
